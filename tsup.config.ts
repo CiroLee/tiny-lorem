@@ -6,7 +6,8 @@ export default defineConfig((options: Options) => {
     outDir: 'lib',
     format: ['esm', 'cjs'],
     dts: true,
-    minify: true,
+    minify: !options.watch,
+    sourcemap: options.sourcemap,
     watch: options.watch,
     clean: true,
   };

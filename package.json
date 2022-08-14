@@ -8,7 +8,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "tsup",
-    "dev": "tsup --watch",
+    "dev": "tsup --watch --sourcemap",
     "lint:fix": "npx eslint src/**/*.ts --config .eslintrc --fix",
     "test:unit": "jest --coverage"
   },
