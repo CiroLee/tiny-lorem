@@ -1,9 +1,18 @@
 export type IRange = [number, number];
 export type ITextsLanguage = 'en' | 'cn';
 
-export interface ITextsFuncProps {
+export interface ITextsFuncOptions {
   range?: number | IRange;
   language?: ITextsLanguage;
+}
+
+export interface IFloatNumOptions {
+  range?: IRange;
+  fixed?: number;
+}
+
+export interface INumberOptions extends IFloatNumOptions {
+  format?: 'number' | 'string';
 }
 
 export interface ITextsConfig {

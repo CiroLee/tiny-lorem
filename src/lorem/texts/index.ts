@@ -1,7 +1,7 @@
-import type { ITextsConfig, ITextsLanguage, ITextsFuncProps, IRange } from '@src/types/lorem';
+import type { ITextsConfig, ITextsLanguage, ITextsFuncOptions, IRange } from '@src/types/lorem';
 import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
-import { isValidNumber } from '@src/utils/validator';
-import { randomInteger } from '@src/utils/utils';
+import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
+import { randomInteger, TEXT_ERROR_MAP } from '@src/utils/utils';
 export default class Texts {
   private language: ITextsLanguage;
   private baseNum: number;
@@ -16,6 +16,10 @@ export default class Texts {
   private calcRandomLength(range?: number | IRange): number {
     if (isValidNumber(range) || !range) {
       return range ? Math.floor(range as number) : randomInteger([1, this.baseNum]);
+    }
+    // elements of range must be positive integer or zero
+    if (!isPositiveRangeTuple(range as IRange)) {
+      throw new Error(TEXT_ERROR_MAP.invalidPositiveRange);
     }
     return randomInteger(range as IRange);
   }
@@ -33,7 +37,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of characters that make up a word
    */
-  word(options?: ITextsFuncProps) {
+  word(options?: ITextsFuncOptions) {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
@@ -47,7 +51,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of words that make up a sentence
    */
-  sentence(options?: ITextsFuncProps) {
+  sentence(options?: ITextsFuncOptions) {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
@@ -69,7 +73,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of sentences that make up a paragraph
    */
-  paragraph(options?: ITextsFuncProps) {
+  paragraph(options?: ITextsFuncOptions) {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
