@@ -1,6 +1,6 @@
 import * as utils from '@src/utils/utils';
 import { isInt } from '@src/utils/validator';
-import type { IRange, IFloatNumOptions } from '@src/types/lorem';
+import type { IRange, IFloatNumOptions } from '@src/types/lorem.types';
 
 describe('utils', () => {
   test('randomInteger, range is [3, 1], and it will throw error', () => {

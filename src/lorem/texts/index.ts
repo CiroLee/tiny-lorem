@@ -1,4 +1,4 @@
-import type { ITextsConfig, ITextsLanguage, ITextsFuncOptions, IRange } from '@src/types/lorem';
+import type { ITextsConfig, ITextsLanguage, ITextsFuncOptions, IRange } from '@src/types/lorem.types';
 import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
 import { randomInteger, TEXT_ERROR_MAP } from '@src/utils/utils';

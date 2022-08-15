@@ -1,4 +1,4 @@
-import type { IRange, IFloatNumOptions } from '@src/types/lorem';
+import type { IRange, IFloatNumOptions } from '@src/types/lorem.types';
 import { isInt, isRangeTuple } from './validator';
 
 export const TEXT_ERROR_MAP = {
@@ -45,8 +45,6 @@ export const randomFloat = (options?: IFloatNumOptions): number => {
     min = -max;
   }
   const integer = randomInteger([min * _fixed, max * _fixed]);
-  console.log(fixed);
-
   return Number((integer / _fixed).toFixed(fixed));
 };
 /**

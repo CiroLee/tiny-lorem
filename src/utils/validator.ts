@@ -1,4 +1,4 @@
-import type { IRange } from '@src/types/lorem';
+import type { IRange } from '@src/types/lorem.types';
 
 export const isValidNumber = (num: unknown): boolean => Number.isFinite(num);
 

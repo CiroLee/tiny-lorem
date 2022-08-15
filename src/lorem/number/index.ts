@@ -1,4 +1,4 @@
-import type { INumberOptions } from '@src/types/lorem';
+import type { INumberOptions } from '@src/types/lorem.types';
 import { MAX_NUMBER, randomFloat, fillDecimal, randomInteger } from '@src/utils/utils';
 /**
  * @desc return a random integer or float number

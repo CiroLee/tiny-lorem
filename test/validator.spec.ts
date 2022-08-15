@@ -1,5 +1,5 @@
 import * as validator from '@src/utils/validator';
-import { IRange } from '@src/types/lorem';
+import { IRange } from '@src/types/lorem.types';
 describe('valdiator test', () => {
   test('isValidNumber', () => {
     const num1 = 1;

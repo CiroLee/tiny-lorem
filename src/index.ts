@@ -1,7 +1,7 @@
 import Texts from './lorem/texts';
 import number from './lorem/number';
-import { ILoremConfig, ITextsConfig } from './types/lorem';
-export * from './types/lorem';
+import { ILoremConfig, ITextsConfig } from './types/lorem.types';
+export * from './types/lorem.types';
 class Lorem {
   public textsConfig?: ITextsConfig;
   readonly texts: Texts;
