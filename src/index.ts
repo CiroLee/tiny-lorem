@@ -1,5 +1,6 @@
 import Texts from './lorem/texts';
-import number from './lorem/number';
+import RandomNumber from './lorem/number';
+import DateData from './lorem/date';
 import { ILoremConfig, ITextsConfig } from './types/lorem.types';
 export * from './types/lorem.types';
 class Lorem {
@@ -9,7 +10,8 @@ class Lorem {
     this.texts = new Texts(config?.textsConfig);
   }
 
-  readonly number = number;
+  readonly number = new RandomNumber();
+  readonly date = new DateData();
 }
 
 export default Lorem;
