@@ -1,6 +1,6 @@
 import Texts from './lorem/texts';
 import RandomNumber from './lorem/number';
-import DateData from './lorem/date';
+import RandomDate from './lorem/date';
 import { ILoremConfig, ITextsConfig } from './types/lorem.types';
 export * from './types/lorem.types';
 class Lorem {
@@ -11,7 +11,7 @@ class Lorem {
   }
 
   readonly number = new RandomNumber();
-  readonly date = new DateData();
+  readonly date = new RandomDate();
 }
 
 export default Lorem;

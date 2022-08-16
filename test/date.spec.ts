@@ -1,8 +1,8 @@
-import DateData from '@src/lorem/date';
+import RandomDate from '@src/lorem/date';
 import { DATETIME_MIN, DATETIME_MAX, WEEK_MAP, MONTH_MAP } from '@src/lorem/date/constant';
-const dateInstance = new DateData();
+const dateInstance = new RandomDate();
 
-describe('DateData', () => {
+describe('RandomDate', () => {
   test('date, no param, use default', () => {
     const result = new Date(dateInstance.date()).getTime();
     expect(result).toBeGreaterThanOrEqual(DATETIME_MIN);

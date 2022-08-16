@@ -5,7 +5,7 @@ import { dateFormat } from '@src/utils/utils';
 import type { IWeekAndMonthOptions, IDateOptions, ITimestampOptions } from '@src/types/lorem.types';
 
 const randomNumber = new RandomNumber();
-export default class DateData {
+export default class RandomDate {
   /**
    * @desc return a random date
    * @param options.from [optional] start of the date
