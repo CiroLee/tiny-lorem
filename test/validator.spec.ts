@@ -7,7 +7,7 @@ describe('valdiator test', () => {
     const num3 = NaN;
     const num4 = Infinity;
 
-    expect(validator.isValidNumber(num1)).toBeTruthy;
+    expect(validator.isValidNumber(num1)).toBeTruthy();
     expect(validator.isValidNumber(num2)).toBeFalsy;
     expect(validator.isValidNumber(num3)).toBeFalsy;
     expect(validator.isValidNumber(num4)).toBeFalsy;
@@ -20,7 +20,7 @@ describe('valdiator test', () => {
     const arr4 = {};
     const arr5: IRange = [1, Infinity];
 
-    expect(validator.isPositiveRangeTuple(arr1)).toBeTruthy;
+    expect(validator.isPositiveRangeTuple(arr1)).toBeTruthy();
     expect(validator.isPositiveRangeTuple(arr2)).toBeFalsy;
     expect(validator.isPositiveRangeTuple(arr3)).toBeFalsy;
     expect(validator.isPositiveRangeTuple(arr4 as IRange)).toBeFalsy;
@@ -34,8 +34,8 @@ describe('valdiator test', () => {
     const arr4 = {};
     const arr5: IRange = [1, Infinity];
 
-    expect(validator.isRangeTuple(arr1)).toBeTruthy;
-    expect(validator.isRangeTuple(arr2)).toBeTruthy;
+    expect(validator.isRangeTuple(arr1)).toBeTruthy();
+    expect(validator.isRangeTuple(arr2)).toBeTruthy();
     expect(validator.isRangeTuple(arr3)).toBeFalsy;
     expect(validator.isRangeTuple(arr4 as IRange)).toBeFalsy;
     expect(validator.isRangeTuple(arr5)).toBeFalsy;
@@ -48,8 +48,8 @@ describe('valdiator test', () => {
     const num4 = '1';
     const num5 = 1.2;
 
-    expect(validator.isInt(num1)).toBeTruthy;
-    expect(validator.isInt(num2)).toBeTruthy;
+    expect(validator.isInt(num1)).toBeTruthy();
+    expect(validator.isInt(num2)).toBeTruthy();
     expect(validator.isInt(num3)).toBeFalsy;
     expect(validator.isInt(num4 as unknown as number)).toBeFalsy;
     expect(validator.isInt(num5)).toBeFalsy;

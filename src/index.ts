@@ -1,6 +1,7 @@
 import Texts from './lorem/texts';
 import RandomNumber from './lorem/number';
 import RandomDate from './lorem/date';
+import Address from './lorem/address';
 import { ILoremConfig, ITextsConfig } from './types/lorem.types';
 export * from './types/lorem.types';
 class Lorem {
@@ -12,6 +13,7 @@ class Lorem {
 
   readonly number = new RandomNumber();
   readonly date = new RandomDate();
+  readonly address = new Address();
 }
 
 export default Lorem;

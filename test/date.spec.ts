@@ -10,7 +10,7 @@ describe('RandomDate', () => {
   });
   test('date, format is false, and return Date-type date', () => {
     const result = dateInstance.date({ from: '1999-1-1', to: '2022-12-12', format: false });
-    expect(result instanceof Date).toBeTruthy;
+    expect(result instanceof Date).toBeTruthy();
   });
   test('date, set format', () => {
     const result = dateInstance.date({ from: '1999-1-1', to: '2022-12-12', format: 'yyyy/mm/dd' });

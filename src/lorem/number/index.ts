@@ -1,8 +1,12 @@
-import type { IFloatNumOptions, IRange, INumberOptions } from '@src/types/lorem.types';
 import { isRangeTuple, isInt } from '@src/utils/validator';
 import { fillDecimal } from '@src/utils/utils';
 import { TEXT_ERROR_MAP, MAX_NUMBER } from './constant';
+import type { INumberOptions, IRange } from '@src/types/lorem.types';
 export default class RandomNumber {
+  /**
+   * @desc return a random integer
+   * @param range [min, max] format array
+   */
   int(range: IRange): number {
     if (!isRangeTuple(range)) {
       throw new Error(`[randomInteger]: ${TEXT_ERROR_MAP.invalidRange}`);
@@ -11,7 +15,12 @@ export default class RandomNumber {
     const max = Math.floor(range[1]);
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-  float(options?: IFloatNumOptions): number {
+  /**
+   * @desc return a random float number
+   * @param options.range [min, max] format array
+   * @param options.fixed decimal precision.it must be an positive integer and less than 20
+   */
+  float(options?: INumberOptions): number | string {
     let fixed = 4;
     let min = 0;
     let max = 0;
@@ -33,21 +42,7 @@ export default class RandomNumber {
       min = -max;
     }
     const integer = this.int([min * _fixed, max * _fixed]);
-    return Number((integer / _fixed).toFixed(fixed));
-  }
-  /**
-   * @desc return a random integer or float number
-   * @param options.range [min, max] range array of generated random numbers
-   * @param options.fixed decimal precision. fixed must be an integer greater than 0
-   * @param options.fotmat the format of returned data. srting | number
-   */
-  number(options?: INumberOptions): number | string {
-    if (options?.fixed) {
-      const num = this.float({ range: options.range, fixed: options.fixed });
-      return options.format === 'string' ? fillDecimal(num, options.fixed) : num;
-    }
-
-    const num = this.int(options?.range ?? [-MAX_NUMBER, MAX_NUMBER]);
-    return options?.format === 'string' ? `${num}` : num;
+    const floatVal = Number((integer / _fixed).toFixed(fixed));
+    return options?.format === 'string' ? fillDecimal(floatVal, fixed) : floatVal;
   }
 }

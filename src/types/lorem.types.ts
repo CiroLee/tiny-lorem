@@ -6,12 +6,9 @@ export interface ITextsFuncOptions {
   language?: ILanguage;
 }
 
-export interface IFloatNumOptions {
+export interface INumberOptions {
   range?: IRange;
   fixed?: number;
-}
-
-export interface INumberOptions extends IFloatNumOptions {
   format?: 'number' | 'string';
 }
 
