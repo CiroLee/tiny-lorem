@@ -6,6 +6,11 @@ export interface ITextsFuncOptions {
   language?: ILanguage;
 }
 
+export interface ITextsStringOptions {
+  range?: number | IRange;
+  source?: string;
+}
+
 export interface INumberOptions {
   range?: IRange;
   fixed?: number;
@@ -27,6 +32,11 @@ export interface ITimestampOptions {
   from?: number | Date | string;
   to?: number | Date | string;
   ms?: boolean;
+}
+
+export interface IUrlOptions {
+  sub?: boolean | number;
+  protocol?: string;
 }
 // configs
 export interface ITextsConfig {

@@ -2,7 +2,7 @@ import RandomNumber from '../number';
 import { TEXT_ERROR_MAP } from '../number/constant';
 import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
-import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange } from '@src/types/lorem.types';
+import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
 
 const numberInstance = new RandomNumber();
 
@@ -112,11 +112,17 @@ export default class Texts {
   name(language: ILanguage = this.language, upper?: boolean) {
     return language === 'cn' ? this.cname() : this.ename(upper);
   }
-  string(range: number | IRange = 6) {
-    const len = this.calcRandomLength(range);
+  /**
+   *
+   * @param options.range [optional]  number or [min, max] format array. it defines the length of the returned string
+   * @param options.source [optional] the source of string. You can customize
+   */
+  string(options?: ITextsStringOptions) {
+    const char = options?.source || CHARACTERS;
+    const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
-      str += CHARACTERS[numberInstance.int([0, CHARACTERS.length - 1])];
+      str += char[numberInstance.int([0, char.length - 1])];
     }
 
     return str;
