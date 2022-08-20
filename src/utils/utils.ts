@@ -1,3 +1,25 @@
+import { IRange } from '@src/types/lorem.types';
+import { isRangeTuple } from './validator';
+
+export const TEXT_ERROR_MAP = {
+  invalidRange: 'the first element of the array should be less than or equal to the second',
+  invalidPositiveRange:
+    'elements of range should be positive integer and the first should be less than or equal to the second',
+};
+export const randomInteger = (range: IRange): number => {
+  if (!isRangeTuple(range)) {
+    throw new Error(`[randomInteger]: ${TEXT_ERROR_MAP.invalidRange}`);
+  }
+  const min = Math.floor(range[0]);
+  const max = Math.floor(range[1]);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+export const randomElement = <T>(array: T[]): T => {
+  const random = randomInteger([0, array.length - 1]);
+  return array[random];
+};
+
 export const fillDecimal = (num: number | string, fixed: number): string => {
   const [int, decimal = ''] = num.toString().split('.');
   const _fixed = Math.floor(fixed);

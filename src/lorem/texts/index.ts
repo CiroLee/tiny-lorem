@@ -1,10 +1,8 @@
-import RandomNumber from '../number';
 import { TEXT_ERROR_MAP } from '../number/constant';
 import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
+import { randomInteger } from '@src/utils/utils';
 import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
-
-const numberInstance = new RandomNumber();
 
 export default class Texts {
   private language: ILanguage;
@@ -19,13 +17,13 @@ export default class Texts {
   }
   private calcRandomLength(range?: number | IRange): number {
     if (isValidNumber(range) || !range) {
-      return range ? Math.floor(range as number) : numberInstance.int([1, this.baseNum]);
+      return range ? Math.floor(range as number) : randomInteger([1, this.baseNum]);
     }
     // elements of range must be positive integer or zero
     if (!isPositiveRangeTuple(range as IRange)) {
       throw new Error(TEXT_ERROR_MAP.invalidPositiveRange);
     }
-    return numberInstance.int(range as IRange);
+    return randomInteger(range as IRange);
   }
   /**
    * @desc return a random letter or a Chinese charactor
@@ -33,8 +31,8 @@ export default class Texts {
    */
   letter(language: ILanguage = this.language): string {
     return language === 'cn'
-      ? this.zhCharacters[numberInstance.int([0, this.maxZhCharactersLength])]
-      : ALPHABET[numberInstance.int([0, ALPHABET.length - 1])];
+      ? this.zhCharacters[randomInteger([0, this.maxZhCharactersLength])]
+      : ALPHABET[randomInteger([0, ALPHABET.length - 1])];
   }
   /**
    * @desc return a random word
@@ -60,10 +58,10 @@ export default class Texts {
     let str = '';
     for (let i = 0; i < len; i++) {
       if (options?.language === 'en') {
-        const wordAount = numberInstance.int([2, this.baseNum]);
+        const wordAount = randomInteger([2, this.baseNum]);
         str += `${this.word({ range: wordAount, language: options?.language })} `;
       } else {
-        const wordAount = numberInstance.int([1, this.baseNum]);
+        const wordAount = randomInteger([1, this.baseNum]);
         str += `${this.word({ range: wordAount, language: options?.language })}\uff0c`;
       }
     }
@@ -89,7 +87,7 @@ export default class Texts {
   // Chinese name
   private cname() {
     let name = '';
-    const lastName = CN_LASTNAMES[numberInstance.int([0, CN_LASTNAMES.length - 1])];
+    const lastName = CN_LASTNAMES[randomInteger([0, CN_LASTNAMES.length - 1])];
     if (lastName.length < 3) {
       name = this.word({ language: 'cn', range: [1, 2] }) + lastName;
     } else {
@@ -100,7 +98,7 @@ export default class Texts {
   }
   // English name
   private ename(upper?: boolean) {
-    const name = EN_NAMES[numberInstance.int([0, EN_NAMES.length - 1])];
+    const name = EN_NAMES[randomInteger([0, EN_NAMES.length - 1])];
     return upper ? name.replace(/^\S/, (L) => L.toUpperCase()) : name;
   }
   /**
@@ -122,7 +120,7 @@ export default class Texts {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
-      str += char[numberInstance.int([0, char.length - 1])];
+      str += char[randomInteger([0, char.length - 1])];
     }
 
     return str;

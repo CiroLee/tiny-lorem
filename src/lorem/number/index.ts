@@ -1,4 +1,5 @@
 import { isRangeTuple, isInt } from '@src/utils/validator';
+import { randomInteger } from '@src/utils/utils';
 import { fillDecimal } from '@src/utils/utils';
 import { TEXT_ERROR_MAP, MAX_NUMBER } from './constant';
 import type { INumberOptions, IRange } from '@src/types/lorem.types';
@@ -8,12 +9,7 @@ export default class RandomNumber {
    * @param range [min, max] format array
    */
   int(range: IRange): number {
-    if (!isRangeTuple(range)) {
-      throw new Error(`[randomInteger]: ${TEXT_ERROR_MAP.invalidRange}`);
-    }
-    const min = Math.floor(range[0]);
-    const max = Math.floor(range[1]);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    return randomInteger(range);
   }
   /**
    * @desc return a random float number

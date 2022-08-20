@@ -1,35 +1,30 @@
-import RandomNumber from '../number';
 import Texts from '../texts';
+import { randomInteger, randomElement } from '@src/utils/utils';
 import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS } from './constant';
 import type { IUrlOptions, IRange } from '@src/types/lorem.types';
 
-const randomNumber = new RandomNumber();
 const texts = new Texts();
 export default class Internet {
-  private randomElement<T>(array: T[]): T {
-    const random = randomNumber.int([0, array.length - 1]);
-    return array[random];
-  }
   private randomElementsWithNum<T>(array: T[], num: number): T[] {
     if (num > 1) {
       const result: T[] = [];
       for (let i = 0; i < num; i++) {
-        result.push(this.randomElement<T>(array));
+        result.push(randomElement<T>(array));
       }
       return result;
     }
-    return [this.randomElement<T>(array)];
+    return [randomElement<T>(array)];
   }
   private subDirecttory(sub?: IRange | number | boolean) {
     let result = '';
     if (typeof sub === 'number' && sub > 0) {
       const _sub = sub > 10 ? 10 : sub;
-      for (let i = 0; i < _sub; i = i + 1) {
+      for (let i = 0; i < _sub; i++) {
         result += `/${texts.word({ language: 'en', range: [1, 6] })}`;
       }
     } else if (typeof sub === 'boolean' && sub) {
-      const len = randomNumber.int([1, 4]);
-      for (let i = 0; i < len; i = i + 1) {
+      const len = randomInteger([1, 4]);
+      for (let i = 0; i < len; i++) {
         result += `/${texts.word({ language: 'en', range: [1, 6] })}`;
       }
     }
@@ -77,9 +72,9 @@ export default class Internet {
    * layers of subdirectories, when sub ≥ 0, generate a specified number of subdirectories, up to 10 layers
    */
   url(options?: IUrlOptions): string {
-    const protocol = options?.protocol || PROTOCOL[randomNumber.int([0, PROTOCOL.length - 1])];
-    const key = this.randomElement(Object.keys(DOMAINS));
-    const tld = this.randomElement(DOMAINS[key as keyof typeof DOMAINS]);
+    const protocol = options?.protocol || PROTOCOL[randomInteger([0, PROTOCOL.length - 1])];
+    const key = randomElement(Object.keys(DOMAINS));
+    const tld = randomElement(DOMAINS[key as keyof typeof DOMAINS]);
     const name = texts.word({ language: 'en' });
     const subDirect = this.subDirecttory(options?.sub);
 
@@ -88,7 +83,7 @@ export default class Internet {
   email() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const name = texts.string({ source: alphabet });
-    const emailSuffix = this.randomElement(EMAIL_SUFFIX);
+    const emailSuffix = randomElement(EMAIL_SUFFIX);
 
     return `${name}/${emailSuffix}`;
   }
@@ -97,11 +92,11 @@ export default class Internet {
    * @param hidden [optional] whether to ide the middle four digits
    */
   mobile(hidden?: boolean): string {
-    const part = this.randomElement(MESH_NUMS);
+    const part = randomElement(MESH_NUMS);
     const strInt = (digit: number) => {
       let str = '';
       for (let i = 0; i < digit; i++) {
-        str += `${randomNumber.int([0, 9])}`;
+        str += `${randomInteger([0, 9])}`;
       }
       return str;
     };

@@ -1,29 +1,9 @@
 import RandomNumber from '@src/lorem/number';
 import { isInt } from '@src/utils/validator';
-import type { IRange, INumberOptions } from '@src/types/lorem.types';
+import type { INumberOptions } from '@src/types/lorem.types';
 
 const numberInstance = new RandomNumber();
 describe('numberInstance', () => {
-  test('int, range is [3, 1], and it will throw error', () => {
-    const range: IRange = [3, 1];
-    // 验证抛出错误
-    expect(() => {
-      numberInstance.int(range);
-    }).toThrowError();
-  });
-
-  test('int, range is [-Infinify, 10], and it will throw error', () => {
-    const range: IRange = [-Infinity, 10];
-    expect(() => {
-      numberInstance.int(range);
-    }).toThrowError();
-  });
-  test('int, range is [-10, 10], it will pass', () => {
-    const range: IRange = [-10, 10];
-    const result = numberInstance.int(range);
-    expect(result).toBeGreaterThanOrEqual(-10);
-    expect(result).toBeLessThanOrEqual(10);
-  });
   describe('float', () => {
     test('float, options.range not satisfies', () => {
       const options = {

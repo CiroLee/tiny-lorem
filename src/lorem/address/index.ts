@@ -1,7 +1,6 @@
 import { ADDRESS_DICT } from './constant';
-import RandomNumber from '../number';
+import { randomInteger } from '@src/utils/utils';
 import type { IAddressItem } from './types';
-const randomNumber = new RandomNumber();
 
 export default class Address {
   private provinceObj(): IAddressItem {
@@ -9,7 +8,7 @@ export default class Address {
       code: item.code,
       name: item.name,
     }));
-    const random = randomNumber.int([0, provinces.length - 1]);
+    const random = randomInteger([0, provinces.length - 1]);
     return provinces[random];
   }
   private cityObj(provinceCode: string): IAddressItem {
@@ -19,7 +18,7 @@ export default class Address {
       name: item.name,
     }));
 
-    const random = randomNumber.int([0, cities.length - 1]);
+    const random = randomInteger([0, cities.length - 1]);
     return cities[random];
   }
   private districtObj(provinceCode: string, cityCode: string): IAddressItem {
@@ -33,7 +32,7 @@ export default class Address {
       return { code: '', name: '' };
     }
 
-    const random = randomNumber.int([0, districts.length - 1]);
+    const random = randomInteger([0, districts.length - 1]);
     return districts[random];
   }
   /**

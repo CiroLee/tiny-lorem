@@ -1,13 +1,11 @@
 import Internet from '@src/lorem/internet';
 const internetInstance = new Internet();
-let randomElementMock: jest.SpyInstance;
 let randomElementsWithNumMock: jest.SpyInstance;
 let subDirecttoryMock: jest.SpyInstance;
 
 describe('internet', () => {
   beforeEach(() => {
     randomElementsWithNumMock = jest.spyOn(Internet.prototype as any, 'randomElementsWithNum');
-    randomElementMock = jest.spyOn(Internet.prototype as any, 'randomElement');
     subDirecttoryMock = jest.spyOn(Internet.prototype as any, 'subDirecttory');
   });
   test('uuid', () => {
@@ -19,7 +17,6 @@ describe('internet', () => {
     expect(result.split('.').length).toBe(4);
   });
   test('ipv6', () => {
-    randomElementMock.mockReturnValueOnce('1234');
     const result = internetInstance.ipv6();
     expect(result.split(':').length).toBe(8);
     expect(randomElementsWithNumMock).toHaveBeenCalled();
@@ -27,13 +24,22 @@ describe('internet', () => {
   test('url, protocol is http', () => {
     const url = internetInstance.url({ protocol: 'http' });
     expect(url).toMatch(/^http/);
-    expect(randomElementMock).toHaveBeenCalled();
     expect(subDirecttoryMock).toHaveBeenCalled();
+  });
+  test('subDirecttory, sub is true, subDirect length belong to [1, 4]', () => {
+    const url = internetInstance.url({ sub: true });
+    console.log(url, url.replace(/\/\//g, '').split('/'));
+    expect(url.replace(/\/\//g, '').split('/').length).toBeGreaterThanOrEqual(2);
+    expect(url.replace(/\/\//g, '').split('/').length).toBeLessThanOrEqual(5);
+  });
+  test('subDirecttory, sub is 2', () => {
+    const url = internetInstance.url({ sub: 2 });
+    console.log(url, url.replace(/\/\//g, '').split('/'));
+    expect(url.replace(/\/\//g, '').split('/').length).toBe(3);
   });
   test('email', () => {
     const result = internetInstance.email();
     expect(result.includes('@')).toBeTruthy;
-    expect(randomElementMock).toHaveBeenCalled();
   });
   test('mobile, hidden is true', () => {
     const result = internetInstance.mobile(true);
@@ -45,6 +51,5 @@ describe('internet', () => {
     }
 
     expect(num).toBe(4);
-    expect(randomElementMock).toHaveBeenCalled();
   });
 });
