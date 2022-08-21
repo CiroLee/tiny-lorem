@@ -40,12 +40,8 @@ export interface IUrlOptions {
 }
 // configs
 export interface ITextsConfig {
-  lang?: ILanguage;
+  language?: ILanguage;
   baseNum?: number;
   cnCharacters?: string[];
   enNames?: string[];
-}
-
-export interface ILoremConfig {
-  textsConfig?: ITextsConfig;
 }

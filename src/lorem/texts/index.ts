@@ -5,15 +5,16 @@ import { randomInteger } from '@src/utils/utils';
 import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
 
 export default class Texts {
-  private language: ILanguage;
-  private baseNum: number;
-  private zhCharacters: string[];
-  private maxZhCharactersLength: number;
-  constructor(config?: ITextsConfig) {
+  private language: ILanguage = 'cn';
+  private baseNum: number = 10;
+  private zhCharacters: string[] = CN_CHARACTERS;
+  private maxZhCharactersLength: number = this.zhCharacters.length - 1;
+  config(config: ITextsConfig) {
+    this.language = config?.language || 'cn';
     this.baseNum = config?.baseNum || 10;
-    this.language = config?.lang || 'cn';
     this.zhCharacters = config?.cnCharacters || CN_CHARACTERS;
     this.maxZhCharactersLength = this.zhCharacters.length - 1;
+    return this;
   }
   private calcRandomLength(range?: number | IRange): number {
     if (isValidNumber(range) || !range) {
