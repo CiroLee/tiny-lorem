@@ -38,6 +38,12 @@ export interface IUrlOptions {
   sub?: boolean | number;
   protocol?: string;
 }
+
+export interface IImagePlaceholderOptions {
+  width?: number;
+  height?: number;
+  bgColor?: string;
+}
 // configs
 export interface ITextsConfig {
   language?: ILanguage;
