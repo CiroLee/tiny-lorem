@@ -2,12 +2,12 @@
 import RandomNumber from '../number';
 const randomNumber = new RandomNumber();
 
-function extractRGB(rgb: string): number[] {
+export function extractRGB(rgb: string): number[] {
   let color: string[] = [];
-  const rgbReg = /^(rgb|RGB)/;
+  const rgbReg = /^(rgb|rgba|RGB|RGBA)/;
   const legencyMode = /,/g;
-  const noSpaceReg = /(?:\(|\)|rgb|RGB)|\s*/g;
-  const withSpaceReg = /(?:\(|\)|rgb|RGB)*/g;
+  const noSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)|\s*/g;
+  const withSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)*/g;
   if (!rgbReg.test(rgb)) {
     throw new Error(`extractRGB: param ${rgb} is invalid rgb-format color`);
   }
@@ -24,23 +24,28 @@ function extractRGB(rgb: string): number[] {
   });
 }
 
-function extractHSL(hsl: string): number[] {
+export function extractHSL(hsl: string): number[] {
   let color: string[] = [];
-  const hslReg = /^(hsl|HSL)/;
+  const hslReg = /^(hsl|HSL|hsla|HSLA)/;
   const legencyMode = /,/g;
-  const noSpaceReg = /(?:\(|\)|hsl|HSL)|\s|deg|%*/g;
-  const withSpaceReg = /(?:\(|\)|hsl|HSL)|deg|%*/g;
+  const noSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|\s|deg*/g;
+  const withSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|deg*/g;
   if (!hslReg.test(hsl)) {
     throw new Error(`extractHSL: param ${hsl} is invalid hsl-format color`);
   }
   if (legencyMode.test(hsl)) {
     color = hsl.replace(noSpaceReg, '').split(',');
   } else {
-    console.log('modern');
-    color = hsl.replace(withSpaceReg, '').split(' ');
+    color = hsl
+      .replace(withSpaceReg, '')
+      .split(' ')
+      .filter((item) => item !== '/');
+    console.log(color);
   }
-
-  return color.map(Number);
+  console.log(color);
+  return color.map((item, index) => {
+    return index === 3 && item.includes('%') ? Number(item.replace('%', '')) / 100 : Number(item.replace('%', ''));
+  });
 }
 // hex <-> rgb
 export function hexToRgb(hex: string): number[] {
@@ -76,9 +81,14 @@ export function rgbToHex(rgb: string) {
 }
 // rgb <-> hsl
 // conversion formula is from https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_HSL
-function rgbToHsl(rgb: string): number[] {
+export function rgbToHsl(rgb: string): number[] {
   const color = extractRGB(rgb);
-  const [r, g, b] = color.map((item) => item / 255);
+
+  let [r, g, b] = color;
+  const a = color[3];
+  r /= 255;
+  g /= 255;
+  b /= 255;
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const mid = (min + max) / 2;
@@ -105,20 +115,22 @@ function rgbToHsl(rgb: string): number[] {
 
     h *= 60;
   }
-
-  return [h, s * 100, l * 100].map(Math.round);
+  const hsl = a ? [h, s * 100, l * 100, a] : [h, s * 100, l * 100];
+  return hsl.map((item, index) => (index === 3 ? item : Math.round(item)));
 }
 // conversion formula is from https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
 export function hslToRgb(hsl: string): number[] {
   const color = extractHSL(hsl);
   const s = color[1] / 100;
   const l = color[2] / 100;
+  const alpha = color[3];
 
   const k = (n: number) => (n + color[0] / 30) % 12;
   const a = s * Math.min(l, 1 - l);
   const fn = (n: number) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
 
-  return [255 * fn(0), 255 * fn(8), 255 * fn(4)].map(Math.round);
+  const hslVal = [255 * fn(0), 255 * fn(8), 255 * fn(4)].map(Math.round);
+  return alpha ? [...hslVal, alpha] : hslVal;
 }
 export default class Color {
   /**
