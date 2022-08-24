@@ -42,7 +42,16 @@ export interface IUrlOptions {
 export interface IImagePlaceholderOptions {
   width?: number;
   height?: number;
+  text?: string;
   bgColor?: string;
+  fontColor?: string;
+}
+
+export interface IImagePicsumOptions {
+  width?: number;
+  height?: number;
+  grayscale?: boolean;
+  blur?: number;
 }
 // configs
 export interface ITextsConfig {

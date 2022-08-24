@@ -11,7 +11,7 @@ export default class RandomDate {
    * @param options.format [optional] format of the date.
    * if set format = true, will not format the date and return Date type
    */
-  date(options?: IDateOptions): string | Date {
+  datetime(options?: IDateOptions): string | Date {
     const from = options?.from ? new Date(options.from).getTime() : DATETIME_MIN;
     const to = options?.to ? new Date(options.to).getTime() : DATETIME_MAX;
     const randomInt = randomInteger([from, to]);
@@ -29,7 +29,7 @@ export default class RandomDate {
    * @param options ms [optional] whether includes milliseconds
    */
   timestamp(options?: ITimestampOptions): string {
-    const _timestamp = (this.date({ from: options?.from, to: options?.to, format: false }) as Date).getTime();
+    const _timestamp = (this.datetime({ from: options?.from, to: options?.to, format: false }) as Date).getTime();
     return options?.ms ? `${_timestamp}` : `${Math.floor(_timestamp / 1000)}`;
   }
   /**

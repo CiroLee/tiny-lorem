@@ -17,7 +17,7 @@ export function extractRGB(rgb: string): number[] {
     color = rgb
       .replace(withSpaceReg, '')
       .split(' ')
-      .filter((item) => item !== '/');
+      .filter((item) => item !== '/' && item);
   }
   return color.map((item) => {
     return item.includes('%') ? Number(item.replace('%', '')) / 100 : Number(item);
@@ -40,9 +40,7 @@ export function extractHSL(hsl: string): number[] {
       .replace(withSpaceReg, '')
       .split(' ')
       .filter((item) => item !== '/');
-    console.log(color);
   }
-  console.log(color);
   return color.map((item, index) => {
     return index === 3 && item.includes('%') ? Number(item.replace('%', '')) / 100 : Number(item.replace('%', ''));
   });
@@ -68,7 +66,7 @@ export function hexToRgb(hex: string): number[] {
 }
 export function rgbToHex(rgb: string) {
   let hex = '#';
-  const color: number[] = extractRGB(rgb);
+  const color: number[] = extractRGB(rgb).slice(0, 3); // exclude alpha
 
   for (let i = 0, len = color.length; i < len; i++) {
     let _hex = color[i].toString(16);

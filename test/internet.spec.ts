@@ -28,13 +28,11 @@ describe('internet', () => {
   });
   test('subDirecttory, sub is true, subDirect length belong to [1, 4]', () => {
     const url = internetInstance.url({ sub: true });
-    console.log(url, url.replace(/\/\//g, '').split('/'));
     expect(url.replace(/\/\//g, '').split('/').length).toBeGreaterThanOrEqual(2);
     expect(url.replace(/\/\//g, '').split('/').length).toBeLessThanOrEqual(5);
   });
   test('subDirecttory, sub is 2', () => {
     const url = internetInstance.url({ sub: 2 });
-    console.log(url, url.replace(/\/\//g, '').split('/'));
     expect(url.replace(/\/\//g, '').split('/').length).toBe(3);
   });
   test('email', () => {
