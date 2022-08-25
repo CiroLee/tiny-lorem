@@ -1,11 +1,9 @@
 import Internet from '@src/lorem/internet';
 const internetInstance = new Internet();
-let randomElementsWithNumMock: jest.SpyInstance;
 let subDirecttoryMock: jest.SpyInstance;
 
 describe('internet', () => {
   beforeEach(() => {
-    randomElementsWithNumMock = jest.spyOn(Internet.prototype as any, 'randomElementsWithNum');
     subDirecttoryMock = jest.spyOn(Internet.prototype as any, 'subDirecttory');
   });
   test('uuid', () => {
@@ -19,7 +17,6 @@ describe('internet', () => {
   test('ipv6', () => {
     const result = internetInstance.ipv6();
     expect(result.split(':').length).toBe(8);
-    expect(randomElementsWithNumMock).toHaveBeenCalled();
   });
   test('url, protocol is http', () => {
     const url = internetInstance.url({ protocol: 'http' });

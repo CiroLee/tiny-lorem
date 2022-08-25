@@ -1,20 +1,12 @@
 import Texts from '../texts';
+import Helper from '../helper';
 import { randomInteger, randomElement } from '@src/utils/utils';
 import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS } from './constant';
 import type { IUrlOptions, IRange } from '@src/types/lorem.types';
 
 const texts = new Texts();
+const helper = new Helper();
 export default class Internet {
-  private randomElementsWithNum<T>(array: T[], num: number): T[] {
-    if (num > 1) {
-      const result: T[] = [];
-      for (let i = 0; i < num; i++) {
-        result.push(randomElement<T>(array));
-      }
-      return result;
-    }
-    return [randomElement<T>(array)];
-  }
   private subDirecttory(sub?: IRange | number | boolean) {
     let result = '';
     if (typeof sub === 'number' && sub > 0) {
@@ -58,7 +50,7 @@ export default class Internet {
     const result: string[] = [];
     const hashArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     for (let i = 0; i < 8; i++) {
-      const elements = this.randomElementsWithNum(hashArray, 4);
+      const elements = helper.elements<string>(hashArray, 4) as string[];
       result.push(elements.join(''));
     }
 
