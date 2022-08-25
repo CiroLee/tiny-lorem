@@ -1,5 +1,5 @@
 {
-  "name": "loremjs",
+  "name": "tiny-lorem",
   "version": "0.0.1",
   "description": "generate random lorem data",
   "main": "lib/index.js",
@@ -20,7 +20,15 @@
   "keywords": [
     "mock",
     "loremjs",
-    "lorem"
+    "lorem",
+    "tiny-lorem"
+  ],
+  "homepage": "https://github.com/CiroLee/tiny-lorem",
+  "bugs": {
+    "url": "https://github.com/CiroLee/tiny-lorem/issues"
+  },
+  "files": [
+    "lib"
   ],
   "author": "cirolee<ciromail@126.com>",
   "license": "MIT",
