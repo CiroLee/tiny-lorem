@@ -1,11 +1,36 @@
 import RandomNumber from '@src/lorem/number';
 import { isInt } from '@src/utils/validator';
-import type { INumberOptions } from '@src/types/lorem.types';
+import { MAX_NUMBER } from '@src/lorem/number/constant';
+import type { INumberOptions, IRange } from '@src/types/lorem.types';
 
 const numberInstance = new RandomNumber();
-describe('numberInstance', () => {
+describe('Number', () => {
+  describe('int', () => {
+    test('int, range is not satisfies', () => {
+      const ranges = [
+        [10, 1],
+        [1, Infinity],
+      ];
+      ranges.forEach((item) => {
+        expect(() => {
+          jest.mock('isRangeTuple', () => false);
+          numberInstance.int(item as IRange);
+        }).toThrowError();
+      });
+    });
+    test('int, no params', () => {
+      const result = numberInstance.int();
+      expect(result).toBeGreaterThanOrEqual(-MAX_NUMBER);
+      expect(result).toBeLessThanOrEqual(MAX_NUMBER);
+    });
+    test('int, range is valid', () => {
+      const result = numberInstance.int([1, 10]);
+      expect(result).toBeGreaterThanOrEqual(1);
+      expect(result).toBeLessThanOrEqual(10);
+    });
+  });
   describe('float', () => {
-    test('float, options.range not satisfies', () => {
+    test('float, options.range is not satisfies', () => {
       const options = {
         fixed: 1,
       };

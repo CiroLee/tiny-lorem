@@ -5,7 +5,10 @@ export interface ITextsFuncOptions {
   range?: number | IRange;
   language?: ILanguage;
 }
-
+export interface ITextsNameOptions {
+  language?: ILanguage;
+  upper?: boolean;
+}
 export interface ITextsStringOptions {
   range?: number | IRange;
   source?: string;
@@ -57,6 +60,4 @@ export interface IImagePicsumOptions {
 export interface ITextsConfig {
   language?: ILanguage;
   baseNum?: number;
-  cnCharacters?: string[];
-  enNames?: string[];
 }

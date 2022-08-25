@@ -3,7 +3,7 @@ import { randomInteger } from '@src/utils/utils';
 import type { IImagePlaceholderOptions, IImagePicsumOptions } from '@src/types/lorem.types';
 const color = new Color();
 
-export default class Image {
+export default class RandomImage {
   private PLACEHOLDER_IMAGE_DOMAIN = 'https://dummyimage.com';
   private PICURM_IMAGE_DOMAIN = 'https://picsum.photos';
   private colorType(color: string): string {

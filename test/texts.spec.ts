@@ -52,18 +52,36 @@ describe('Texts', () => {
     expect(mockCalcRandomLength).toHaveBeenCalled();
   });
   test('name, language is cn', () => {
-    const result = textsInstance.name('cn');
+    const result = textsInstance.name({ language: 'cn' });
     expect(mockCname).toHaveBeenCalled();
     expect(result).toMatch(/[\u4e00-\u9fa5]+/g);
   });
   test('name, language is en', () => {
-    const result = textsInstance.name('en');
+    const result = textsInstance.name({ language: 'en' });
     expect(mockEname).toHaveBeenCalled();
     expect(result).toMatch(/[a-z]/g);
+  });
+  test('name, language is en, upper is true', () => {
+    const result = textsInstance.name({ language: 'en', upper: true });
+    expect(mockEname).toHaveBeenCalled();
+    const firstLetter = result.charAt(0);
+    const rest = result.slice(1);
+    console.log(result);
+
+    expect(firstLetter).toBe(firstLetter.toUpperCase());
+    expect(rest).toMatch(/[a-z]/g);
   });
   test('string', () => {
     const result = textsInstance.string();
     expect(mockCalcRandomLength).toHaveBeenCalled();
     expect(typeof result).toBe('string');
+  });
+  test('config', () => {
+    const result = textsInstance
+      .config({
+        language: 'en',
+      })
+      .letter();
+    expect(result).toMatch(/[a-z]/g);
   });
 });

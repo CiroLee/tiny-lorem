@@ -1,5 +1,5 @@
-import Image from '@src/lorem/image';
-const image = new Image();
+import RandomImage from '@src/lorem/image';
+const image = new RandomImage();
 
 describe('image', () => {
   test('placeholder set bgColor', () => {

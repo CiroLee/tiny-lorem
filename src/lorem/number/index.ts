@@ -8,8 +8,20 @@ export default class RandomNumber {
    * @desc return a random integer
    * @param range [min, max] format array
    */
-  int(range: IRange): number {
-    return randomInteger(range);
+  int(range?: IRange): number {
+    let min = 0;
+    let max = 0;
+    if (range && !isRangeTuple(range)) {
+      throw new Error(`range is [${range[0]}, ${range[1]}], ${TEXT_ERROR_MAP.invalidRange}`);
+    } else if (range && isRangeTuple(range)) {
+      min = range[0];
+      max = range[1];
+    }
+    if (!range) {
+      min = -MAX_NUMBER;
+      max = MAX_NUMBER;
+    }
+    return randomInteger([min, max]);
   }
   /**
    * @desc return a random float number

@@ -1,7 +1,7 @@
 {
   "name": "tiny-lorem",
   "version": "0.0.1",
-  "description": "generate random lorem data",
+  "description": "A library of modern JavaScript tools for generating mock data",
   "main": "lib/index.js",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.ts",
@@ -10,7 +10,10 @@
     "build": "tsup",
     "dev": "tsup --watch --sourcemap",
     "lint:fix": "npx eslint src/**/*.ts --config .eslintrc --fix",
-    "test:unit": "jest --coverage"
+    "test:unit": "jest --coverage",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx,json,md}": [
@@ -47,6 +50,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.7",
     "tsup": "^6.2.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vitepress": "1.0.0-alpha.10"
   }
 }
