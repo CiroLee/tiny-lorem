@@ -148,7 +148,7 @@ export default class Color {
    * @param type legency | modern, default is legency, modern is for css level4
    */
   rgb(type?: 'legency' | 'modern') {
-    const arr = new Array(3).fill(randomNumber.int([0, 255]));
+    const arr = new Array(3).fill(0).map(() => randomNumber.int([0, 255]));
     return type === 'modern' ? `rgb(${arr[0]} ${arr[1]} ${arr[2]})` : `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
   }
   /**

@@ -17,6 +17,3 @@ class TinyLorem {
 }
 export * from './types/lorem.types';
 export default TinyLorem;
-
-const lorem = new TinyLorem();
-console.log(lorem.number.float({ range: [1, 100], fixed: 2, format: 'string' }));

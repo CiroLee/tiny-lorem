@@ -73,11 +73,9 @@ export default class RandomImage {
     const bgColor = options?.bgColor || color.hsl();
     const hexBgColor = this.toHex(bgColor).slice(1);
     const isDarkColor = this.isDark(bgColor);
-    const fontColor = options?.fontColor || isDarkColor ? 'ffffff' : '333333';
-    console.log('fontcolor:', fontColor);
+    const fontColor = options?.fontColor ? this.toHex(options.fontColor).slice(1) : isDarkColor ? 'ffffff' : '333333';
 
     const size = this.initSize({ width: options?.width, height: options?.height });
-
     const imageUrl = `${this.PLACEHOLDER_IMAGE_DOMAIN}/${size.width}x${size.height}/${hexBgColor}`;
 
     return options?.text ? `${imageUrl}/${fontColor}&text=${options.text}` : imageUrl;

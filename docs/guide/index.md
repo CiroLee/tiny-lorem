@@ -10,7 +10,7 @@ layout: doc
 ## 安装    
 pnpm   
 ```shell
-npm insstall tiny-lorem
+pnpm insstall tiny-lorem
 ```
 
 yarn  
