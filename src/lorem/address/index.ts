@@ -21,19 +21,19 @@ export default class Address {
     const random = randomInteger([0, cities.length - 1]);
     return cities[random];
   }
-  private districtObj(provinceCode: string, cityCode: string): IAddressItem {
-    const districtsObject = ADDRESS_DICT[provinceCode].cities[cityCode].districts;
-    const districts = Object.entries(districtsObject).map(([key, value]) => ({
+  private countyObj(provinceCode: string, cityCode: string): IAddressItem {
+    const countiesObj = ADDRESS_DICT[provinceCode].cities[cityCode].districts;
+    const counties = Object.entries(countiesObj).map(([key, value]) => ({
       code: key,
       name: value,
     }));
     // ps: 部分省市没有区
-    if (!districts.length) {
+    if (!counties.length) {
       return { code: '', name: '' };
     }
 
-    const random = randomInteger([0, districts.length - 1]);
-    return districts[random];
+    const random = randomInteger([0, counties.length - 1]);
+    return counties[random];
   }
   /**
    * @desc return a random Chinese province
@@ -51,25 +51,25 @@ export default class Address {
     return parent ? `${province.name} ${city.name}` : city.name;
   }
   /**
-   * @desc return a random district
+   * @desc return a random county
    * @param parent set true, returns the province and city it belongs to,
    * set 1 or 2, returns the corresponding parent (1: city, 2: province and city)
    * @examples
-   * district(); // 青海省 玉树藏族自治州 杂多县
-   * district(1) // 青海省 玉树藏族自治州
+   * county(); // 青海省 玉树藏族自治州 杂多县
+   * county(1) // 青海省 玉树藏族自治州
    */
-  district(parent?: boolean | number) {
+  county(parent?: boolean | number) {
     const province = this.provinceObj();
     const city = this.cityObj(province.code);
-    const district = this.districtObj(province.code, city.code);
+    const county = this.countyObj(province.code, city.code);
     switch (parent) {
       case 2:
       case true:
-        return `${province.name} ${city.name} ${district.name}`;
+        return `${province.name} ${city.name} ${county.name}`;
       case 1:
-        return `${city.name} ${district.name}`;
+        return `${city.name} ${county.name}`;
       default:
-        return district.name;
+        return county.name;
     }
   }
 }
