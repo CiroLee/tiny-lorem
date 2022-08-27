@@ -5,7 +5,7 @@ import Address from './lorem/address';
 import Internet from './lorem/internet';
 import Color from './lorem/color';
 import RandomImage from './lorem/image';
-
+import Helper from './lorem/helper';
 class TinyLorem {
   readonly texts = new Texts();
   readonly number = new RandomNumber();
@@ -14,6 +14,7 @@ class TinyLorem {
   readonly internet = new Internet();
   readonly color = new Color();
   readonly image = new RandomImage();
+  readonly helper = new Helper();
 }
 export * from './types/lorem.types';
 export default TinyLorem;

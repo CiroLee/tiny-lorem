@@ -8,7 +8,7 @@
 
 | 名称       | 类型           | 必填  | 默认值               | 描述     |
 | -------- | ------------ | --- | ----------------- | ------ |
-| language | 'cn' \| 'en' | 否   | this.language(cn) | 返回字的语言 |
+| language | 'cn'\|'en' | 否   | this.language(cn) | 返回字的语言 |
 
 ```ts
 lorem.texts.letter(); // 汉
@@ -22,7 +22,7 @@ lorem.texts.letter('en'); // a
 
 | 名称       | 类型                         | 必填  | 默认值                 | 描述                                                                                                                           |
 |:-------- | -------------------------- | --- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| range    | number \| [number, number] | 否   | `[1, this.baseNum]` | 组成词的字的数量。当 range 为 number 类型时，将由固定数量的字组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的字组成。省略该参数或为假值时，将由配置参数 baseNum 决定字的数量。 |
+| range    | number\|[number, number] | 否   | `[1, this.baseNum]` | 组成词的字的数量。当 range 为 number 类型时，将由固定数量的字组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的字组成。省略该参数或为假值时，将由配置参数 baseNum 决定字的数量。 |
 | language | 'cn' \| 'en'               | 否   | this.language(cn)   | 语言。                                                                                                                          |
 
 ```ts
@@ -38,8 +38,8 @@ lorem.texts.word({language: 'en', [2, 8]});  // dtfslp
 
 | 名称       | 类型                         | 必填  | 默认值                 | 描述                                                                                                                            |
 |:-------- | -------------------------- | --- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| range    | number \| [number, number] | 否   | `[1, this.baseNum]` | 组成句子的词的数量。当 range 为 number 类型时，将由固定数量的词组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的词组成。省略该参数或为假值时，将由配置参数 baseNum 决定词的数量。 |
-| language | 'cn' \| 'en'               | 否   | this.language(cn)   | 语言。                                                                                                                           |
+| range    | number\|[number, number] | 否   | `[1, this.baseNum]` | 组成句子的词的数量。当 range 为 number 类型时，将由固定数量的词组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的词组成。省略该参数或为假值时，将由配置参数 baseNum 决定词的数量。 |
+| language | 'cn'\|'en'               | 否   | this.language(cn)   | 语言。                                                                                                                           |
 
 ```ts
 lorem.texts.sentence(); // 本扣特朗井介孤捆陆。
@@ -53,8 +53,8 @@ lorm.texts.sentence({ range: [2, 4], language: 'en' }); // Gwblju jei gecwzq.
 
 | 名称       | 类型                         | 必填  | 默认值                 | 描述                                                                                                                                |
 | -------- | -------------------------- | --- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| range    | number \| [number, number] | 否   | `[1, this.baseNum]` | 组成段落的句子的数量。当 range 为 number 类型时，将由固定数量的句子组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的句子组成。省略该参数或为假值时，将由配置参数 baseNum 决定句子的数量。 |
-| language | 'cn' \| 'en'               | 否   | this.language(cn)   | 语言。                                                                                                                               |
+| range    | number\|[number, number] | 否   | `[1, this.baseNum]` | 组成段落的句子的数量。当 range 为 number 类型时，将由固定数量的句子组成；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数量的句子组成。省略该参数或为假值时，将由配置参数 baseNum 决定句子的数量。 |
+| language | 'cn'\|'en'               | 否   | this.language(cn)   | 语言。                                                                                                                               |
 
 ```ts
 lorem.texts.paragraph(); // 胖葬脚，擦，舌那碍花域亚耐，岔几洒筝皂显堪拥李芬。
@@ -68,7 +68,7 @@ lorem.texts.paragraph({ range: [1, 4], language: 'en' }); // Nyhvf cjrzmwp khax 
 
 | 名称       | 类型           | 必填  | 默认值               | 描述        |
 | -------- | ------------ | --- | ----------------- | --------- |
-| language | 'cn' \| 'en' | 否   | this.language(cn) | 返回名字的语言   |
+| language | 'cn'\|'en' | 否   | this.language(cn) | 返回名字的语言   |
 | upper    | boolean      | 否   | false             | 英文名称首字母大写 |
 
 ```ts
@@ -82,7 +82,7 @@ lorem.texts.name('en', true); // Bobby
 
 | 名称     | 类型                         | 必填  | 默认值               | 描述                                                                                                                           |
 | ------ | -------------------------- | --- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| range  | number \| [number, number] | 否   | [1, this.baseNum] | 返回字符串的长度。当 range 为 number 类型时，返回指定长度的字符串；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数决定字符串长度，省略该参数或为假值时，将由配置参数 baseNum 决定长度。 |
+| range  | number\|[number, number] | 否   | [1, this.baseNum] | 返回字符串的长度。当 range 为 number 类型时，返回指定长度的字符串；当 range 为[min, max]类型的元组时，将由[min, max]范围的随机数决定字符串长度，省略该参数或为假值时，将由配置参数 baseNum 决定长度。 |
 | source | string                     | 否   |                   | 可自定义字符串源。                                                                                                                    |
 
 ```ts
@@ -97,7 +97,7 @@ lorem.texts.string({ range: 4, source: '0123abc' }); // 020a
 
 | 名称       | 类型           | 必填  | 默认值 | 描述   |
 | -------- | ------------ | --- | --- | ---- |
-| language | 'cn' \| 'en' | 否   | cn  | 默认语言 |
+| language | 'cn'\|'en' | 否   | cn  | 默认语言 |
 | baseNum  | number       | 否   | 10  | 随机基数 |
 
 ```ts

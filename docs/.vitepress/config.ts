@@ -21,6 +21,7 @@ export default {
           { text: 'Image', link: '/api/image' },
           { text: 'Color', link: '/api/color' },
           { text: 'Address', link: '/api/address' },
+          { text: 'Helper', link: '/api/helper' },
         ],
       },
       {
