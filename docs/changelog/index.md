@@ -9,4 +9,12 @@
 - Date
 - Color
 - Address
-- Helper
+- Helper    
+
+## 2022-08-30
+versionv0.0.13-beta    
+feat:   
+- 增加批量生成数据函数`array`, `json`    
+
+fix:    
+- 修复texts.name函数入参有误的问题。

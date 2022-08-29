@@ -41,3 +41,7 @@ const lorem = new TinyLorem();
 // 随机返回一个中文词
 lorem.texts.word();
 ```    
+
+::: warning
+案例中使用的lorem均为实例化后的结果。使用中，可以根据实际情况，自定义实例化结果。
+:::

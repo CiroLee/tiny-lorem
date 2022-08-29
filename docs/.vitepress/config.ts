@@ -25,6 +25,11 @@ export default {
         ],
       },
       {
+        text: '进阶',
+        collapsible: true,
+        items: [{ text: '批量生成数据', link: '/advanced/multi' }],
+      },
+      {
         items: [{ text: 'CHANGELOG', link: '/changelog/' }],
       },
     ],

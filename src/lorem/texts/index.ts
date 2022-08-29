@@ -2,14 +2,7 @@ import { TEXT_ERROR_MAP } from '../number/constant';
 import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
 import { randomInteger } from '@src/utils/utils';
-import type {
-  ITextsConfig,
-  ILanguage,
-  ITextsFuncOptions,
-  IRange,
-  ITextsNameOptions,
-  ITextsStringOptions,
-} from '@src/types/lorem.types';
+import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
 
 export default class Texts {
   private language: ILanguage = 'cn';
@@ -113,7 +106,7 @@ export default class Texts {
    * @param upper whether to capitalize the first letter, only useful for English name
    * @returns
    */
-  name({ language = this.language, upper }: ITextsNameOptions) {
+  name(language: ILanguage = this.language, upper?: boolean): string {
     return language === 'cn' ? this.cname() : this.ename(upper);
   }
   /**

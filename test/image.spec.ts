@@ -13,8 +13,6 @@ describe('image', () => {
       image.placeholder({ bgColor: hex, text: 'aaa' }),
     ];
 
-    console.log(resultArr);
-
     resultArr.forEach((item) => {
       expect(item.includes('ffffff')).toBeTruthy();
       expect(item.includes('333333')).toBeTruthy();
