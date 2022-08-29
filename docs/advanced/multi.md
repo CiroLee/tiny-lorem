@@ -66,12 +66,12 @@ lorem.json((lo) => {
 
 // result
 {
-  name: '青晏',
-  age: 12,
-  ability: [ 'html', 'html' ],
-  toies: [ 
-    { name: '用肥', price: '$998.39' }, 
-    { name: '被星', price: '$449.7' } 
+  name: '培俟',
+  age: 13,
+  ability: [ 'vue', 'react' ],
+  toies: [
+    { name: '令董巫马', price: '$290.92' },
+    { name: '另缝昝', price: '$898.9' }
   ]
 }
 ```

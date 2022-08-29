@@ -48,20 +48,3 @@ class TinyLorem {
 }
 export * from './types/lorem.types';
 export default TinyLorem;
-
-const lorem = new TinyLorem();
-console.log(
-  lorem.json((lo) => {
-    return {
-      name: lo.texts.name(),
-      age: lo.number.int([10, 50]),
-      ability: lorem.helper.elements(['vue', 'react', 'html'], 2),
-      toies: lo.array(2, () => {
-        return {
-          name: lo.texts.name(),
-          price: `$${lo.number.float({ range: [100, 1000], fixed: 2 })}`,
-        };
-      }),
-    };
-  }),
-);
