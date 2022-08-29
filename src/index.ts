@@ -18,7 +18,3 @@ class TinyLorem {
 }
 export * from './types/lorem.types';
 export default TinyLorem;
-
-const lorem = new TinyLorem();
-
-console.log(lorem.address.county(false));
