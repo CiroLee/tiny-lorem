@@ -20,7 +20,7 @@ type IMultiCallback<T> = (lo: TinyLorem) => T;
 ```ts
 lorem.array(2, (l) => {
     return {
-    name: l.text.name(),
+    name: l.texts.name(),
     age: l.number.int([10, 50])
 }
 });
@@ -29,7 +29,7 @@ lorem.array(2, (l) => {
 // 数量随机
 lorem.array(lorem.number.int([1, 4]), (l) => {
     return {
-    name: l.text.name(),
+    name: l.texts.name(),
     age: l.number.int([10, 50])
 }
 });
