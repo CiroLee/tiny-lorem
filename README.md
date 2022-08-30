@@ -39,4 +39,9 @@ const lorem = new TinyLorem();
 lorem.texts.word();
 ```    
 ## API
-[Api文档](https://ciro.club/tiny-lorem)
+[Api文档](https://ciro.club/tiny-lorem)    
+
+
+## Inspired by
+[Mockjs](https://github.com/nuysoft/Mock)     
+[faker-js](https://github.com/faker-js/faker)

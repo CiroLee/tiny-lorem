@@ -50,7 +50,7 @@ lorem.image.placeholder(
 | width     | number  | 否   |       | 图片宽度。缺省则随机生成[320, 1024]之间整数作为宽度。 |
 | height    | number  | 否   |       | 图片高度。缺省则随机生成[320, 1024]之间整数作为高度。 |
 | grayscale | boolean | 否   | false | 图片是否灰阶。                          |
-| blur      | number  | 否   | 0     | 图片模糊度。数值在[1, 10]之间的整数。           |
+| blur      | number  | 否   | 0     | 图片模糊度。数值在[0, 10]之间的整数。           |
 
 ```ts
 lorem.image.pcisum(); // https://picsum.photos/746/975
