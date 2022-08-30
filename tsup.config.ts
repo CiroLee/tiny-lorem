@@ -10,5 +10,12 @@ export default defineConfig((options: Options) => {
     sourcemap: options.sourcemap,
     watch: options.watch,
     clean: true,
+    esbuildOptions: (options) => {
+      options.footer = {
+        // fix CJS, need use require(xxx).default
+        // https://github.com/egoist/tsup/issues/572
+        js: 'module.exports = module.exports.default;',
+      };
+    },
   };
 });
