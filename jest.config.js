@@ -3,7 +3,7 @@ module.exports = {
   clearMocks: true,
   verbose: true,
   collectCoverage: true,
-  coverageReporters: ['json-summary', 'text', 'lcov'],
+  coverageReporters: ['cobertura', 'text', 'lcov', 'clover'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'vue'],
   testEnvironment: 'jsdom',
   testMatch: ['**/test/**/*.{spec,test}.ts'],

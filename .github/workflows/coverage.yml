@@ -1,0 +1,29 @@
+name: Codecov
+on:
+  push:
+   branches:
+    - main
+  pull_request:
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - name: setup pnpm
+      uses: pnpm/action-setup@v2.2.2
+      with:
+          version: 7
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: install
+      run: pnpm install
+    - name: unit test
+      run: pnpm run test:unit
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        fail_ci_if_error: true
