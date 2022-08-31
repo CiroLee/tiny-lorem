@@ -35,7 +35,7 @@ lorem.array(lorem.number.int([1, 4]), (l) => {
 });
 // result
 [
-  { name: '胖柯', age: 44 },
+  { name: '胖柯', age: 40 },
   { name: '丘鹿却', age: 38 },
   { name: '厘乓五', age: 29 }
 ]
