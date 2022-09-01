@@ -50,7 +50,7 @@ export default class Internet {
     const result: string[] = [];
     const hashArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     for (let i = 0; i < 8; i++) {
-      const elements = helper.elements<string>(hashArray, 4) as string[];
+      const elements = helper.elements<string[], string[]>(hashArray, 4);
       result.push(elements.join(''));
     }
 

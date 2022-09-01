@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { randomElement } from '@src/utils/utils';
 export default class Helper {
   /**
@@ -7,18 +8,23 @@ export default class Helper {
    * if num > 1, will return random `num` elements of the array;
    * @returns
    */
-  elements<T, U = T>(array: (T & U)[], num = 1): U | U[] {
+  elements<T, U extends Array<any>>(array: T, num?: number): U;
+  elements<T, U extends string | number | null>(array: T, num?: number): U;
+  elements<T, U>(array: T, num = 1): U | U[] {
+    if (!Array.isArray(array)) {
+      throw new Error('helper.elements: array must be an array');
+    }
     if (num > array.length) {
       throw new Error('num must be less than or equal to array length');
     }
     if (num > 1) {
-      const result = [];
+      const result: U[] = [];
       for (let i = 0; i < num; i++) {
-        result.push(randomElement<U>(array));
+        result.push(randomElement(array));
       }
       return result;
     }
-    return randomElement<U>(array);
+    return randomElement(array);
   }
   /**
    * @desc return a random boolean

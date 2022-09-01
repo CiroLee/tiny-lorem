@@ -8,12 +8,12 @@
 
 | 名称    | 类型     | 必填  | 默认值 | 描述                                                                |
 | ----- | ------ | --- | --- | ----------------------------------------------------------------- |
-| array |   \<T>   | 是   |     | 源数组                                                               |
+| array |   \<T, U>   | 是   |     | 源数组。T: 数组类型，U: 返回数据类型                                                               |
 | num   | number | 否   | 1   | 随机元素的数量。如果num = 1， 则返回一个元素，num > 1 && num ≤ array.length时，返回一个数组。 |
 
 ```ts
-lorem.helper.elements([1, 2, 3, 4]); // 3
-lorem.helper.elements([1, 2, 3, 4], 2); // [1, 4]
+lorem.helper.elements<number[], number>([1, 2, 3, 4]); // 3
+lorem.helper.elements<number[], number[]>([1, 2, 3, 4], 2); // [1, 4]
 ```
 
 ## boolean

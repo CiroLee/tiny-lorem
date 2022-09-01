@@ -2,9 +2,14 @@ import Helper from '@src/lorem/helper';
 const helper = new Helper();
 
 describe('helper', () => {
+  test('elements, throw error', () => {
+    expect(() => {
+      helper.elements({ a: 1 });
+    }).toThrowError();
+  });
   test('elements num = 1', () => {
     const array = [1, 2, 3];
-    const result = helper.elements<number>(array) as number;
+    const result = helper.elements<number[], number>(array);
     expect(array.includes(result)).toBeTruthy();
   });
   test('helper, num > 1', () => {

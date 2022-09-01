@@ -14,9 +14,14 @@ describe('tiny-lorem', () => {
     });
     expect(result.length).toBe(2);
   });
-  test('array, throw error', () => {
+  test('array,  num is not a number', () => {
     expect(() => {
       lorem.array('10' as unknown as number, () => {});
+    }).toThrowError();
+  });
+  test('array, schema is not a function', () => {
+    expect(() => {
+      lorem.array(10, {} as any);
     }).toThrowError();
   });
   test('json, complex data structure, could use mock function', () => {

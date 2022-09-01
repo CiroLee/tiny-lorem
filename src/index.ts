@@ -30,17 +30,17 @@ class TinyLorem {
     }
 
     return new Array(num).fill(undefined).map(() => {
-      if (typeof schema === 'function') {
-        return (schema as Function)(this);
+      if (typeof schema !== 'function') {
+        throw Error('schema must be a function');
       }
-      return undefined;
+      return schema(this);
     });
   }
 
   /**
    * @desc return a JSON structure. usually, it is used to generate
    * complex structured data
-   * @param cb callback function
+   * @param callback callback function
    */
   json<T>(callback: IMultiCallback<T>) {
     return callback(this);

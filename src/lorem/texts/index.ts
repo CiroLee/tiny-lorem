@@ -1,8 +1,11 @@
 import { TEXT_ERROR_MAP } from '../number/constant';
-import { CN_CHARACTERS, ALPHABET, CN_LASTNAMES, EN_NAMES, CHARACTERS } from './constant';
+import Helper from '../helper';
+import { CN_CHARACTERS, ALPHABET, COMMOM_CN_NAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
 import { randomInteger } from '@src/utils/utils';
 import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
+
+const helper = new Helper();
 
 export default class Texts {
   private language: ILanguage = 'cn';
@@ -30,8 +33,8 @@ export default class Texts {
    */
   letter(language: ILanguage = this.language): string {
     return language === 'cn'
-      ? this.zhCharacters[randomInteger([0, this.maxZhCharactersLength])]
-      : ALPHABET[randomInteger([0, ALPHABET.length - 1])];
+      ? helper.elements<string[], string>(this.zhCharacters)
+      : helper.elements<string[], string>(ALPHABET);
   }
   /**
    * @desc return a random word
@@ -84,19 +87,11 @@ export default class Texts {
     return str;
   }
   // Chinese name
-  private cname() {
-    let name = '';
-    const lastName = CN_LASTNAMES[randomInteger([0, CN_LASTNAMES.length - 1])];
-    if (lastName.length < 3) {
-      name = this.word({ language: 'cn', range: [1, 2] }) + lastName;
-    } else {
-      name = this.word({ language: 'cn', range: [1, 3] });
-    }
-
-    return name;
+  private cname(): string {
+    return helper.elements<string[], string>(COMMOM_CN_NAMES);
   }
   // English name
-  private ename(upper?: boolean) {
+  private ename(upper?: boolean): string {
     const name = EN_NAMES[randomInteger([0, EN_NAMES.length - 1])];
     return upper ? name.replace(/^\S/, (L) => L.toUpperCase()) : name;
   }
@@ -114,7 +109,7 @@ export default class Texts {
    * @param options.range [optional]  number or [min, max] format array. it defines the length of the returned string
    * @param options.source [optional] the source of string. You can customize
    */
-  string(options?: ITextsStringOptions) {
+  string(options?: ITextsStringOptions): string {
     const char = options?.source || CHARACTERS;
     const len = this.calcRandomLength(options?.range);
     let str = '';

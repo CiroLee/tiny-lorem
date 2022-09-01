@@ -25,6 +25,11 @@ describe('Texts', () => {
     expect(result).toMatch(/[\u4e00-\u9fa5]+/g);
     expect(mockCalcRandomLength).toHaveBeenCalled();
   });
+  test('word, range is [-1, 2]', () => {
+    expect(() => {
+      textsInstance.word({ range: [-1, 2] });
+    }).toThrowError();
+  });
   test('sentence, language is en', () => {
     const result = textsInstance.sentence({ range: [2, 4], language: 'en' });
     const numOfWords = result.split(' ').length;

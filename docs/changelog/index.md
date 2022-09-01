@@ -17,4 +17,11 @@ feat:
 - 增加批量生成数据函数`array`, `json`    
 
 fix:    
-- 修复texts.name函数入参有误的问题。
+- 修复texts.name函数入参有误的问题。     
+
+## 2022-09-01    
+正式版 v0.0.2
+内容优化：
+- 优化texts.name函数中文名来源。
+- 优化helper.array函数类型返回判断
+- 优化单元测试

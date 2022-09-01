@@ -13,7 +13,6 @@ describe('Number', () => {
       ];
       ranges.forEach((item) => {
         expect(() => {
-          jest.mock('isRangeTuple', () => false);
           numberInstance.int(item as IRange);
         }).toThrowError();
       });
@@ -39,7 +38,6 @@ describe('Number', () => {
         [1, Infinity],
       ].forEach((item) => {
         expect(() => {
-          jest.mock('isRangeTuple', () => false);
           numberInstance.float({
             ...options,
             range: item,
@@ -53,7 +51,6 @@ describe('Number', () => {
       };
       [30, -1, 1.2].forEach((item) => {
         expect(() => {
-          jest.mock('isInt', () => false);
           numberInstance.float({
             ...options,
             fixed: item,
