@@ -3,6 +3,7 @@ import Helper from '../helper';
 import { randomInteger, randomElement } from '@src/utils/utils';
 import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS } from './constant';
 import type { IUrlOptions, IRange } from '@src/types/lorem.types';
+import { isInt } from '@src/utils/validator';
 
 const texts = new Texts();
 const helper = new Helper();
@@ -59,18 +60,35 @@ export default class Internet {
   /**
    * @desc return a random url string
    * @param options.protocol [optional] protocol of the url
-   * @param options.sub [optional] The number of url subdirectories, only type=url is valid,
-   * default is false, and no subdirectories are generated. sub=true, randomly generate 1~4
-   * layers of subdirectories, when sub ≥ 0, generate a specified number of subdirectories, up to 10 layers
+   * @param options.sub [optional] The number of url subdirectories.
+   * default is false, no subdirectories. sub=true, randomly generate 1~4 layers of subdirectories.
+   * if sub ≥ 0, generate a specified number of subdirectories, up to 10 layers
+   * @param options.subLevel [optional] level of subdomain. default is [1, 3];
+   * @param options.suffix suffix of domain. such as .com, .org
    */
   url(options?: IUrlOptions): string {
-    const protocol = options?.protocol || PROTOCOL[randomInteger([0, PROTOCOL.length - 1])];
-    const key = randomElement(Object.keys(DOMAINS));
-    const tld = randomElement(DOMAINS[key as keyof typeof DOMAINS]);
-    const name = texts.word({ language: 'en' });
-    const subDirect = this.subDirecttory(options?.sub);
+    if (options?.subLevel === 0 || (options?.subLevel && (!isInt(options.subLevel) || options.subLevel < 0))) {
+      throw new Error(`url(): subLevel must be a positive integer`);
+    }
+    const getTld = () => {
+      const key = randomElement(Object.keys(DOMAINS));
+      return randomElement(DOMAINS[key as keyof typeof DOMAINS]);
+    };
 
-    return `${protocol}://${name}.${tld}${subDirect}`;
+    const getSubDomain = (num: number) => {
+      let _name = '';
+      const source = '0123456789abcdefghijklmnopqrstuvwxyz-';
+      for (let i = 0; i < num; i++) {
+        _name += texts.string({ range: [1, 10], source }).replace(/^-|-$/g, texts.letter('en')) + '.';
+      }
+      return _name.replace(/.$/g, '');
+    };
+    const protocol = options?.protocol || helper.elements(PROTOCOL);
+    const tld = options?.suffix || getTld();
+    const subDirect = this.subDirecttory(options?.sub);
+    const level = options?.subLevel || randomInteger([1, 3]);
+    const preffix = getSubDomain(level);
+    return `${protocol}://${preffix}${tld}${subDirect}`;
   }
   email() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

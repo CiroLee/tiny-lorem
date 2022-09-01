@@ -22,15 +22,19 @@ lorem.internet.ipv6(); // 1f2c:3ff1:4016:7734:e014:fa37:becd:e726
 
 随机生成一个url地址。     
 
-| 名称       | 类型                | 必填  | 默认值 | 描述                                                                      |
-| -------- | ----------------- | --- | --- | ----------------------------------------------------------------------- |
-| sub      | boolean\|number | 否   |  false   | 子目录层级。设置为true，则随机生成1~4层子目录。设置具体数值，则生成指定层子目录(最大10层)。缺省或设置为false， 不生成子目录。 |
-| protocol | string            | 否   |     | 网络协议。可自定义网络协议。缺省则随机生成常用网络协议。                                            |
+| 名称       | 类型              | 必填  | 默认值   | 描述                                                                      |
+| -------- | --------------- | --- | ----- | ----------------------------------------------------------------------- |
+| sub      | boolean\|number | 否   | false | 子目录层级。设置为true，则随机生成1~4层子目录。设置具体数值，则生成指定层子目录(最大10层)。缺省或设置为false， 不生成子目录。 |
+| protocol | string          | 否   |       | 网络协议。可自定义网络协议。缺省则随机生成常用网络协议。                                            |
+| suffix   | string          | 否   |       | 域名后缀(如.com, .org, .com.cn等)。注意：**域名后缀需要包含点号**。                          |
+| subLevel | string          | 否   |       | 子域名层级。默认为1~3层。                                                          |
 
 ```ts
-lorem.internet.url(); // http://ovxuxfvb.jx.cn
+lorem.internet.url(); // news://34.s.et
 lorem.internet.url({ sub: true, protocol: 'https'}); // https://xoefumbzt.hk.cn/kccg
-lorem.internet.url({ sub: 2, protocol: 'https' }); // https://toexaw.info/g/nc
+lorem.internet.url({ sub: 2, protocol: 'https' }); // https://ajaph9sy.g3ei.d2xj9og8p.idv
+lorem.internet.url({ protocol: 'https', subLevel: 1 }); // https://t51.aero
+lorem.internet.url({ protocol: 'https', subLevel: 1, suffix: '.com.cn' }); // https://lpr.com.cn 
 ```
 
 ## email

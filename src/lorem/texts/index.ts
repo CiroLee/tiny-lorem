@@ -11,7 +11,6 @@ export default class Texts {
   private language: ILanguage = 'cn';
   private baseNum: number = 10;
   private zhCharacters: string[] = CN_CHARACTERS;
-  private maxZhCharactersLength: number = this.zhCharacters.length - 1;
   config(config: ITextsConfig) {
     this.language = config?.language || 'cn';
     this.baseNum = config?.baseNum || 10;

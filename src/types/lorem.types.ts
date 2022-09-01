@@ -36,6 +36,8 @@ export interface ITimestampOptions {
 export interface IUrlOptions {
   sub?: boolean | number;
   protocol?: string;
+  suffix?: string;
+  subLevel?: number;
 }
 
 export interface IImagePlaceholderOptions {

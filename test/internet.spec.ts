@@ -18,6 +18,21 @@ describe('internet', () => {
     const result = internetInstance.ipv6();
     expect(result.split(':').length).toBe(8);
   });
+  test('url, level is float, throw error', () => {
+    expect(() => {
+      internetInstance.url({ subLevel: 1.2 });
+    }).toThrowError();
+  });
+  test('url, level is less than 0, throw error', () => {
+    expect(() => {
+      internetInstance.url({ subLevel: -1 });
+    }).toThrowError();
+  });
+  test('url, level is 0, throw error', () => {
+    expect(() => {
+      internetInstance.url({ subLevel: 0 });
+    }).toThrowError();
+  });
   test('url, protocol is http', () => {
     const url = internetInstance.url({ protocol: 'http' });
     expect(url).toMatch(/^http/);
@@ -31,6 +46,10 @@ describe('internet', () => {
   test('subDirecttory, sub is 2', () => {
     const url = internetInstance.url({ sub: 2 });
     expect(url.replace(/\/\//g, '').split('/').length).toBe(3);
+  });
+  test('subDirecttory, sub greeter than 10', () => {
+    const url = internetInstance.url({ sub: 12 });
+    expect(url.replace(/\/\//g, '').split('/').length).toBe(11);
   });
   test('email', () => {
     const result = internetInstance.email();
