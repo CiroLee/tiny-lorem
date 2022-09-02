@@ -1,13 +1,17 @@
 import Address from '@src/lorem/address';
+import RandomNumber from '@src/lorem/number';
 const addressInstance = new Address();
 let provinceObjMock: jest.SpyInstance;
 let cityObjMock: jest.SpyInstance;
 let countyObjMock: jest.SpyInstance;
+let degToDmsMock: jest.SpyInstance;
+
 describe('Address', () => {
   beforeEach(() => {
     provinceObjMock = jest.spyOn(Address.prototype as any, 'provinceObj');
     cityObjMock = jest.spyOn(Address.prototype as any, 'cityObj');
     countyObjMock = jest.spyOn(Address.prototype as any, 'countyObj');
+    degToDmsMock = jest.spyOn(Address.prototype as any, 'degToDms');
   });
   test('province', () => {
     expect(addressInstance.province()).toBeTruthy();
@@ -34,5 +38,23 @@ describe('Address', () => {
     expect(countyObjMock).toHaveBeenCalled();
     expect(provinceObjMock).toHaveBeenCalled();
     expect(cityObjMock).toHaveBeenCalled();
+  });
+  test('zipCode', () => {
+    const zip = addressInstance.zipCode();
+    expect(typeof zip).toBe('string');
+    expect(zip.length).toBe(6);
+  });
+  test('longAndLat, dms type', () => {
+    const mockFloat = jest.spyOn(RandomNumber.prototype as any, 'float').mockReturnValue(23);
+    const arr = addressInstance.longAndLat('dms');
+    expect(arr).toEqual(['23°0′0.00″', '23°0′0.00″']);
+    expect(degToDmsMock).toHaveBeenCalledWith(23);
+    expect(mockFloat).toHaveBeenCalled();
+  });
+  test('longAndLat, deg type', () => {
+    const mockFloat = jest.spyOn(RandomNumber.prototype as any, 'float').mockReturnValue(23);
+    const arr = addressInstance.longAndLat();
+    expect(arr).toEqual(['23°', '23°']);
+    expect(mockFloat).toHaveBeenCalled();
   });
 });

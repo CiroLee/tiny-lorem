@@ -1,7 +1,7 @@
 import Texts from '../texts';
 import Helper from '../helper';
-import { randomInteger, randomElement } from '@src/utils/utils';
-import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS } from './constant';
+import { randomInteger } from '@src/utils/utils';
+import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS, TEL_AREA_CODE } from './constant';
 import type { IUrlOptions, IRange } from '@src/types/lorem.types';
 import { isInt } from '@src/utils/validator';
 
@@ -68,11 +68,11 @@ export default class Internet {
    */
   url(options?: IUrlOptions): string {
     if (options?.subLevel === 0 || (options?.subLevel && (!isInt(options.subLevel) || options.subLevel < 0))) {
-      throw new Error(`url(): subLevel must be a positive integer`);
+      throw new Error(`url: subLevel must be a positive integer`);
     }
     const getTld = () => {
-      const key = randomElement(Object.keys(DOMAINS));
-      return randomElement(DOMAINS[key as keyof typeof DOMAINS]);
+      const key = helper.elements<string[], string>(Object.keys(DOMAINS));
+      return helper.elements<string[], string>(DOMAINS[key as keyof typeof DOMAINS]);
     };
 
     const getSubDomain = (num: number) => {
@@ -90,10 +90,13 @@ export default class Internet {
     const preffix = getSubDomain(level);
     return `${protocol}://${preffix}${tld}${subDirect}`;
   }
+  /**
+   * @desc return a random email
+   */
   email() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const name = texts.string({ source: alphabet });
-    const emailSuffix = randomElement(EMAIL_SUFFIX);
+    const emailSuffix = helper.elements<string[], string>(EMAIL_SUFFIX);
 
     return `${name}/${emailSuffix}`;
   }
@@ -102,7 +105,7 @@ export default class Internet {
    * @param hidden [optional] whether to ide the middle four digits
    */
   mobile(hidden?: boolean): string {
-    const part = randomElement(MESH_NUMS);
+    const part = helper.elements<number[], number>(MESH_NUMS);
     const strInt = (digit: number) => {
       let str = '';
       for (let i = 0; i < digit; i++) {
@@ -112,5 +115,12 @@ export default class Internet {
     };
 
     return hidden ? `${part}****${strInt(4)}` : `${part}${strInt(4)}${strInt(4)}`;
+  }
+  /**
+   * @desc return a random Chinese mainland landline number
+   */
+  landline(): string {
+    const phoneNum = helper.boolean() ? randomInteger([0, 9999999]) : randomInteger([0, 99999999]);
+    return `${helper.elements(TEL_AREA_CODE)}-${phoneNum}`;
   }
 }

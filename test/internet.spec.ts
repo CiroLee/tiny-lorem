@@ -66,4 +66,8 @@ describe('internet', () => {
 
     expect(num).toBe(4);
   });
+  test('landline', () => {
+    const result = internetInstance.landline();
+    expect(result.includes('-')).toBeTruthy();
+  });
 });

@@ -65,3 +65,9 @@ lorem.internet.mobile(true); // 132****6003
 ```ts
 lorem.internet.uuid(); // 276f8b52-c752-48c8-afb0-22a43e6d6d4b
 ```
+
+## landline    
+随机生成一个中国大陆固定电话号码。     
+```ts
+lorem.internet.landline(); // 0718-35113386
+```

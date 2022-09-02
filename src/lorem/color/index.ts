@@ -9,7 +9,7 @@ export function extractRGB(rgb: string): number[] {
   const noSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)|\s*/g;
   const withSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)*/g;
   if (!rgbReg.test(rgb)) {
-    throw new Error(`extractRGB: param ${rgb} is invalid rgb-format color`);
+    throw new Error(`extractRGB: rgb is invalid rgb-format color`);
   }
   if (legencyMode.test(rgb)) {
     color = rgb.replace(noSpaceReg, '').split(',');
@@ -31,7 +31,7 @@ export function extractHSL(hsl: string): number[] {
   const noSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|\s|deg*/g;
   const withSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|deg*/g;
   if (!hslReg.test(hsl)) {
-    throw new Error(`extractHSL: param ${hsl} is invalid hsl-format color`);
+    throw new Error(`extractHSL: hsl is invalid hsl-format color`);
   }
   if (legencyMode.test(hsl)) {
     color = hsl.replace(noSpaceReg, '').split(',');
@@ -51,7 +51,7 @@ export function hexToRgb(hex: string): number[] {
   const hexReg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
   let color = hex.toLowerCase();
   if (!hexReg.test(color)) {
-    throw new Error(`hexToRgb: param ${hex} is invalid hex-format color`);
+    throw new Error(`hexToRgb: hex is invalid hex-format color`);
   }
   // fill to 6 dgits e.g. #fff --> #ffffff
   if (color.length === 4) {
@@ -156,7 +156,7 @@ export default class Color {
    *  @param type legency | modern, default is legency, modern is for css level4
    */
   rgba(type?: 'legency' | 'modern') {
-    const alpha = randomNumber.float({ range: [0, 1], fixed: 2 }) as number;
+    const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
 
     const _rgb = this.rgb(type);
     return type === 'modern'
@@ -179,7 +179,7 @@ export default class Color {
    *  @param type legency | modern, default is legency, modern is for css level4
    */
   hsla(type?: 'legency' | 'modern') {
-    const alpha = randomNumber.float({ range: [0, 1], fixed: 2 }) as number;
+    const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
     const _hsl = this.hsl(type);
     return type === 'modern'
       ? _hsl.replace(/\)$/, ` / ${Math.round(alpha * 100)}%)`)

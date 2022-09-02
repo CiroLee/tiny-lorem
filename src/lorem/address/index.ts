@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
+import Helper from '../helper';
+import RandomNumber from '../number';
 import { ADDRESS_DICT } from './constant';
-import { randomInteger } from '@src/utils/utils';
 import type { IAddressItem } from './types';
+const helper = new Helper();
+const randomNumber = new RandomNumber();
 
 export default class Address {
   private provinceObj(): IAddressItem {
@@ -8,8 +12,7 @@ export default class Address {
       code: item.code,
       name: item.name,
     }));
-    const random = randomInteger([0, provinces.length - 1]);
-    return provinces[random];
+    return helper.elements<IAddressItem[], IAddressItem>(provinces);
   }
   private cityObj(provinceCode: string): IAddressItem {
     const citiesObj = ADDRESS_DICT[provinceCode].cities;
@@ -17,9 +20,7 @@ export default class Address {
       code: item.code,
       name: item.name,
     }));
-
-    const random = randomInteger([0, cities.length - 1]);
-    return cities[random];
+    return helper.elements<IAddressItem[], IAddressItem>(cities);
   }
   private countyObj(provinceCode: string, cityCode: string): IAddressItem {
     const countiesObj = ADDRESS_DICT[provinceCode].cities[cityCode].districts;
@@ -32,8 +33,7 @@ export default class Address {
       return { code: '', name: '' };
     }
 
-    const random = randomInteger([0, counties.length - 1]);
-    return counties[random];
+    return helper.elements<IAddressItem[], IAddressItem>(counties);
   }
   /**
    * @desc return a random Chinese province
@@ -58,7 +58,7 @@ export default class Address {
    * county(); // 青海省 玉树藏族自治州 杂多县
    * county(1) // 青海省 玉树藏族自治州
    */
-  county(parent?: boolean | number) {
+  county(parent?: boolean | number): string {
     const province = this.provinceObj();
     const city = this.cityObj(province.code);
     const county = this.countyObj(province.code, city.code);
@@ -71,5 +71,36 @@ export default class Address {
       default:
         return county.name;
     }
+  }
+  /**
+   * @desc return a random a Chinese zip code
+   */
+  zipCode(): string {
+    let zip = '';
+    for (let i = 0; i < 6; i++) {
+      zip += randomNumber.int([0, 9]);
+    }
+    return zip;
+  }
+  private degToDms(float: number) {
+    const num = Math.abs(float);
+    const deg = Math.floor(num);
+    const minute = Math.floor((num - deg) * 60);
+    const second = (((num - deg) * 60 - minute) * 60).toFixed(2);
+    // second = second < 0.0001 ? 0 : Number(second.toFixed(2));
+
+    const dms = `${deg}°${minute}′${second}″`;
+    return num === float ? dms : `-${dms}`;
+  }
+  /**
+   * @desc random return a pair of latitude and longitude
+   * @param format [optional]  the format of the returned data
+   * support deg | dms(degree minute second)
+   */
+  longAndLat(format?: 'deg' | 'dms'): [string, string] {
+    const longitude = randomNumber.float<number>({ range: [-180, 180] });
+    const latitude = randomNumber.float<number>({ range: [-90, 90] });
+
+    return format === 'dms' ? [this.degToDms(longitude), this.degToDms(latitude)] : [`${longitude}°`, `${latitude}°`];
   }
 }

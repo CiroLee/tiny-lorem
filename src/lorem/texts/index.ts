@@ -22,7 +22,7 @@ export default class Texts {
     }
     // elements of range must be positive integer or zero
     if (!isPositiveRangeTuple(range as IRange)) {
-      throw new Error(TEXT_ERROR_MAP.invalidPositiveRange);
+      throw new Error(`calcRandomLength: ${TEXT_ERROR_MAP.invalidPositiveRange}`);
     }
     return randomInteger(range as IRange);
   }

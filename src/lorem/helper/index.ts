@@ -8,14 +8,14 @@ export default class Helper {
    * if num > 1, will return random `num` elements of the array;
    * @returns
    */
-  elements<T, U extends Array<any>>(array: T, num?: number): U;
-  elements<T, U extends string | number | null>(array: T, num?: number): U;
+  elements<T, U extends Array<unknown>>(array: T, num?: number): U;
+  elements<T, U extends Exclude<any, Array<unknown>>>(array: T, num?: number): U;
   elements<T, U>(array: T, num = 1): U | U[] {
     if (!Array.isArray(array)) {
-      throw new Error('helper.elements: array must be an array');
+      throw new Error('elements: array must be an array');
     }
     if (num > array.length) {
-      throw new Error('num must be less than or equal to array length');
+      throw new Error('elements: num must be less than or equal to array length');
     }
     if (num > 1) {
       const result: U[] = [];

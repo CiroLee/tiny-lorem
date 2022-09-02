@@ -8,7 +8,7 @@ export const TEXT_ERROR_MAP = {
 };
 export const randomInteger = (range: IRange): number => {
   if (!isRangeTuple(range)) {
-    throw new Error(`[randomInteger]: ${TEXT_ERROR_MAP.invalidRange}`);
+    throw new Error(`randomInteger: ${TEXT_ERROR_MAP.invalidRange}`);
   }
   const min = Math.floor(range[0]);
   const max = Math.floor(range[1]);
@@ -44,6 +44,6 @@ export const dateFormat = (date: Date | number | string, format?: string): strin
     if (match in o) {
       return (o[match as keyof typeof o] as string).toString();
     }
-    throw new Error(`format is ${_format}, invalid format`);
+    throw new Error(`dateFormat: format is invalid format`);
   });
 };

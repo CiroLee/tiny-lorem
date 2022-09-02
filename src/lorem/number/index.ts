@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { isRangeTuple, isInt } from '@src/utils/validator';
 import { randomInteger } from '@src/utils/utils';
 import { fillDecimal } from '@src/utils/utils';
@@ -12,7 +13,7 @@ export default class RandomNumber {
     let min = 0;
     let max = 0;
     if (range && !isRangeTuple(range)) {
-      throw new Error(`range is [${range[0]}, ${range[1]}], ${TEXT_ERROR_MAP.invalidRange}`);
+      throw new Error(`int: ${TEXT_ERROR_MAP.invalidRange}`);
     } else if (range && isRangeTuple(range)) {
       min = range[0];
       max = range[1];
@@ -28,17 +29,18 @@ export default class RandomNumber {
    * @param options.range [min, max] format array
    * @param options.fixed decimal precision.it must be an positive integer and less than 20
    */
-  float(options?: INumberOptions): number | string {
+  float<T extends string | number>(options?: INumberOptions): T;
+  float(options?: INumberOptions): string | number {
     let fixed = 4;
     let min = 0;
     let max = 0;
     if (options?.fixed && (options.fixed < 0 || options.fixed > 20 || !isInt(options.fixed))) {
-      throw new Error(`fixed is ${options.fixed}, it must be an int that larger than 0 and less than 20`);
+      throw new Error(`float: fixed must be an int that larger than 0 and less than 20`);
     } else if (options?.fixed && options?.fixed > 0 && options.fixed <= 20 && isInt(options?.fixed)) {
       fixed = options.fixed;
     }
     if (options?.range && !isRangeTuple(options?.range)) {
-      throw new Error(`range is [${options.range[0]}, ${options.range[1]}], ${TEXT_ERROR_MAP.invalidRange}`);
+      throw new Error(`float: range is [${options.range[0]}, ${options.range[1]}], ${TEXT_ERROR_MAP.invalidRange}`);
     } else if (options?.range && isRangeTuple(options?.range)) {
       min = options.range[0];
       max = options.range[1];
