@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { WEEK_MAP, MONTH_MAP } from './constant';
 import { DATETIME_MIN, DATETIME_MAX } from './constant';
 import { dateFormat, randomInteger } from '@src/utils/utils';
@@ -11,6 +12,7 @@ export default class RandomDate {
    * @param options.format [optional] format of the date.
    * if set format = true, will not format the date and return Date type
    */
+  datetime<T extends string | Date = string>(options?: IDateOptions): T;
   datetime(options?: IDateOptions): string | Date {
     const from = options?.from ? new Date(options.from).getTime() : DATETIME_MIN;
     const to = options?.to ? new Date(options.to).getTime() : DATETIME_MAX;
@@ -29,7 +31,7 @@ export default class RandomDate {
    * @param options ms [optional] whether includes milliseconds
    */
   timestamp(options?: ITimestampOptions): string {
-    const _timestamp = (this.datetime({ from: options?.from, to: options?.to, format: false }) as Date).getTime();
+    const _timestamp = this.datetime<Date>({ from: options?.from, to: options?.to, format: false }).getTime();
     return options?.ms ? `${_timestamp}` : `${Math.floor(_timestamp / 1000)}`;
   }
   /**

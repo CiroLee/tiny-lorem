@@ -29,4 +29,8 @@ describe('helper', () => {
     const result = helper.boolean();
     expect(typeof result).toBe('boolean');
   });
+  test('falsy', () => {
+    const result = helper.falsy();
+    expect(result).toBeFalsy();
+  });
 });

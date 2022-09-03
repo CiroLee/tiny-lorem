@@ -48,6 +48,7 @@ export interface IImagePlaceholderOptions {
   fontColor?: string;
 }
 
+export type IFalsy = number | null | undefined | string | boolean;
 export interface IImagePicsumOptions {
   width?: number;
   height?: number;

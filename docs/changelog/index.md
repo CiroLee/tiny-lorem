@@ -22,6 +22,14 @@ fix:
 ## 2022-09-01    
 正式版 v0.0.2
 内容优化：
-- 优化texts.name函数中文名来源。
-- 优化helper.array函数类型返回判断
-- 优化单元测试
+- 优化`texts.name`函数中文名来源。
+- 优化`helper.array`函数类型返回判断
+- 优化单元测试      
+
+## 2022-xx-xx
+新增:    
+- `address.zipCode`函数，生成邮政编码
+- `address.longAndLat`函数，生成经纬度
+- `helper.falsy`函数，生成falsy值
+- `internet.landline`函数，生成固定电话号码
+常规优化

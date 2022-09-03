@@ -147,7 +147,7 @@ export default class Color {
    * @desc return a random rgb color
    * @param type legency | modern, default is legency, modern is for css level4
    */
-  rgb(type?: 'legency' | 'modern') {
+  rgb(type?: 'legency' | 'modern'): string {
     const arr = new Array(3).fill(0).map(() => randomNumber.int([0, 255]));
     return type === 'modern' ? `rgb(${arr[0]} ${arr[1]} ${arr[2]})` : `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
   }
@@ -155,7 +155,7 @@ export default class Color {
    * @desc return a random rgba color
    *  @param type legency | modern, default is legency, modern is for css level4
    */
-  rgba(type?: 'legency' | 'modern') {
+  rgba(type?: 'legency' | 'modern'): string {
     const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
 
     const _rgb = this.rgb(type);
@@ -167,7 +167,7 @@ export default class Color {
    * @desc return a random hsl color
    *  @param type legency | modern, default is legency, modern is for css level4
    */
-  hsl(type?: 'legency' | 'modern') {
+  hsl(type?: 'legency' | 'modern'): string {
     const hue = randomNumber.int([0, 360]);
     const saturation = `${randomNumber.int([0, 100])}%`;
     const lightness = `${randomNumber.int([0, 100])}%`;
@@ -178,7 +178,7 @@ export default class Color {
    * @desc return a random hsla color
    *  @param type legency | modern, default is legency, modern is for css level4
    */
-  hsla(type?: 'legency' | 'modern') {
+  hsla(type?: 'legency' | 'modern'): string {
     const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
     const _hsl = this.hsl(type);
     return type === 'modern'

@@ -87,13 +87,12 @@ export default class Address {
     const deg = Math.floor(num);
     const minute = Math.floor((num - deg) * 60);
     const second = (((num - deg) * 60 - minute) * 60).toFixed(2);
-    // second = second < 0.0001 ? 0 : Number(second.toFixed(2));
 
     const dms = `${deg}°${minute}′${second}″`;
     return num === float ? dms : `-${dms}`;
   }
   /**
-   * @desc random return a pair of latitude and longitude
+   * @desc random return a pair of longitude and latitude
    * @param format [optional]  the format of the returned data
    * support deg | dms(degree minute second)
    */

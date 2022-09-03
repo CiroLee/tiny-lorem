@@ -21,23 +21,28 @@ describe('Address', () => {
     expect(addressInstance.city()).toBeTruthy();
     expect(cityObjMock).toHaveBeenCalled();
   });
+  test('city, parent is true', () => {
+    const result = addressInstance.city(true);
+    expect(result.includes(' ')).toBeTruthy();
+  });
   test('county', () => {
     expect(addressInstance.county()).toBeTruthy();
     expect(countyObjMock).toHaveBeenCalled();
   });
-  test('county parent is 1, return full address', () => {
+  test('county parent is true, return full address', () => {
     const county = addressInstance.county(true);
     expect(county.split(' ').length).toBe(3);
     expect(countyObjMock).toHaveBeenCalled();
     expect(provinceObjMock).toHaveBeenCalled();
     expect(cityObjMock).toHaveBeenCalled();
   });
-  test('county parent is 1, return full address', () => {
+  test('county parent is 1', () => {
     const county = addressInstance.county(1);
     expect(county.split(' ').length).toBe(2);
-    expect(countyObjMock).toHaveBeenCalled();
-    expect(provinceObjMock).toHaveBeenCalled();
-    expect(cityObjMock).toHaveBeenCalled();
+  });
+  test('county parent is 2, return full address', () => {
+    const county = addressInstance.county(2);
+    expect(county.split(' ').length).toBe(3);
   });
   test('zipCode', () => {
     const zip = addressInstance.zipCode();
@@ -49,6 +54,13 @@ describe('Address', () => {
     const arr = addressInstance.longAndLat('dms');
     expect(arr).toEqual(['23°0′0.00″', '23°0′0.00″']);
     expect(degToDmsMock).toHaveBeenCalledWith(23);
+    expect(mockFloat).toHaveBeenCalled();
+  });
+  test('longAndLat, dms type, degToDms return negative', () => {
+    const mockFloat = jest.spyOn(RandomNumber.prototype as any, 'float').mockReturnValue(-23);
+    const arr = addressInstance.longAndLat('dms');
+    expect(arr).toEqual(['-23°0′0.00″', '-23°0′0.00″']);
+    expect(degToDmsMock).toHaveBeenCalledWith(-23);
     expect(mockFloat).toHaveBeenCalled();
   });
   test('longAndLat, deg type', () => {

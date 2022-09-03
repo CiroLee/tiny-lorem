@@ -9,7 +9,7 @@ describe('RandomDate', () => {
     expect(result).toBeLessThanOrEqual(DATETIME_MAX);
   });
   test('date, format is false, and return Date-type date', () => {
-    const result = dateInstance.datetime({ from: '1999-1-1', to: '2022-12-12', format: false });
+    const result = dateInstance.datetime<Date>({ from: '1999-1-1', to: '2022-12-12', format: false });
     expect(result instanceof Date).toBeTruthy();
   });
   test('date, set format', () => {

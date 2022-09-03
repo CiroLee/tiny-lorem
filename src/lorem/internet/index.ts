@@ -47,7 +47,7 @@ export default class Internet {
   /**
    * @desc return a random an ipv6
    */
-  ipv6() {
+  ipv6(): string {
     const result: string[] = [];
     const hashArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     for (let i = 0; i < 8; i++) {

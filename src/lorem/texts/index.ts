@@ -40,7 +40,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of characters that make up a word
    */
-  word(options?: ITextsFuncOptions) {
+  word(options?: ITextsFuncOptions): string {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
@@ -54,7 +54,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of words that make up a sentence
    */
-  sentence(options?: ITextsFuncOptions) {
+  sentence(options?: ITextsFuncOptions): string {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {
@@ -76,7 +76,7 @@ export default class Texts {
    * @param options.language receive English(en) or Chinese(cn) language. default is cn
    * @param options.range number or [min, max] format array. It defines the number of sentences that make up a paragraph
    */
-  paragraph(options?: ITextsFuncOptions) {
+  paragraph(options?: ITextsFuncOptions): string {
     const len = this.calcRandomLength(options?.range);
     let str = '';
     for (let i = 0; i < len; i++) {

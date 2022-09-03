@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { randomElement } from '@src/utils/utils';
+import { IFalsy } from '@src/types/lorem.types';
 export default class Helper {
   /**
    * @desc return (a) random element(s) of the array.
@@ -31,5 +32,11 @@ export default class Helper {
    */
   boolean(): boolean {
     return randomElement([true, false]);
+  }
+  /**
+   * @desc return a random a false value. such as 0, null, undefined, '', NaN and false
+   */
+  falsy(): IFalsy {
+    return this.elements<IFalsy[], IFalsy>([0, null, undefined, '', false, NaN]);
   }
 }
