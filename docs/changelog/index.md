@@ -26,10 +26,11 @@ fix:
 - 优化`helper.array`函数类型返回判断
 - 优化单元测试      
 
-## 2022-08-04
+## 2022-09-04
 新增:    
 - `address.zipCode`函数，生成邮政编码
 - `address.longAndLat`函数，生成经纬度
 - `helper.falsy`函数，生成falsy值
 - `internet.landline`函数，生成固定电话号码
+       
 常规优化
