@@ -51,7 +51,7 @@ lorem.address.zipCode(); // 335263
 
 | 名称     | 类型           | 必填  | 默认值 | 描述                             |
 | ------ | ------------ | --- | --- | ------------------------------ |
-| dormat | 'deg'\|'dms' | 否   | deg | 经纬度返回格式。支持10进制角度格式和度角分(dms)格式。 |
+| format | 'deg'\|'dms' | 否   | deg | 经纬度返回格式。支持10进制角度格式和度角分(dms)格式。 |
 
 ::: tip
 返回数据为一个string类型的数组。第一个元素为经度, 负数为西经，正数为东经； 第二个为纬度，整数为北纬，负数为南纬。
@@ -59,5 +59,5 @@ lorem.address.zipCode(); // 335263
 
 ```ts
 lorem.address.longAndLat(); // [ '-165.4905°', '15.7667°' ]
-lorem.address.longAndLat('dms'); // 
+lorem.address.longAndLat('dms'); // [ '-13°10′50.88″', '9°59′48.48″' ]
 ```

@@ -26,7 +26,7 @@ fix:
 - 优化`helper.array`函数类型返回判断
 - 优化单元测试      
 
-## 2022-xx-xx
+## 2022-08-04
 新增:    
 - `address.zipCode`函数，生成邮政编码
 - `address.longAndLat`函数，生成经纬度
