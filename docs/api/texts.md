@@ -28,7 +28,7 @@ lorem.texts.letter('en'); // a
 ```ts
 lorem.texts.word(); // 兴渡饶笨舒
 lorem.texts.word({ range: [2, 8] }); // 渣匙兔
-lorem.texts.word({ range； 2 }); // 揪添
+lorem.texts.word({ range: 2 }); // 揪添
 lorem.texts.word({language: 'en', [2, 8]});  // dtfslp
 ```
 

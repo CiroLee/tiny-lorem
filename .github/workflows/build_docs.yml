@@ -3,7 +3,7 @@ name: deploy site
 on:
   push:
    tags:
-    - 'v*'
+    - 'v-docs*'
 jobs:
   main:
    runs-on: ubuntu-latest
