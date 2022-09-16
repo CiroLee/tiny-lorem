@@ -9,9 +9,9 @@ export default class Helper {
    * if num > 1, will return random `num` elements of the array;
    * @returns
    */
-  elements<T, U extends Array<unknown>>(array: T, num?: number): U;
-  elements<T, U extends Exclude<any, Array<unknown>>>(array: T, num?: number): U;
-  elements<T, U>(array: T, num = 1): U | U[] {
+  elements<T extends Array<unknown>>(array: Array<unknown>, num?: number): T;
+  elements<T extends Exclude<any, Array<unknown>>>(array: Array<unknown>, num?: number): T;
+  elements<T>(array: Array<unknown>, num = 1): T | T[] {
     if (!Array.isArray(array)) {
       throw new Error('elements: array must be an array');
     }
@@ -19,7 +19,7 @@ export default class Helper {
       throw new Error('elements: num must be less than or equal to array length');
     }
     if (num > 1) {
-      const result: U[] = [];
+      const result: T[] = [];
       for (let i = 0; i < num; i++) {
         result.push(randomElement(array));
       }
@@ -37,6 +37,6 @@ export default class Helper {
    * @desc return a random a false value. such as 0, null, undefined, '', NaN and false
    */
   falsy(): IFalsy {
-    return this.elements<IFalsy[], IFalsy>([0, null, undefined, '', false, NaN]);
+    return this.elements<IFalsy>([0, null, undefined, '', false, NaN]);
   }
 }

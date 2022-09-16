@@ -1,7 +1,6 @@
-import type { IRange } from '@src/types/lorem.types';
+import type { IRange, IBigRange } from '@src/types/lorem.types';
 
 export const isValidNumber = (num: unknown): boolean => Number.isFinite(num);
-
 /**
  * @desc check whether the range satisfies [min, max](min ≥ 0, max ≥ 0, max ≥ min).It's a strict mode
  */
@@ -17,10 +16,14 @@ export const isPositiveRangeTuple = (range: IRange): boolean => {
  */
 export const isRangeTuple = (range: IRange): boolean => {
   if (!Array.isArray(range)) return false;
-  else {
-    const errorConds = [range[0] > range[1], !range.every(isValidNumber)];
-    return !errorConds.some(Boolean);
-  }
+  const errorConds = [range[0] > range[1], !range.every(isValidNumber)];
+  return !errorConds.some(Boolean);
+};
+
+export const isBigIntRangeTuple = (range: IBigRange): boolean => {
+  if (!Array.isArray(range)) return false;
+  const errorConds = [range[0] > range[1], !range.every((n) => typeof n === 'bigint')];
+  return !errorConds.some(Boolean);
 };
 /**
  * @desc check num is int number. include 0

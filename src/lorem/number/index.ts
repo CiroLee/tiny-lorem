@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { isRangeTuple, isInt } from '@src/utils/validator';
+import { isRangeTuple, isInt, isBigIntRangeTuple } from '@src/utils/validator';
 import { randomInteger } from '@src/utils/utils';
 import { fillDecimal } from '@src/utils/utils';
 import { TEXT_ERROR_MAP, MAX_NUMBER } from './constant';
-import type { INumberOptions, IRange } from '@src/types/lorem.types';
+import type { INumberOptions, IRange, IBigRange } from '@src/types/lorem.types';
 export default class RandomNumber {
   /**
    * @desc return a random integer
@@ -17,8 +17,7 @@ export default class RandomNumber {
     } else if (range && isRangeTuple(range)) {
       min = range[0];
       max = range[1];
-    }
-    if (!range) {
+    } else if (!range) {
       min = -MAX_NUMBER;
       max = MAX_NUMBER;
     }
@@ -54,5 +53,22 @@ export default class RandomNumber {
     const integer = this.int([min * _fixed, max * _fixed]);
     const floatVal = Number((integer / _fixed).toFixed(fixed));
     return options?.format === 'string' ? fillDecimal(floatVal, fixed) : floatVal;
+  }
+  bigInt(range?: IBigRange): bigint {
+    let min = 0;
+    let max = 0;
+    console.log('sss', range);
+
+    if (range && !isBigIntRangeTuple(range)) {
+      throw new Error(`bigInt: ${TEXT_ERROR_MAP.invalidBigRange}`);
+    } else if (range && isBigIntRangeTuple(range)) {
+      min = Number(range[0]);
+      max = Number(range[1]);
+    } else if (!range) {
+      min = -MAX_NUMBER;
+      max = MAX_NUMBER;
+    }
+    const int = randomInteger([min, max]);
+    return BigInt(int);
   }
 }

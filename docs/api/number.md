@@ -41,3 +41,19 @@ lorem.number.float<string>({range: [1, 100], fixed: 2, format: 'string'}); // '4
 浮点数可能出现末尾小数是 0 的情况，javascript 中，number 类型会省略末位为 0 的数字，这可能会引起误解(并不会影响计算精度)， 因此可以设置`format = string`，返回 string 类型，可保留末位是 0 的浮点数格式。
 
 :::
+
+## bigInt
+
+生成随机 bigInt 类型整数。
+
+| 名称  | 类型             | 必填 | 默认值 | 描述                |
+| ----- | ---------------- | ---- | ------ | ------------------- |
+| range | [bigint, bigint] | 否   |        | bigint 的取值范围。 |
+
+返回类型: bigint
+
+```ts
+lorem.number.bigInt(); // 2392n
+lorem.number.bigInt([1n, 10n]); // 4n
+lorem.number.bigInt([BigInt(1), BigInt(10)]); // 4n
+```

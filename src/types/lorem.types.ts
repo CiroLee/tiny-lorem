@@ -1,4 +1,5 @@
 export type IRange = [number, number];
+export type IBigRange = [bigint, bigint];
 export type ILanguage = 'en' | 'cn';
 
 export interface ITextsFuncOptions {

@@ -1,5 +1,5 @@
 import * as validator from '@src/utils/validator';
-import { IRange } from '@src/types/lorem.types';
+import { IRange, IBigRange } from '@src/types/lorem.types';
 describe('valdiator test', () => {
   test('isValidNumber', () => {
     const num1 = 1;
@@ -21,10 +21,10 @@ describe('valdiator test', () => {
     const arr5: IRange = [1, Infinity];
 
     expect(validator.isPositiveRangeTuple(arr1)).toBeTruthy();
-    expect(validator.isPositiveRangeTuple(arr2)).toBeFalsy;
-    expect(validator.isPositiveRangeTuple(arr3)).toBeFalsy;
-    expect(validator.isPositiveRangeTuple(arr4 as IRange)).toBeFalsy;
-    expect(validator.isPositiveRangeTuple(arr5)).toBeFalsy;
+    expect(validator.isPositiveRangeTuple(arr2)).toBeFalsy();
+    expect(validator.isPositiveRangeTuple(arr3)).toBeFalsy();
+    expect(validator.isPositiveRangeTuple(arr4 as IRange)).toBeFalsy();
+    expect(validator.isPositiveRangeTuple(arr5)).toBeFalsy();
   });
 
   test('isRangeTuple', () => {
@@ -53,5 +53,18 @@ describe('valdiator test', () => {
     expect(validator.isInt(num3)).toBeFalsy;
     expect(validator.isInt(num4 as unknown as number)).toBeFalsy;
     expect(validator.isInt(num5)).toBeFalsy;
+  });
+  test('isBigIntRangeTuple', () => {
+    const arr1: IBigRange = [BigInt(1), BigInt(10)];
+    const arr2 = [1, 10];
+    const arr3: IBigRange = [BigInt(10), BigInt(1)];
+    const arr4 = [BigInt(1), Infinity];
+    const arr5 = {};
+
+    expect(validator.isBigIntRangeTuple(arr1)).toBeTruthy();
+    expect(validator.isBigIntRangeTuple(arr2 as unknown as IBigRange)).toBeFalsy();
+    expect(validator.isBigIntRangeTuple(arr3)).toBeFalsy();
+    expect(validator.isBigIntRangeTuple(arr4 as IBigRange)).toBeFalsy();
+    expect(validator.isBigIntRangeTuple(arr5 as IBigRange)).toBeFalsy();
   });
 });

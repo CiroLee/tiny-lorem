@@ -2,6 +2,7 @@ import RandomNumber from '@src/lorem/number';
 import { isInt } from '@src/utils/validator';
 import { MAX_NUMBER } from '@src/lorem/number/constant';
 import type { INumberOptions, IRange } from '@src/types/lorem.types';
+import { IBigRange } from 'lib';
 
 const numberInstance = new RandomNumber();
 describe('Number', () => {
@@ -71,6 +72,30 @@ describe('Number', () => {
     test('float, no options, will use defaults, it will pass', () => {
       const result = numberInstance.float();
       expect(isInt(result as number)).toBeFalsy;
+    });
+  });
+  describe('bigint', () => {
+    test('bigint: range is not satisfies', () => {
+      const ranges = [
+        [1, 10],
+        [BigInt(100), BigInt(10)],
+        [BigInt(1), Infinity],
+      ];
+      ranges.forEach((item) => {
+        expect(() => {
+          numberInstance.bigInt(item as IBigRange);
+        }).toThrowError();
+      });
+    });
+    test('bigInt, no params', () => {
+      const result = numberInstance.bigInt();
+      expect(result).toBeGreaterThanOrEqual(BigInt(-MAX_NUMBER));
+      expect(result).toBeLessThanOrEqual(BigInt(MAX_NUMBER));
+    });
+    test('bigInt, range is valid', () => {
+      const result = numberInstance.bigInt([BigInt(1), BigInt(10)]);
+      expect(result).toBeGreaterThanOrEqual(BigInt(BigInt(1)));
+      expect(result).toBeLessThanOrEqual(BigInt(10));
     });
   });
 });
