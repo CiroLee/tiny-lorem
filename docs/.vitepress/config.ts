@@ -36,7 +36,7 @@ export default {
     socialLinks: [{ icon: 'github', link: 'https://github.com/CiroLee/tiny-lorem' }],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Ciro Lee',
+      copyright: 'Copyright © 2022-present Ciro Lee',
     },
   },
 };

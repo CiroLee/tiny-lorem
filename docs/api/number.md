@@ -38,4 +38,6 @@ lorem.number.float<string>({range: [1, 100], fixed: 2, format: 'string'}); // '4
 
 ::: tip Note
 
-浮点数可能出现末尾小数是 0 的情况，javascript 中，number 类型会省略末位为 0 的数字，这可能会引起误解(并不会影响计算精度)， 因此可以设置`format = string`，返回 string 类型，可保留末位是 0 的浮点数格式。 :::
+浮点数可能出现末尾小数是 0 的情况，javascript 中，number 类型会省略末位为 0 的数字，这可能会引起误解(并不会影响计算精度)， 因此可以设置`format = string`，返回 string 类型，可保留末位是 0 的浮点数格式。
+
+:::
