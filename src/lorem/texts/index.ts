@@ -31,9 +31,7 @@ export default class Texts {
    * @param language receive English(en) or Chinese(cn) language. default is cn
    */
   letter(language: ILanguage = this.language): string {
-    return language === 'cn'
-      ? helper.elements<string[], string>(this.zhCharacters)
-      : helper.elements<string[], string>(ALPHABET);
+    return language === 'cn' ? helper.elements<string>(this.zhCharacters) : helper.elements<string>(ALPHABET);
   }
   /**
    * @desc return a random word
@@ -87,7 +85,7 @@ export default class Texts {
   }
   // Chinese name
   private cname(): string {
-    return helper.elements<string[], string>(COMMOM_CN_NAMES);
+    return helper.elements<string>(COMMOM_CN_NAMES);
   }
   // English name
   private ename(upper?: boolean): string {

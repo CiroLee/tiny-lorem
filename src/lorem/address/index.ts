@@ -12,7 +12,7 @@ export default class Address {
       code: item.code,
       name: item.name,
     }));
-    return helper.elements<IAddressItem[], IAddressItem>(provinces);
+    return helper.elements<IAddressItem>(provinces);
   }
   private cityObj(provinceCode: string): IAddressItem {
     const citiesObj = ADDRESS_DICT[provinceCode].cities;
@@ -20,7 +20,7 @@ export default class Address {
       code: item.code,
       name: item.name,
     }));
-    return helper.elements<IAddressItem[], IAddressItem>(cities);
+    return helper.elements<IAddressItem>(cities);
   }
   private countyObj(provinceCode: string, cityCode: string): IAddressItem {
     const countiesObj = ADDRESS_DICT[provinceCode].cities[cityCode].districts;
@@ -33,7 +33,7 @@ export default class Address {
       return { code: '', name: '' };
     }
 
-    return helper.elements<IAddressItem[], IAddressItem>(counties);
+    return helper.elements<IAddressItem>(counties);
   }
   /**
    * @desc return a random Chinese province

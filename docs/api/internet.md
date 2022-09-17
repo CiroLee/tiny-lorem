@@ -43,6 +43,16 @@ lorem.internet.url({ protocol: 'https', subLevel: 1 }); // https://t51.aero
 lorem.internet.url({ protocol: 'https', subLevel: 1, suffix: '.com.cn' }); // https://lpr.com.cn
 ```
 
+## tld
+
+随机生成一个顶级域名
+
+返回类型: string
+
+```ts
+lorem.internet.tld(); // .org
+```
+
 ## email
 
 随机生成一个邮箱。

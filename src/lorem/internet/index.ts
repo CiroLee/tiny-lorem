@@ -51,11 +51,18 @@ export default class Internet {
     const result: string[] = [];
     const hashArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     for (let i = 0; i < 8; i++) {
-      const elements = helper.elements<string[], string[]>(hashArray, 4);
+      const elements = helper.elements<string[]>(hashArray, 4);
       result.push(elements.join(''));
     }
 
     return result.join(':');
+  }
+  /**
+   * @desc return a random top-level-domain
+   */
+  tld(): string {
+    const key = helper.elements<string>(Object.keys(DOMAINS));
+    return helper.elements<string>(DOMAINS[key as keyof typeof DOMAINS]);
   }
   /**
    * @desc return a random url string
@@ -70,10 +77,6 @@ export default class Internet {
     if (options?.subLevel === 0 || (options?.subLevel && (!isInt(options.subLevel) || options.subLevel < 0))) {
       throw new Error(`url: subLevel must be a positive integer`);
     }
-    const getTld = () => {
-      const key = helper.elements<string[], string>(Object.keys(DOMAINS));
-      return helper.elements<string[], string>(DOMAINS[key as keyof typeof DOMAINS]);
-    };
 
     const getSubDomain = (num: number) => {
       let _name = '';
@@ -84,7 +87,7 @@ export default class Internet {
       return _name.replace(/.$/g, '');
     };
     const protocol = options?.protocol || helper.elements(PROTOCOL);
-    const tld = options?.suffix || getTld();
+    const tld = options?.suffix || this.tld();
     const subDirect = this.subDirecttory(options?.sub);
     const level = options?.subLevel || randomInteger([1, 3]);
     const preffix = getSubDomain(level);
@@ -96,7 +99,7 @@ export default class Internet {
   email() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const name = texts.string({ source: alphabet });
-    const emailSuffix = helper.elements<string[], string>(EMAIL_SUFFIX);
+    const emailSuffix = helper.elements<string>(EMAIL_SUFFIX);
 
     return `${name}/${emailSuffix}`;
   }
@@ -105,7 +108,7 @@ export default class Internet {
    * @param hidden [optional] whether to ide the middle four digits
    */
   mobile(hidden?: boolean): string {
-    const part = helper.elements<number[], number>(MESH_NUMS);
+    const part = helper.elements<number>(MESH_NUMS);
     const strInt = (digit: number) => {
       let str = '';
       for (let i = 0; i < digit; i++) {

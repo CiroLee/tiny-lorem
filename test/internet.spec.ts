@@ -70,4 +70,7 @@ describe('internet', () => {
     const result = internetInstance.landline();
     expect(result.includes('-')).toBeTruthy();
   });
+  test('tld', () => {
+    expect(typeof internetInstance.tld()).toBe('string');
+  });
 });
