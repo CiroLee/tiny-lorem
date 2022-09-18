@@ -3,13 +3,11 @@
   <h1>tiny-lorem</h1>
 </div>
 
-> A modern JavaScript tool library for generating simulation data. Has perfect type hinting. Can be used in **browser** and **node**.
-
-[English](README.md) | [简体中文](README-ZH.md)
+> 用于生成模拟数据的现代 JavaScript 工具库。拥有完善的类型提示。可用于浏览器环境和 node 环境。
 
 [![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem) ![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
 
-## Installation
+## 安装
 
 pnpm
 
@@ -29,7 +27,7 @@ npm
 npm install tiny-lorem
 ```
 
-## Usage
+## 使用
 
 ESM(ESModule)
 
@@ -51,9 +49,9 @@ lorem.texts.word(); // 汉
 lorem.number.int(); // 123
 ```
 
-## API Documents
+## API 文档
 
-[Documents](https://ciro.club/tiny-lorem)
+[文档](https://ciro.club/tiny-lorem)
 
 ## Inspired by
 
