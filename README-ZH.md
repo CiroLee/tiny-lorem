@@ -5,6 +5,8 @@
 
 > 用于生成模拟数据的现代 JavaScript 工具库。拥有完善的类型提示。可用于浏览器环境和 node 环境。
 
+[English](README.md) | [简体中文](README-ZH.md)
+
 [![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem) ![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
 
 ## 安装
