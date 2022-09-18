@@ -1,7 +1,11 @@
 import Texts from '../texts';
+import RandomDate from '../date';
+import Helper from '../helper';
 import { ALPHABET } from '../texts/constant';
 import { randomInteger } from '@src/utils/utils';
 const texts = new Texts();
+const randomDate = new RandomDate();
+const helper = new Helper();
 const numberStr: string = '0123456789';
 
 export default class Unique {
@@ -14,13 +18,11 @@ export default class Unique {
       .join('')
       .toUpperCase(); // exclude I, O
     const trailTag = '挂学警港澳';
-    const body = texts.string({ range: [4, 5], source: alphabet + numberStr });
+    const body = helper.boolean()
+      ? texts.string({ range: 4, source: alphabet + numberStr }) + texts.string({ range: 1, source: trailTag })
+      : texts.string({ range: 5, source: alphabet + numberStr });
 
-    return (
-      texts.string({ range: 1, source: abbr }) +
-      texts.string({ range: 1, source: alphabet }) +
-      (body.length > 4 ? body : body + texts.string({ range: 1, source: trailTag }))
-    );
+    return texts.string({ range: 1, source: abbr }) + texts.string({ range: 1, source: alphabet }) + body;
   }
   /**
    * @desc return a random vehicle identification number
@@ -39,5 +41,14 @@ export default class Unique {
       texts.string({ range: 6, source: numberStr });
 
     return wmi + vds + vis;
+  }
+  id() {
+    const pcNum = randomInteger([100000, 999999]);
+    const date = randomDate.datetime({ from: '1970/1/1', to: '2999/12/12', format: 'yyyy/mm/dd' }).replaceAll('/', '');
+    const trailNum = helper.boolean()
+      ? texts.string({ range: 4, source: numberStr })
+      : texts.string({ range: 3, source: numberStr }) + 'x';
+
+    return pcNum + date + trailNum;
   }
 }

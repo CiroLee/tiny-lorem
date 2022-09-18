@@ -22,3 +22,13 @@ lorem.unique.vrm(); // 贵E2XB8挂
 ```ts
 lorem.unique.vin(); // ZPBRU74E8ED341611
 ```
+
+## id
+
+随机生成中国大陆身份证(二代)号码。
+
+返回类型: string
+
+```ts
+lorem.unique.id(); // 387218270302124269
+```

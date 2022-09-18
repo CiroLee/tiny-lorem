@@ -6,6 +6,17 @@ export default {
   themeConfig: {
     logo: '/logo.svg',
     head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]],
+    nav: [
+      {
+        text: 'v0.0.5',
+        items: [
+          {
+            text: 'CHANGELOG',
+            link: 'https://github.com/CiroLee/tiny-lorem/releases',
+          },
+        ],
+      },
+    ],
     sidebar: [
       {
         items: [{ text: '快速上手', link: '/guide/' }],

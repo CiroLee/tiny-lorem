@@ -2,10 +2,8 @@
 
 > 用于生成模拟数据的现代 JavaScript 工具库
 
-[![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main)
-![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem)
-![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem)
-![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
+[![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem) ![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
+
 ## 概述
 
 `tiny-lorem`是一个使用 typescript 编写的现代 javascript 库, 拥有完善的类型提示, 用于生成模拟数据。可用于**浏览器**和**node**环境。
@@ -32,7 +30,7 @@ npm install tiny-lorem
 
 ## 使用
 
-ESM(esModule)
+ESM(ESModule)
 
 ```ts
 import TinyLorem from 'tiny-lorem';
@@ -60,3 +58,7 @@ lorem.texts.word();
 
 [Mockjs](https://github.com/nuysoft/Mock)  
 [faker-js](https://github.com/faker-js/faker)
+
+## LICENSE
+
+[MIT](LICENSE)

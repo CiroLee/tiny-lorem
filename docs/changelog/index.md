@@ -51,4 +51,5 @@ fix:
 
 - 新增`unique.vrm`函数
 - 新增`unique.vin`函数
+- 新增`unique.id`函数
 - 新增`internet.tld`函数
