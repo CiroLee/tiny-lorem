@@ -8,7 +8,7 @@ export default {
     head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]],
     nav: [
       {
-        text: 'v0.0.4',
+        text: 'v0.0.5',
         items: [
           {
             text: 'CHANGELOG',
