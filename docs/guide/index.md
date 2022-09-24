@@ -43,7 +43,7 @@ lorem.texts.word();
 CJS(CommonJs)
 
 ```ts
-const TinyLorem = require('tiny-lorem');
+const TinyLorem = require('tiny-lorem').default;
 const lorem = new TinyLorem();
 
 // 随机返回一个中文词
@@ -51,5 +51,7 @@ lorem.texts.word();
 ```
 
 ::: tip
-案例中使用的 lorem 均为实例化后的结果。使用中，可以根据实际情况，自定义实例化结果。 
+
+案例中使用的 lorem 均为实例化后的结果。使用中，可以根据实际情况，自定义实例化结果。
+
 :::

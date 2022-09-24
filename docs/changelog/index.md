@@ -1,36 +1,21 @@
 # CHANGELOG
 
-## 2022-08-27
+## 2022-09-24
 
-第一个测试版本发布 v0.0.1beta 包含一下新功能:
+bugfix:
 
-- Texts
-- Number
-- Internet
-- Image
-- Date
-- Color
-- Address
-- Helper
+- 修复在部分前端框架下 module 报错问题(`module is not defined`)
 
-## 2022-08-30
+## 2022-09-16
 
-versionv0.0.14-beta  
-feat:
+优化:  
+`helper.elements`泛型优化  
+新增:
 
-- 增加批量生成数据函数`array`, `json`
-
-fix:
-
-- 修复 texts.name 函数入参有误的问题。
-
-## 2022-09-01
-
-正式版 v0.0.2 内容优化：
-
-- 优化`texts.name`函数中文名来源。
-- 优化`helper.array`函数类型返回判断
-- 优化单元测试
+- 新增`unique.vrm`函数
+- 新增`unique.vin`函数
+- 新增`unique.id`函数
+- 新增`internet.tld`函数
 
 ## 2022-09-04
 
@@ -43,13 +28,34 @@ fix:
 
 常规优化
 
-## 2022-09-16
+## 2022-09-01
 
-优化:  
-`helper.elements`泛型优化  
-新增:
+正式版 v0.0.2 内容优化：
 
-- 新增`unique.vrm`函数
-- 新增`unique.vin`函数
-- 新增`unique.id`函数
-- 新增`internet.tld`函数
+- 优化`texts.name`函数中文名来源。
+- 优化`helper.array`函数类型返回判断
+- 优化单元测试
+
+## 2022-08-30
+
+versionv0.0.14-beta  
+feat:
+
+- 增加批量生成数据函数`array`, `json`
+
+fix:
+
+- 修复 texts.name 函数入参有误的问题。
+
+## 2022-08-27
+
+第一个测试版本发布 v0.0.1beta 包含一下新功能:
+
+- Texts
+- Number
+- Internet
+- Image
+- Date
+- Color
+- Address
+- Helper

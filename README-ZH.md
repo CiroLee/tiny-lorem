@@ -44,7 +44,7 @@ lorem.number.int(); // 123
 CJS(CommonJs)
 
 ```ts
-const TinyLorem = require('tiny-lorem');
+const TinyLorem = require('tiny-lorem').default;
 const lorem = new TinyLorem();
 
 lorem.texts.word(); // 汉
