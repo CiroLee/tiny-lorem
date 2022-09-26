@@ -9,6 +9,10 @@
 
 [![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem) ![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
 
+## 案例
+
+[![](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vitejs-vite-84xphd?file=index.html)
+
 ## 安装
 
 pnpm

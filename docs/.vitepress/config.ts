@@ -8,6 +8,15 @@ export default {
     head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]],
     nav: [
       {
+        text: '生态',
+        items: [
+          {
+            text: 'StackBlitz',
+            link: 'https://stackblitz.com/edit/vitejs-vite-84xphd?file=index.html',
+          },
+        ],
+      },
+      {
         text: 'v0.0.5',
         items: [
           {
