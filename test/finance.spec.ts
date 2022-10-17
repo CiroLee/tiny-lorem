@@ -12,7 +12,7 @@ describe('Finance', () => {
     expect(result3.length).toBeGreaterThanOrEqual(13);
     expect(result3.length).toBeLessThanOrEqual(19);
   });
-  test('ammount, int amount', () => {
+  test('amount, int amount', () => {
     const result = finance.amount({ range: [10, 100], fixed: 0 });
     expect(result.includes('.')).toBeFalsy();
   });
