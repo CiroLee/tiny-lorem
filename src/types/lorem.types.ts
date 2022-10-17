@@ -50,6 +50,13 @@ export interface IImagePlaceholderOptions {
 }
 
 export type IFalsy = number | null | undefined | string | boolean;
+
+export interface IAmountOptions {
+  symbol?: string;
+  range?: IRange;
+  fixed?: number;
+  isFormat?: boolean;
+}
 export interface IImagePicsumOptions {
   width?: number;
   height?: number;

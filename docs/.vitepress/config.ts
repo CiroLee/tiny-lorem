@@ -17,7 +17,7 @@ export default {
         ],
       },
       {
-        text: 'v0.0.5',
+        text: 'v0.0.6',
         items: [
           {
             text: 'CHANGELOG',
@@ -42,6 +42,7 @@ export default {
           { text: 'Color', link: '/api/color' },
           { text: 'Address', link: '/api/address' },
           { text: 'Unique', link: '/api/unique.md' },
+          { text: 'Finance', link: '/api/finance.md' },
           { text: 'Helper', link: '/api/helper' },
         ],
       },

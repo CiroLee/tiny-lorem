@@ -8,6 +8,7 @@ import Color from './lorem/color';
 import RandomImage from './lorem/image';
 import Helper from './lorem/helper';
 import Unique from './lorem/unique';
+import Finance from './lorem/finance';
 import { isInt, isValidNumber } from './utils/validator';
 type IMultiCallback<T> = (lo: TinyLorem) => T;
 class TinyLorem {
@@ -20,6 +21,7 @@ class TinyLorem {
   readonly image = new RandomImage();
   readonly helper = new Helper();
   readonly unique = new Unique();
+  readonly finance = new Finance();
   /**
    * @desc return an array-type lorem data;
    * @param num nums of lorem data

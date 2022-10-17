@@ -1,9 +1,11 @@
 import Texts from '../texts';
 import Helper from '../helper';
 import { randomInteger } from '@src/utils/utils';
-import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS, TEL_AREA_CODE } from './constant';
+import { PROTOCOL, DOMAINS, EMAIL_SUFFIX, MESH_NUMS, TEL_AREA_CODE, HTTP_STATUS_CODE } from './constant';
 import type { IUrlOptions, IRange } from '@src/types/lorem.types';
 import { isInt } from '@src/utils/validator';
+
+type IHttpStatusCode = keyof typeof HTTP_STATUS_CODE;
 
 const texts = new Texts();
 const helper = new Helper();
@@ -65,6 +67,21 @@ export default class Internet {
     return helper.elements<string>(DOMAINS[key as keyof typeof DOMAINS]);
   }
   /**
+   * @desc return a random domain name
+   * @param level [optional] level of subdomain.default is 1
+   */
+  domain(level = 1): string {
+    if (level === 0 || (level && (!isInt(level) || level < 0))) {
+      throw new Error(`url: level must be a positive integer`);
+    }
+    let name = '';
+    const source = '0123456789abcdefghijklmnopqrstuvwxyz-';
+    for (let i = 0; i < level; i++) {
+      name += texts.string({ range: [1, 10], source }).replace(/^-|-$/g, texts.letter('en')) + '.';
+    }
+    return name.replace(/.$/g, '') + this.tld();
+  }
+  /**
    * @desc return a random url string
    * @param options.protocol [optional] protocol of the url
    * @param options.sub [optional] The number of url subdirectories.
@@ -74,24 +91,16 @@ export default class Internet {
    * @param options.suffix suffix of domain. such as .com, .org
    */
   url(options?: IUrlOptions): string {
-    if (options?.subLevel === 0 || (options?.subLevel && (!isInt(options.subLevel) || options.subLevel < 0))) {
+    const subLevel = options?.subLevel;
+    if (subLevel === 0 || (subLevel && (!isInt(subLevel) || subLevel < 0))) {
       throw new Error(`url: subLevel must be a positive integer`);
     }
-
-    const getSubDomain = (num: number) => {
-      let _name = '';
-      const source = '0123456789abcdefghijklmnopqrstuvwxyz-';
-      for (let i = 0; i < num; i++) {
-        _name += texts.string({ range: [1, 10], source }).replace(/^-|-$/g, texts.letter('en')) + '.';
-      }
-      return _name.replace(/.$/g, '');
-    };
     const protocol = options?.protocol || helper.elements(PROTOCOL);
     const tld = options?.suffix || this.tld();
     const subDirect = this.subDirecttory(options?.sub);
-    const level = options?.subLevel || randomInteger([1, 3]);
-    const preffix = getSubDomain(level);
-    return `${protocol}://${preffix}${tld}${subDirect}`;
+    const level = subLevel || randomInteger([1, 3]);
+    const preffix = this.domain(level);
+    return `${protocol}://${preffix.slice(0, preffix.lastIndexOf('.'))}${tld}${subDirect}`;
   }
   /**
    * @desc return a random email
@@ -118,6 +127,23 @@ export default class Internet {
     };
 
     return hidden ? `${part}****${strInt(4)}` : `${part}${strInt(4)}${strInt(4)}`;
+  }
+  httpStatusCode(type?: IHttpStatusCode): number {
+    let codeValue: number[] = [];
+    if (type) {
+      codeValue = HTTP_STATUS_CODE[type] || [];
+    } else {
+      codeValue = helper.elements(Object.values(HTTP_STATUS_CODE));
+    }
+
+    return helper.elements<number>(codeValue);
+  }
+  /**
+   * @desc rerurn a random http request method
+   */
+  httpMethod(): string {
+    const methods = ['GET', 'POST', 'HEAD', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
+    return helper.elements<string>(methods);
   }
   /**
    * @desc return a random Chinese mainland landline number

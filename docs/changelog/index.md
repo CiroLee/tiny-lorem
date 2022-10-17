@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2022-10-18
+
+新增：
+
+- 新增`finance.bankCardNumber`函数
+- 新增`finance.amount`函数
+- 新增`internet.domain`函数
+- 新增`internet.httpStatusCode`函数
+- 新增`internet.httpMethod`函数
+
+优化:
+
+- 优化`internet.url`函数
+
 ## 2022-09-24
 
 bugfix:
