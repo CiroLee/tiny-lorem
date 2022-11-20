@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://img1.imgtp.com/2022/08/27/gZORCuUm.svg" style="width: 240px" alt="logo" />
+  <img src="https://img1.imgtp.com/2022/11/20/4ahj8o2e.svg" style="width: 320px" alt="logo" />
   <h1>tiny-lorem</h1>
 </div>
 
