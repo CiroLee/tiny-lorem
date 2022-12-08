@@ -5,13 +5,13 @@ const randomNumber = new RandomNumber();
 export function extractRGB(rgb: string): number[] {
   let color: string[] = [];
   const rgbReg = /^(rgb|rgba|RGB|RGBA)/;
-  const legencyMode = /,/g;
+  const legacyMode = /,/g;
   const noSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)|\s*/g;
   const withSpaceReg = /(?:\(|\)|rgba|RGBA|RGB|rgb)*/g;
   if (!rgbReg.test(rgb)) {
     throw new Error(`extractRGB: rgb is invalid rgb-format color`);
   }
-  if (legencyMode.test(rgb)) {
+  if (legacyMode.test(rgb)) {
     color = rgb.replace(noSpaceReg, '').split(',');
   } else {
     color = rgb
@@ -27,13 +27,13 @@ export function extractRGB(rgb: string): number[] {
 export function extractHSL(hsl: string): number[] {
   let color: string[] = [];
   const hslReg = /^(hsl|HSL|hsla|HSLA)/;
-  const legencyMode = /,/g;
+  const legacyMode = /,/g;
   const noSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|\s|deg*/g;
   const withSpaceReg = /(?:\(|\)|hsla|HSLA|hsl|HSL)|deg*/g;
   if (!hslReg.test(hsl)) {
     throw new Error(`extractHSL: hsl is invalid hsl-format color`);
   }
-  if (legencyMode.test(hsl)) {
+  if (legacyMode.test(hsl)) {
     color = hsl.replace(noSpaceReg, '').split(',');
   } else {
     color = hsl
@@ -145,17 +145,17 @@ export default class Color {
   }
   /**
    * @desc return a random rgb color
-   * @param type legency | modern, default is legency, modern is for css level4
+   * @param type legacy | modern, default is legacy, modern is for css level4
    */
-  rgb(type?: 'legency' | 'modern'): string {
+  rgb(type?: 'legacy' | 'modern'): string {
     const arr = new Array(3).fill(0).map(() => randomNumber.int([0, 255]));
     return type === 'modern' ? `rgb(${arr[0]} ${arr[1]} ${arr[2]})` : `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
   }
   /**
    * @desc return a random rgba color
-   *  @param type legency | modern, default is legency, modern is for css level4
+   *  @param type legacy | modern, default is legacy, modern is for css level4
    */
-  rgba(type?: 'legency' | 'modern'): string {
+  rgba(type?: 'legacy' | 'modern'): string {
     const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
 
     const _rgb = this.rgb(type);
@@ -165,9 +165,9 @@ export default class Color {
   }
   /**
    * @desc return a random hsl color
-   *  @param type legency | modern, default is legency, modern is for css level4
+   *  @param type legacy | modern, default is legacy, modern is for css level4
    */
-  hsl(type?: 'legency' | 'modern'): string {
+  hsl(type?: 'legacy' | 'modern'): string {
     const hue = randomNumber.int([0, 360]);
     const saturation = `${randomNumber.int([0, 100])}%`;
     const lightness = `${randomNumber.int([0, 100])}%`;
@@ -176,9 +176,9 @@ export default class Color {
   }
   /**
    * @desc return a random hsla color
-   *  @param type legency | modern, default is legency, modern is for css level4
+   *  @param type legacy | modern, default is legacy, modern is for css level4
    */
-  hsla(type?: 'legency' | 'modern'): string {
+  hsla(type?: 'legacy' | 'modern'): string {
     const alpha = randomNumber.float<number>({ range: [0, 1], fixed: 2 });
     const _hsl = this.hsl(type);
     return type === 'modern'

@@ -23,7 +23,7 @@ lorem.color.hex(true); // #af13a4fc
 
 | 名称 | 类型 | 必填 | 默认值 | 描述 |
 | --- | --- | --- | --- | --- |
-| type | 'legency'\|'modern' | 否 | legency | 此项针对 css 中 rgb 颜色的格式。legency 为传统写法，颜色值之间由逗号分隔：rgb(255, 255, 255)；modren 为现代写法，颜色值之间由空格分隔：rgb(255 255 255)。 |
+| type | 'legacy'\|'modern' | 否 | legacy | 此项针对 css 中 rgb 颜色的格式。legacy 为传统写法，颜色值之间由逗号分隔：rgb(255, 255, 255)；modren 为现代写法，颜色值之间由空格分隔：rgb(255 255 255)。 |
 
 返回类型: string
 
@@ -38,7 +38,7 @@ lorem.color.rgb('modern'); // rgb(234 52 138)
 
 | 名称 | 类型 | 必填 | 默认值 | 描述 |
 | --- | --- | --- | --- | --- |
-| type | 'legency'\|'modern' | 否 | legency | 此项针对 css 中 rgba 颜色的格式。legency 为传统写法，颜色值之间由逗号分隔：rgba(255, 255, 255, 0.1)；modren 为现代写法，颜色值之间由空格分隔：rgb(255 255 255 / 10%)。 |
+| type | 'legacy'\|'modern' | 否 | legacy | 此项针对 css 中 rgba 颜色的格式。legacy 为传统写法，颜色值之间由逗号分隔：rgba(255, 255, 255, 0.1)；modren 为现代写法，颜色值之间由空格分隔：rgb(255 255 255 / 10%)。 |
 
 返回类型: string
 
@@ -53,7 +53,7 @@ lorem.color.rgba('modern'); // rgb(47 170 163 / 51%)
 
 | 名称 | 类型 | 必填 | 默认值 | 描述 |
 | --- | --- | --- | --- | --- |
-| type | 'legency'\|'modern' | 否 | legency | 此项针对 css 中 hsl 颜色的格式。legency 为传统写法，颜色值之间由逗号分隔：hsl(255, 23%, 10%)；modren 为现代写法，颜色值之间由空格分隔：hsl(255 23% 10%)。 |
+| type | 'legacy'\|'modern' | 否 | legacy | 此项针对 css 中 hsl 颜色的格式。legacy 为传统写法，颜色值之间由逗号分隔：hsl(255, 23%, 10%)；modren 为现代写法，颜色值之间由空格分隔：hsl(255 23% 10%)。 |
 
 返回类型: string
 
@@ -68,7 +68,7 @@ lorem.color.hsl('modern'); // hsl(102 20% 6%)
 
 | 名称 | 类型 | 必填 | 默认值 | 描述 |
 | --- | --- | --- | --- | --- |
-| type | 'legency'\|'modern' | 否 | legency | 此项针对 css 中 hsla 颜色的格式。legency 为传统写法，颜色值之间由逗号分隔：hsla(255, 23%, 10%, 10%)；modren 为现代写法，颜色值之间由空格分隔：hsl(255 23% 10% / 10%)。 |
+| type | 'legacy'\|'modern' | 否 | legacy | 此项针对 css 中 hsla 颜色的格式。legacy 为传统写法，颜色值之间由逗号分隔：hsla(255, 23%, 10%, 10%)；modren 为现代写法，颜色值之间由空格分隔：hsl(255 23% 10% / 10%)。 |
 
 返回类型: string
 

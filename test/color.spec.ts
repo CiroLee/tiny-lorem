@@ -11,7 +11,7 @@ describe('Color', () => {
     const result = color.hex(true);
     expect(result.substring(1).length).toBe(8);
   });
-  test('rgb, return legency rgb color', () => {
+  test('rgb, return legacy rgb color', () => {
     const result = color.rgb();
     expect(result.replace(/rgb\(|\)/g, '').split(',').length).toBe(3);
   });
@@ -19,7 +19,7 @@ describe('Color', () => {
     const result = color.rgb('modern');
     expect(result.replace(/rgb\(|\)/g, '').split(' ').length).toBe(3);
   });
-  test('rgba, return legency rgba color', () => {
+  test('rgba, return legacy rgba color', () => {
     const result = color.rgba();
     expect(result.replace(/rgba\(|\)/g, '').split(',').length).toBe(4);
   });
@@ -38,7 +38,7 @@ describe('Color', () => {
     expect(rgbColor.length).toBe(3);
     expect(alpha.includes('%')).toBeTruthy();
   });
-  test('hsl, return legency hsl color', () => {
+  test('hsl, return legacy hsl color', () => {
     const result = color.hsl();
     expect(result.replace(/hsl\(|\)/g, '').split(',').length).toBe(3);
   });
@@ -46,7 +46,7 @@ describe('Color', () => {
     const result = color.hsl('modern');
     expect(result.replace(/hsl\(|\)/g, '').split(' ').length).toBe(3);
   });
-  test('hsla, return legency hsla color', () => {
+  test('hsla, return legacy hsla color', () => {
     const result = color.hsla();
     expect(result.replace(/hsl\(|\)/g, '').split(',').length).toBe(4);
     expect(
@@ -80,7 +80,7 @@ describe('color formula test', () => {
       extractRGB(color);
     }).toThrowError();
   });
-  test('extractRGB, legency rgb color', () => {
+  test('extractRGB, legacy rgb color', () => {
     const color = 'rgb(255, 255, 255)';
     const result = extractRGB(color);
     expect(result).toEqual([255, 255, 255]);
@@ -96,7 +96,7 @@ describe('color formula test', () => {
       extractHSL(color);
     }).toThrowError();
   });
-  test('extractHSL, legency hsl color', () => {
+  test('extractHSL, legacy hsl color', () => {
     const color = 'hsl(245deg, 10%, 12%, 10%)';
     const result = extractHSL(color);
     expect(result).toEqual([245, 10, 12, 0.1]);
