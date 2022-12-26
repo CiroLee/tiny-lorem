@@ -61,8 +61,6 @@ lorem.image.picsum({ grayscale: true, blur: 2 }); // https://picsum.photos/958/6
 
 随机返回一张分类图片(如果设置了 type)
 
-返回类型: string
-
 ```ts
 export type TypicalImageType =
   | 'animals'
@@ -85,6 +83,8 @@ export type TypicalImageType =
 | height | number           | 否   |        | 图片高度。缺省则随机生成[320, 1024]之间整数作为高度。 |
 | type   | TypicalImageType | 否   |        | 图片种类。缺省或是不支持的种类， 将随机返回一张图片   |
 | lock   | boolean          | 否   | false  | 设置 lock 为 true，将始终返回同一张图片               |
+
+返回类型: string
 
 ```ts
 lorem.image.classify({ type: 'animals', width: 100 }); // https://loremflickr.com/100/100/animals
