@@ -4,7 +4,7 @@
 
 新增：
 
-- `color.classify`函数。支持图片分类
+- `image.classify`函数。支持图片分类
 
 ## 2022-12-8
 
