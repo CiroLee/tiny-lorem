@@ -8,6 +8,8 @@
 
 真实图片来自：[https://picsum.photos](https://picsum.photos)
 
+分类图片来自：[https://loremflickr.com](https://loremflickr.com)
+
 :::
 
 ## placeholder
@@ -53,4 +55,39 @@ lorem.image.placeholder({ bgColor: '#333', fontColor: 'hsl(153deg 47% 49%)', tex
 lorem.image.pcisum(); // https://picsum.photos/746/975
 lorem.image.picsum({ width: 100 }); // https://picsum.photos/100/100
 lorem.image.picsum({ grayscale: true, blur: 2 }); // https://picsum.photos/958/676?grayscale&blur=2
+```
+
+## classify
+
+随机返回一张分类图片(如果设置了 type)
+
+返回类型: string
+
+```ts
+export type TypicalImageType =
+  | 'animals'
+  | 'avatar'
+  | 'business'
+  | 'city'
+  | 'fashion'
+  | 'food'
+  | 'nature'
+  | 'nightlife'
+  | 'people'
+  | 'sports'
+  | 'technics'
+  | 'transport';
+```
+
+| 名称   | 类型             | 必填 | 默认值 | 描述                                                  |
+| ------ | ---------------- | ---- | ------ | ----------------------------------------------------- |
+| width  | number           | 否   |        | 图片宽度。缺省则随机生成[320, 1024]之间整数作为宽度。 |
+| height | number           | 否   |        | 图片高度。缺省则随机生成[320, 1024]之间整数作为高度。 |
+| type   | TypicalImageType | 否   |        | 图片种类。缺省或是不支持的种类， 将随机返回一张图片   |
+| lock   | boolean          | 否   | false  | 设置 lock 为 true，将始终返回同一张图片               |
+
+```ts
+lorem.image.classify({ type: 'animals', width: 100 }); // https://loremflickr.com/100/100/animals
+lorem.image.classify({ type: lorem.IMAGETYPES.avatar, width: 100 }); // https://loremflickr.com/100/100/avatar
+lorem.image.classify({ type: lorem.IMAGETYPES.avatar, width: 100, lock: true }); // https://loremflickr.com/100/100/avatar?lock=89323
 ```

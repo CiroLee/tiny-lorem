@@ -33,4 +33,12 @@ describe('image', () => {
       image.picsum({ blur: '2' as unknown as number });
     }).toThrowError();
   });
+  test('classify, with type', () => {
+    const result = image.classify({ type: 'animals' });
+    expect(result.endsWith('animals')).toBeTruthy();
+  });
+  test('classify, with lock', () => {
+    const result = image.classify({ lock: true, type: 'animals' });
+    expect(result.includes('lock=')).toBeTruthy();
+  });
 });

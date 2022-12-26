@@ -1,11 +1,12 @@
 import Color, { hexToRgb, rgbToHsl, rgbToHex, extractHSL, hslToRgb } from '../color';
 import { randomInteger } from '@src/utils/utils';
-import type { IImagePlaceholderOptions, IImagePicsumOptions } from '@src/types/lorem.types';
+import type { IImagePlaceholderOptions, IImagePicsumOptions, IImageClassifyOptions } from '@src/types/lorem.types';
 const color = new Color();
 
 export default class RandomImage {
   private PLACEHOLDER_IMAGE_DOMAIN = 'https://dummyimage.com';
   private PICURM_IMAGE_DOMAIN = 'https://picsum.photos';
+  private LOREMFLICKR_DOMAIN = 'https://loremflickr.com';
   private colorType(color: string): string {
     return /^#/.test(color) ? 'hex' : color.toLowerCase().slice(0, 3);
   }
@@ -97,5 +98,19 @@ export default class RandomImage {
     const imageUrl = options?.grayscale ? `${baseUrl}?grayscale` : baseUrl;
 
     return blur ? (/\/?grayscale$/.test(imageUrl) ? `${imageUrl}&blur=${blur}` : `${imageUrl}?blur=${blur}`) : imageUrl;
+  }
+  /**
+   * @desc return a random classified picture if set
+   * @param options.width [optional] image width
+   * @param options.height [optional] image height
+   * @param options.type [optional] image type. if not set or NOT support type, will return a random classification
+   * @param options.lock [optional] if set lock true, the same image will be returned all the time
+   */
+  classify(options: IImageClassifyOptions): string {
+    const size = this.initSize({ width: options?.width, height: options?.height });
+    const lockNum = randomInteger([10000, 99999]);
+    const baseUrl = `${this.LOREMFLICKR_DOMAIN}/${size.width}/${size.height}/${options.type}`;
+
+    return options?.lock ? `${baseUrl}?lock=${lockNum}` : baseUrl;
   }
 }
