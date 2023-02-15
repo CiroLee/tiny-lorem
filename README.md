@@ -7,7 +7,7 @@
 
 [English](README.md) | [简体中文](README-ZH.md)
 
-[![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/tiny-lorem) ![GitHub](https://img.shields.io/github/license/cirolee/tiny-lorem)
+[![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![npm](https://img.shields.io/npm/v/tiny-lorem) ![NPM](https://img.shields.io/npm/l/tiny-lorem)
 
 ## view the demo
 
