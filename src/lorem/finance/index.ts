@@ -25,7 +25,7 @@ const getIssuer = (issuer?: Issuer): string => {
 };
 export default class Finance {
   /**
-   * @desc return a random band card number
+   * @desc return a random bank card number
    * @param issuer band card issuer
    */
   bankCardNumber(issuer?: Issuer): string {
