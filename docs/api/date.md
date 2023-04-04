@@ -2,7 +2,7 @@
 
 随机生成一个日期。包含标准日期，时间戳，星期和月份。
 
-## datetime
+## dateTime
 
 随机生成一个标准日期。
 
@@ -16,13 +16,20 @@
 返回类型: string | Date
 
 ```ts
-lorem.date.datetime(); // 2403-08-15 00:51:37
-lorem.date.datetime({
+lorem.date.dateTime(); // 2403-08-15 00:51:37
+lorem.date.dateTime({
   from: '2022-1-1',
   to: '2024-12-12',
   format: 'yyyy/mm/dd',
 }); // 2023/06/14
-lorem.date.datetime({ format: false }); // 2022-02-12T23:00:10.004Z
+
+lorem.date.dateTime({
+  from: '2022-1-1',
+  to: '2024-12-12',
+  format: 'yyyy年mm月dd日 HH时MM分SS秒',
+}); // 2023年06月14日 12时52分42秒
+
+lorem.date.dateTime({ format: false }); // 2022-02-12T23:00:10.004Z
 ```
 
 ## timestamp

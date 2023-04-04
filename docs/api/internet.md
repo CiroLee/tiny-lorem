@@ -52,7 +52,7 @@ domain()函数仅生成域名，不包含网络协议和子目录。如果需要
 | sub | boolean\|number | 否 | false | 子目录层级。设置为 true，则随机生成 1~4 层子目录。设置具体数值，则生成指定层子目录(最大 10 层)。缺省或设置为 false， 不生成子目录。 |
 | protocol | string | 否 |  | 网络协议。可自定义网络协议。缺省则随机生成常用网络协议。 |
 | suffix | string | 否 |  | 域名后缀(如.com, .org, .com.cn 等)。注意：**域名后缀需要包含点号**。 |
-| subLevel | string | 否 | [1, 3] | 子域名层级。默认为 1~3 层。 |
+| domainLevel | string | 否 | [1, 3] | 域名层级。默认为 1~3 层。 |
 
 返回类型: string
 
@@ -60,8 +60,8 @@ domain()函数仅生成域名，不包含网络协议和子目录。如果需要
 lorem.internet.url(); // news://34.s.et
 lorem.internet.url({ sub: true, protocol: 'https' }); // https://xoefumbzt.hk.cn/kccg
 lorem.internet.url({ sub: 2, protocol: 'https' }); // https://ajaph9sy.g3ei.d2xj9og8p.idv
-lorem.internet.url({ protocol: 'https', subLevel: 1 }); // https://t51.aero
-lorem.internet.url({ protocol: 'https', subLevel: 1, suffix: '.com.cn' }); // https://lpr.com.cn
+lorem.internet.url({ protocol: 'https', domainLevel: 1 }); // https://t51.aero
+lorem.internet.url({ protocol: 'https', domainLevel: 1, suffix: '.com.cn' }); // https://lpr.com.cn
 ```
 
 ## tld

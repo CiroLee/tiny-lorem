@@ -15,17 +15,14 @@ export default class Helper {
     if (!Array.isArray(array)) {
       throw new Error('elements: array must be an array');
     }
-    if (num > array.length) {
-      throw new Error('elements: num must be less than or equal to array length');
-    }
     if (num > 1) {
       const result: T[] = [];
       for (let i = 0; i < num; i++) {
-        result.push(randomElement(array));
+        result.push(randomElement(array) as T);
       }
       return result;
     }
-    return randomElement(array);
+    return randomElement(array) as T;
   }
   /**
    * @desc return a random boolean

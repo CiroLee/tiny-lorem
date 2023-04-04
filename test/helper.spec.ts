@@ -14,16 +14,15 @@ describe('helper', () => {
   });
   test('helper, num > 1', () => {
     const array = [1, 2, 3];
-    const result = helper.elements(array, 2) as number[];
+    const result = helper.elements<number[]>(array, 2);
     result.forEach((item) => {
       expect(array.includes(item)).toBeTruthy();
     });
   });
   test('elements, num > array length', () => {
     const array = [1, 2, 3];
-    expect(() => {
-      helper.elements(array, 4);
-    }).toThrowError();
+    const result = [...new Set(helper.elements(array, 6))];
+    expect(result.length).toBeLessThanOrEqual(array.length);
   });
   test('boolean', () => {
     const result = helper.boolean();

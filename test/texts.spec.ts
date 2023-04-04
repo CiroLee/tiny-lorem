@@ -80,12 +80,4 @@ describe('Texts', () => {
     expect(mockCalcRandomLength).toHaveBeenCalled();
     expect(typeof result).toBe('string');
   });
-  test('config', () => {
-    const result = textsInstance
-      .config({
-        language: 'en',
-      })
-      .letter();
-    expect(result).toMatch(/[a-z]/g);
-  });
 });

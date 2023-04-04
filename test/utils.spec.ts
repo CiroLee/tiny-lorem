@@ -9,9 +9,8 @@ describe('utils', () => {
     expect(result).toBe('2022/08/16');
   });
   test('dateFormat, use default params, invalid format', () => {
-    expect(() => {
-      utils.dateFormat(new Date(1660660487000), 'yyy-dd');
-    }).toThrowError();
+    const result = utils.dateFormat(new Date(1660660487000), 'yyy-dd');
+    expect(result).toBe('yyy-16');
   });
   test('randomInteger, range is [3, 1], and it will throw error', () => {
     const range: IRange = [3, 1];

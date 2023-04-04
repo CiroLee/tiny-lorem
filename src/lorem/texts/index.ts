@@ -3,7 +3,7 @@ import Helper from '../helper';
 import { CN_CHARACTERS, ALPHABET, COMMOM_CN_NAMES, EN_NAMES, CHARACTERS } from './constant';
 import { isValidNumber, isPositiveRangeTuple } from '@src/utils/validator';
 import { randomInteger } from '@src/utils/utils';
-import type { ITextsConfig, ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
+import type { ILanguage, ITextsFuncOptions, IRange, ITextsStringOptions } from '@src/types/lorem.types';
 
 const helper = new Helper();
 
@@ -11,11 +11,6 @@ export default class Texts {
   private language: ILanguage = 'cn';
   private baseNum: number = 10;
   private zhCharacters: string[] = CN_CHARACTERS;
-  config(config: ITextsConfig) {
-    this.language = config?.language || 'cn';
-    this.baseNum = config?.baseNum || 10;
-    return this;
-  }
   private calcRandomLength(range?: number | IRange): number {
     if (isValidNumber(range) || !range) {
       return range ? Math.floor(range as number) : randomInteger([1, this.baseNum]);
@@ -27,7 +22,7 @@ export default class Texts {
     return randomInteger(range as IRange);
   }
   /**
-   * @desc return a random letter or a Chinese charactor
+   * @desc return a random letter or a Chinese character
    * @param language receive English(en) or Chinese(cn) language. default is cn
    */
   letter(language: ILanguage = this.language): string {

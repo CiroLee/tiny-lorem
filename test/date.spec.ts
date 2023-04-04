@@ -4,16 +4,16 @@ const dateInstance = new RandomDate();
 
 describe('RandomDate', () => {
   test('date, no param, use default', () => {
-    const result = new Date(dateInstance.datetime()).getTime();
+    const result = new Date(dateInstance.dateTime()).getTime();
     expect(result).toBeGreaterThanOrEqual(DATETIME_MIN);
     expect(result).toBeLessThanOrEqual(DATETIME_MAX);
   });
   test('date, format is false, and return Date-type date', () => {
-    const result = dateInstance.datetime<Date>({ from: '1999-1-1', to: '2022-12-12', format: false });
+    const result = dateInstance.dateTime<Date>({ from: '1999-1-1', to: '2022-12-12', format: false });
     expect(result instanceof Date).toBeTruthy();
   });
   test('date, set format', () => {
-    const result = dateInstance.datetime({ from: '1999-1-1', to: '2022-12-12', format: 'yyyy/mm/dd' });
+    const result = dateInstance.dateTime({ from: '1999-1-1', to: '2022-12-12', format: 'yyyy/mm/dd' });
     expect(typeof result).toBe('string');
   });
   test('timestamp, fix to second', () => {

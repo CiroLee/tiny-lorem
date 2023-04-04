@@ -10,7 +10,7 @@ type IHttpStatusCode = keyof typeof HTTP_STATUS_CODE;
 const texts = new Texts();
 const helper = new Helper();
 export default class Internet {
-  private subDirecttory(sub?: IRange | number | boolean) {
+  private subDirectory(sub?: IRange | number | boolean) {
     let result = '';
     if (typeof sub === 'number' && sub > 0) {
       const _sub = sub > 10 ? 10 : sub;
@@ -87,20 +87,20 @@ export default class Internet {
    * @param options.sub [optional] The number of url subdirectories.
    * default is false, no subdirectories. sub=true, randomly generate 1~4 layers of subdirectories.
    * if sub ≥ 0, generate a specified number of subdirectories, up to 10 layers
-   * @param options.subLevel [optional] level of subdomain. default is [1, 3];
+   * @param options.domainLevel [optional] level of domain. default is [1, 3];
    * @param options.suffix suffix of domain. such as .com, .org
    */
   url(options?: IUrlOptions): string {
-    const subLevel = options?.subLevel;
-    if (subLevel === 0 || (subLevel && (!isInt(subLevel) || subLevel < 0))) {
-      throw new Error(`url: subLevel must be a positive integer`);
+    const domainLevel = options?.domainLevel;
+    if (domainLevel === 0 || (domainLevel && (!isInt(domainLevel) || domainLevel < 0))) {
+      throw new Error(`url: domainLevel must be a positive integer`);
     }
     const protocol = options?.protocol || helper.elements(PROTOCOL);
     const tld = options?.suffix || this.tld();
-    const subDirect = this.subDirecttory(options?.sub);
-    const level = subLevel || randomInteger([1, 3]);
-    const preffix = this.domain(level);
-    return `${protocol}://${preffix.slice(0, preffix.lastIndexOf('.'))}${tld}${subDirect}`;
+    const subDirect = this.subDirectory(options?.sub);
+    const level = domainLevel || randomInteger([1, 3]);
+    const prefix = this.domain(level);
+    return `${protocol}://${prefix.slice(0, prefix.lastIndexOf('.'))}${tld}${subDirect}`;
   }
   /**
    * @desc return a random email
@@ -126,7 +126,7 @@ export default class Internet {
       return str;
     };
 
-    return hidden ? `${part}****${strInt(4)}` : `${part}${strInt(4)}${strInt(4)}`;
+    return hidden ? `${part}****${strInt(4)}` : `${part}${strInt(8)}`;
   }
   httpStatusCode(type?: IHttpStatusCode): number {
     let codeValue: number[] = [];
@@ -139,7 +139,7 @@ export default class Internet {
     return helper.elements<number>(codeValue);
   }
   /**
-   * @desc rerurn a random http request method
+   * @desc return a random http request method
    */
   httpMethod(): string {
     const methods = ['GET', 'POST', 'HEAD', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];

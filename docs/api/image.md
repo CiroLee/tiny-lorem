@@ -64,7 +64,6 @@ lorem.image.picsum({ grayscale: true, blur: 2 }); // https://picsum.photos/958/6
 ```ts
 export type TypicalImageType =
   | 'animals'
-  | 'avatar'
   | 'business'
   | 'city'
   | 'fashion'

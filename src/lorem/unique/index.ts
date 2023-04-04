@@ -44,7 +44,7 @@ export default class Unique {
   }
   id() {
     const pcNum = randomInteger([100000, 999999]);
-    const date = randomDate.datetime({ from: '1970/1/1', to: '2999/12/12', format: 'yyyy/mm/dd' }).replaceAll('/', '');
+    const date = randomDate.dateTime({ from: '1970/1/1', to: '2999/12/12', format: 'yyyy/mm/dd' }).replaceAll('/', '');
     const trailNum = helper.boolean()
       ? texts.string({ range: 4, source: numberStr })
       : texts.string({ range: 3, source: numberStr }) + 'x';

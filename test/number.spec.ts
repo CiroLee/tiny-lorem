@@ -29,6 +29,29 @@ describe('Number', () => {
       expect(result).toBeLessThanOrEqual(10);
     });
   });
+  describe('intBy', () => {
+    test('intBy: digit <= 0', () => {
+      expect(() => {
+        numberInstance.intBy(0);
+      }).toThrowError();
+    });
+    test('intBy: digit = 1', () => {
+      const result = numberInstance.intBy(1);
+      expect(result).toBeGreaterThanOrEqual(0);
+      expect(result).toBeLessThanOrEqual(9);
+    });
+    test('intBy: digit > 2', () => {
+      const result = numberInstance.intBy(2);
+      expect(result).toBeGreaterThanOrEqual(10);
+      expect(result).toBeLessThanOrEqual(99);
+    });
+    test('intBy: positive param', () => {
+      const r1 = numberInstance.intBy(2);
+      const r2 = numberInstance.intBy(2, false);
+      expect(r1).toBeGreaterThan(0);
+      expect(r2).toBeLessThan(0);
+    });
+  });
   describe('float', () => {
     test('float, options.range is not satisfies', () => {
       const options = {

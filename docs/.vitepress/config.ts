@@ -17,7 +17,7 @@ export default {
         ],
       },
       {
-        text: 'v0.0.8',
+        text: 'v0.1.0',
         items: [
           {
             text: 'CHANGELOG',

@@ -4,7 +4,7 @@ let subDirecttoryMock: jest.SpyInstance;
 
 describe('internet', () => {
   beforeEach(() => {
-    subDirecttoryMock = jest.spyOn(Internet.prototype as any, 'subDirecttory');
+    subDirecttoryMock = jest.spyOn(Internet.prototype as any, 'subDirectory');
   });
   test('uuid', () => {
     const result = internet.uuid();
@@ -39,17 +39,17 @@ describe('internet', () => {
   });
   test('url, level is float, throw error', () => {
     expect(() => {
-      internet.url({ subLevel: 1.2 });
+      internet.url({ domainLevel: 1.2 });
     }).toThrowError();
   });
   test('url, level is less than 0, throw error', () => {
     expect(() => {
-      internet.url({ subLevel: -1 });
+      internet.url({ domainLevel: -1 });
     }).toThrowError();
   });
   test('url, level is 0, throw error', () => {
     expect(() => {
-      internet.url({ subLevel: 0 });
+      internet.url({ domainLevel: 0 });
     }).toThrowError();
   });
   test('url, protocol is http', () => {
@@ -57,16 +57,16 @@ describe('internet', () => {
     expect(url).toMatch(/^http/);
     expect(subDirecttoryMock).toHaveBeenCalled();
   });
-  test('subDirecttory, sub is true, subDirect length belong to [1, 4]', () => {
+  test('subDirectory, sub is true, subDirect length belong to [1, 4]', () => {
     const url = internet.url({ sub: true });
     expect(url.replace(/\/\//g, '').split('/').length).toBeGreaterThanOrEqual(2);
     expect(url.replace(/\/\//g, '').split('/').length).toBeLessThanOrEqual(5);
   });
-  test('subDirecttory, sub is 2', () => {
+  test('subDirectory, sub is 2', () => {
     const url = internet.url({ sub: 2 });
     expect(url.replace(/\/\//g, '').split('/').length).toBe(3);
   });
-  test('subDirecttory, sub greeter than 10', () => {
+  test('subDirectory, sub greeter than 10', () => {
     const url = internet.url({ sub: 12 });
     expect(url.replace(/\/\//g, '').split('/').length).toBe(11);
   });

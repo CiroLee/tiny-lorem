@@ -17,6 +17,22 @@ lorem.number.int([10, 100]); // 76
 lorem.number.int(); // 4605922351451868
 ```
 
+## intBy
+
+随机生成一个指定位数的整数。
+
+| 名称     | 类型    | 必填 | 默认值 | 描述                      |
+| -------- | ------- | ---- | ------ | ------------------------- |
+| digit    | number  | 是   |        | 生成的整数位数            |
+| positive | boolean | 否   | false  | 是否为正整数。默认为 true |
+
+返回类型: number
+
+```ts
+lorem.number.intBy(2); // 34
+lorem.number.intBy(2, false); //-23
+```
+
 ## float
 
 生成随机浮点数。

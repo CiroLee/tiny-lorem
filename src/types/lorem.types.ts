@@ -39,7 +39,7 @@ export interface IUrlOptions {
   sub?: boolean | number;
   protocol?: string;
   suffix?: string;
-  subLevel?: number;
+  domainLevel?: number;
 }
 
 export interface IImagePlaceholderOptions {
@@ -71,9 +71,4 @@ export interface IImageClassifyOptions {
   width?: number;
   height?: number;
   lock?: boolean;
-}
-// configs
-export interface ITextsConfig {
-  language?: ILanguage;
-  baseNum?: number;
 }

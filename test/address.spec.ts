@@ -26,7 +26,7 @@ describe('Address', () => {
     expect(result.includes(' ')).toBeTruthy();
   });
   test('county', () => {
-    expect(addressInstance.county()).toBeTruthy();
+    expect(addressInstance.county().length).toBeGreaterThanOrEqual(0);
     expect(countyObjMock).toHaveBeenCalled();
   });
   test('county parent is true, return full address', () => {

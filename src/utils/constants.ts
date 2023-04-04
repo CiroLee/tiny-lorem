@@ -1,6 +1,5 @@
 export const IMAGETYPES = {
   animals: 'animals',
-  avatar: 'avatar',
   business: 'business',
   city: 'city',
   fashion: 'fashion',

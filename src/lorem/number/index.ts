@@ -24,6 +24,27 @@ export default class RandomNumber {
     return randomInteger([min, max]);
   }
   /**
+   * @desc return a random integer by digit
+   * @param digit digits of integer
+   * @param positive return a negative integer is set false, default is true
+   */
+  intBy(digit: number, positive = true): number {
+    if (digit <= 0 || !isInt(digit)) {
+      throw new Error('digit must be a positive integer');
+    }
+    let num = '';
+    for (let i = 0; i < digit; i++) {
+      if (i === 0 && digit === 1) {
+        num = randomInteger([0, 9]).toString();
+      } else if (i === 0 && digit !== 1) {
+        num = randomInteger([1, 9]).toString();
+      } else {
+        num += randomInteger([0, 9]).toString();
+      }
+    }
+    return positive ? Number(num) : 0 - Number(num);
+  }
+  /**
    * @desc return a random float number
    * @param options.range [min, max] format array
    * @param options.fixed decimal precision.it must be an positive integer and less than 20

@@ -30,7 +30,6 @@ export const fillDecimal = (num: number | string, fixed: number): string => {
 export const dateFormat = (date: Date | number | string, format?: string): string => {
   const _date = date instanceof Date ? date : new Date(date);
   const _format = format || 'yyyy-mm-dd HH:MM:SS';
-  const regExp = /d{1,4}|m{1,4}|yy(?:yy)?|H{1,2}|M{1,2}|S{1,2}/g;
   const o = {
     yyyy: _date.getFullYear(),
     mm: ('0' + (_date.getMonth() + 1)).slice(-2),
@@ -40,10 +39,11 @@ export const dateFormat = (date: Date | number | string, format?: string): strin
     SS: ('0' + _date.getSeconds()).slice(-2),
   };
 
-  return _format.replace(regExp, (match) => {
-    if (match in o) {
-      return (o[match as keyof typeof o] as string).toString();
-    }
-    throw new Error(`dateFormat: format is invalid format`);
-  });
+  return _format
+    .replace(/yyyy/g, `${o.yyyy}`)
+    .replace(/mm/g, `${o.mm}`)
+    .replace(/dd/g, `${o.dd}`)
+    .replace(/HH/g, `${o.HH}`)
+    .replace(/MM/g, `${o.MM}`)
+    .replace(/SS/g, `${o.SS}`);
 };

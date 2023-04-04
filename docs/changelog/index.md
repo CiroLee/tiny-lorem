@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2023-4-5
+
+version 0.1.0  
+新增:
+
+- `number.intBy`函数。
+
+移除:
+
+- 0.1.0 版本之后移除`text.config`函数。
+
+修复&优化:
+
+- (fix)`datetime`函数修改为`dateTime`
+- (fix)修改`internet.url`函数的参数`subLevel`为`domainLevel`
+- (opt)优化`helper.elements`函数参数泛型
+- (otp)优化`date.dateTime`函数，支持更多自定义格式化样式
+
 ## 2022-12-26
 
 新增：
