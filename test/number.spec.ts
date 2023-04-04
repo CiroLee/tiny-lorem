@@ -2,7 +2,7 @@ import RandomNumber from '@src/lorem/number';
 import { isInt } from '@src/utils/validator';
 import { MAX_NUMBER } from '@src/lorem/number/constant';
 import type { INumberOptions, IRange } from '@src/types/lorem.types';
-import { IBigRange } from 'lib';
+import { IBigRange } from '@src/types/lorem.types';
 
 const numberInstance = new RandomNumber();
 describe('Number', () => {
