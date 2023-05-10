@@ -69,7 +69,7 @@ lorem.develop.md5(); // 9f86d081884c7d659a2feaa0c55ad015
 返回类型: string
 
 ```ts
-lorem.develop.password(8); // FI$@t7#k
-lorem.develop.password(8, 'low'); // FgNs2XA5
-lorem.develop.password(12, 'high'); // TL0KoJPUA%+E
+lorem.develop.password(12); // pvljwcssbdbt
+lorem.develop.password(12, 'low'); // zl22LdITIdcI
+lorem.develop.password(12, 'high'); // yCH7LsmWQsA!
 ```
