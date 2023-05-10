@@ -17,7 +17,7 @@ export default {
         ],
       },
       {
-        text: 'v0.1.0',
+        text: 'v0.1.1',
         items: [
           {
             text: 'CHANGELOG',
@@ -38,6 +38,7 @@ export default {
           { text: 'Number', link: '/api/number' },
           { text: 'Date', link: '/api/date' },
           { text: 'Internet', link: '/api/internet' },
+          { text: 'Develop', link: '/api/develop' },
           { text: 'Image', link: '/api/image' },
           { text: 'Color', link: '/api/color' },
           { text: 'Address', link: '/api/address' },

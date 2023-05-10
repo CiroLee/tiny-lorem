@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2023-5-10
+
+version 0.1.1  
+新增:  
+develop 模块
+
+- `gitCommitSha`函数。
+- `gitCommitShortSha`函数
+- `gitBranch`函数
+- `version`函数
+- `md5`函数
+- `password`函数
+
 ## 2023-4-5
 
 version 0.1.0  
