@@ -38,9 +38,9 @@ export default class Develop {
    * @param strength strength of password, default is medium
    */
   password(length: number, strength: 'low' | 'medium' | 'high' = 'medium'): string {
-    const low = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const medium = low + '!@#$%^&*()';
-    const high = medium + '_+~`|}{[]\\:;?><,./-=';
+    const low = 'abcdefghijklmnopqrstuvwxyz';
+    const medium = low + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const high = medium + '~!@#$%^&*()_+{}[]:;<>,.?/';
     const strengthSets = { low, medium, high };
     if (!Object.prototype.hasOwnProperty.call(strengthSets, strength)) {
       throw new Error('invalid strength');
