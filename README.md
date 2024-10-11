@@ -5,20 +5,16 @@
 
 > A modern JavaScript tool library for generating simulation data. Has perfect type hinting. Can be used in **browser** and **node**.
 
-[English](README.md) | [简体中文](README-ZH.md)
+English | [简体中文](README-ZH.md)
 
 [![codecov](https://codecov.io/gh/cirolee/tiny-lorem/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/tiny-lorem/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/tiny-lorem) ![npm](https://img.shields.io/npm/v/tiny-lorem) ![NPM](https://img.shields.io/npm/l/tiny-lorem)
-
-## view the demo
-
-[![](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vitejs-vite-84xphd?file=index.html)
 
 ## Installation
 
 pnpm
 
 ```shell
-pnpm install tiny-lorem
+pnpm add tiny-lorem
 ```
 
 yarn
