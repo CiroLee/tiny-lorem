@@ -24,7 +24,8 @@
 | bgColor | string | 否 |  | 图片背景色。支持 rgb \| rgba \| hsl \|hsla \| hex 格式颜色。注意：**颜色的透明度将被忽略**。省略该参数，则会随机生成一个颜色。 |
 | fontColor | string | 否 |  | 图片背景色。支持 rgb \| rgba \| hsl \|hsla \| hex 格式颜色。注意：**颜色的透明度将被忽略**。省略该参数，则会根据背景色是否为深色， 生成浅色(#fff)文字或深色(#333)文字。 |
 
-返回类型: string ::: tip Note
+返回类型: string  
+::: tip Note
 
 如果`width`, `height` 只缺省一个， 则会生成一个同样的值(作为宽或高)。这在生成一个正方形的图片时非常有用。用法同样适用于`picsum`
 

@@ -42,7 +42,7 @@ lorem.date.dateTime({ format: false }); // 2022-02-12T23:00:10.004Z
 | to   | Date\| number\|string | 否   | 2999-12-12T23:59:59.999Z | 时间戳截止时间。 |
 | ms   | boolean               | 否   | false                    | 是否显示毫秒     |
 
-返回类型: number
+返回类型: string
 
 ```ts
 lorem.date.timestamp(); // 28533656672
