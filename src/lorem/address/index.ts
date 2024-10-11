@@ -43,34 +43,43 @@ export default class Address {
   }
   /**
    * @desc return a random Chinese city
-   * @param parent set true, returns the province and city it belongs to,
+   * @param parent set true, returns the province and city it belongs to
+   * @param gap save the space between the province and city, default is true
    */
-  city(parent?: boolean): string {
+  city(parent?: boolean, gap = true): string {
     const province = this.provinceObj();
     const city = this.cityObj(province.code);
-    return parent ? `${province.name} ${city.name}` : city.name;
+    const res = parent ? `${province.name} ${city.name}` : city.name;
+    return gap ? res : res.replace(/\s/g, '');
   }
   /**
    * @desc return a random county
    * @param parent set true, returns the province and city it belongs to,
    * set 1 or 2, returns the corresponding parent (1: city, 2: province and city)
+   * @param gap save the space between the province, city and county, default is true
    * @examples
    * county(); // 青海省 玉树藏族自治州 杂多县
    * county(1) // 青海省 玉树藏族自治州
    */
-  county(parent?: boolean | number): string {
+  county(parent?: boolean | number, gap = true): string {
     const province = this.provinceObj();
     const city = this.cityObj(province.code);
     const county = this.countyObj(province.code, city.code);
+    let res = '';
     switch (parent) {
       case 2:
       case true:
-        return `${province.name} ${city.name} ${county.name}`;
+        res = `${province.name} ${city.name} ${county.name}`;
+        break;
       case 1:
-        return `${city.name} ${county.name}`;
+        res = `${city.name} ${county.name}`;
+        break;
       default:
-        return county.name;
+        res = county.name;
+        break;
     }
+
+    return gap ? res : res.replace(/\s/g, '');
   }
   /**
    * @desc return a random a Chinese zip code

@@ -51,4 +51,29 @@ export default class Unique {
 
     return pcNum + date + trailNum;
   }
+  /**
+   * @desc return a random uuid
+   */
+  uuid(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const random = (Math.random() * 16) | 0;
+      const val = c === 'x' ? random : (random & 0x3) | 0x8;
+      return val.toString(16);
+    });
+  }
+  /**
+   *
+   * @desc return a random nanoid
+   */
+  nanoid(size = 21): string {
+    if (size <= 0) {
+      throw new Error('nanoid: size must be positive integer');
+    }
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-';
+    let id = '';
+    for (let i = 0; i < size; i++) {
+      id += characters[Math.floor(Math.random() * characters.length)];
+    }
+    return id;
+  }
 }

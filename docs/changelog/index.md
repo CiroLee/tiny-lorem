@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2024-10-11
+
+变更:
+
+- `uuid`函数移动到`unique`模块
+
+新增:  
+unique模块
+
+- `nanoid`函数。
+
+优化:
+
+- 优化`address.city`和`address.county`函数，支持`gap`参数, 控制是否显示分隔符(空格)
+
 ## 2023-5-10
 
 version 0.1.2  

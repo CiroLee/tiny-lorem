@@ -99,16 +99,6 @@ lorem.internet.mobile(); // 18658112949
 lorem.internet.mobile(true); // 132****6003
 ```
 
-## uuid
-
-随机生成一个 uuid。
-
-返回类型: string
-
-```ts
-lorem.internet.uuid(); // 276f8b52-c752-48c8-afb0-22a43e6d6d4b
-```
-
 ## httpStatusCode
 
 随机生成一个网络状态码
