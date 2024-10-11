@@ -27,16 +27,6 @@ export default class Internet {
     return result;
   }
   /**
-   * @desc return a random uuid
-   */
-  uuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      const random = (Math.random() * 16) | 0;
-      const val = c === 'x' ? random : (random & 0x3) | 0x8;
-      return val.toString(16);
-    });
-  }
-  /**
    * @desc return a random an ipv4
    */
   ipv4(): string {

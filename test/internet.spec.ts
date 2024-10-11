@@ -6,10 +6,6 @@ describe('internet', () => {
   beforeEach(() => {
     subDirecttoryMock = jest.spyOn(Internet.prototype as any, 'subDirectory');
   });
-  test('uuid', () => {
-    const result = internet.uuid();
-    expect(result.length).toBe(36);
-  });
   test('ipv4', () => {
     const result = internet.ipv4();
     expect(result.split('.').length).toBe(4);

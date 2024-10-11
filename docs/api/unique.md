@@ -32,3 +32,26 @@ lorem.unique.vin(); // ZPBRU74E8ED341611
 ```ts
 lorem.unique.id(); // 387218270302124269
 ```
+
+## uuid
+
+随机生成一个 uuid。
+
+返回类型: string
+
+```ts
+lorem.internet.uuid(); // 276f8b52-c752-48c8-afb0-22a43e6d6d4b
+```
+
+## nanoid
+
+随机生成一个 nanoid。  
+返回类型: string
+
+| 名称 | 类型   | 必填 | 默认值 | 描述             |
+| ---- | ------ | ---- | ------ | ---------------- |
+| size | number | 否   | 21     | nanoid字符串长度 |
+
+```ts
+lorem.unique.nanoid(); // kO1iTmwi2OdaYGhd1ezmJ
+```

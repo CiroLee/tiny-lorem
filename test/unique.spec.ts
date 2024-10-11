@@ -30,4 +30,21 @@ describe('unique', () => {
     expect(booleanMock).toHaveBeenCalled();
     expect(result.includes('x')).toBeFalsy();
   });
+  test('uuid', () => {
+    const result = unique.uuid();
+    expect(result.length).toBe(36);
+  });
+  test('nanoid valid size, default is 21', () => {
+    const result = unique.nanoid();
+    expect(result.length).toBe(21);
+  });
+  test('nanoid valid size, 10', () => {
+    const result = unique.nanoid(10);
+    expect(result.length).toBe(10);
+  });
+  test('nanoid invalid size', () => {
+    expect(() => {
+      unique.nanoid(-10);
+    }).toThrow();
+  });
 });

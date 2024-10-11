@@ -25,6 +25,11 @@ describe('Address', () => {
     const result = addressInstance.city(true);
     expect(result.includes(' ')).toBeTruthy();
   });
+
+  test('city, parent is true, gap is false', () => {
+    const result = addressInstance.city(true, false);
+    expect(result.includes(' ')).toBeFalsy();
+  });
   test('county', () => {
     expect(addressInstance.county().length).toBeGreaterThanOrEqual(0);
     expect(countyObjMock).toHaveBeenCalled();
@@ -43,6 +48,10 @@ describe('Address', () => {
   test('county parent is 2, return full address', () => {
     const county = addressInstance.county(2);
     expect(county.split(' ').length).toBe(3);
+  });
+  test('county gap is false', () => {
+    const county = addressInstance.county(true, false);
+    expect(county.includes(' ')).toBeFalsy();
   });
   test('zipCode', () => {
     const zip = addressInstance.zipCode();

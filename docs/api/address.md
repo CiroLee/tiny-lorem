@@ -19,12 +19,14 @@ lorem.address.province(); // 四川省
 | 名称   | 类型    | 必填 | 默认值 | 描述               |
 | ------ | ------- | ---- | ------ | ------------------ |
 | parent | boolean | 否   | false  | 实现显示所属的省份 |
+| gap    | boolean | 否   | true   | 是否显示分隔符     |
 
 返回类型: string
 
 ```ts
 lorem.address.city(); // 自贡市
 lorem.address.city(true); // 江西省 九江市
+lorem.address.city(true, false); // 江西省九江市
 ```
 
 ## county
@@ -34,6 +36,7 @@ lorem.address.city(true); // 江西省 九江市
 | 名称 | 类型 | 必填 | 默认值 | 描述 |
 | --- | --- | --- | --- | --- |
 | parent | boolean\|number | 否 | false | 是否显示所属父级省市。默认只显示县(区)。设置为 true 时，显示所属父级省市名称，即完成地址；也可设置为 number，设置显示的层级数。最大为 2 层。 |
+| gap | boolean | 否 | true | 是否显示分隔符 |
 
 返回类型: string
 
@@ -41,6 +44,7 @@ lorem.address.city(true); // 江西省 九江市
 lorem.address.county(); // 利通区
 lorem.address.county(1); // 赣州市 石城县
 lorem.address.county(true); // 云南省 德宏傣族景颇族自治州 梁河县
+lorem.address.county(true, false); // 云南省德宏傣族景颇族自治州梁河县
 ```
 
 ## zipCode

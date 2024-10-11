@@ -13,7 +13,7 @@ layout: doc
 pnpm
 
 ```shell
-pnpm install tiny-lorem
+pnpm add tiny-lorem
 ```
 
 yarn
@@ -43,7 +43,7 @@ lorem.texts.word();
 CJS(CommonJs)
 
 ```ts
-const TinyLorem = require('tiny-lorem').default;
+const TinyLorem = require('tiny-lorem');
 const lorem = new TinyLorem();
 
 // 随机返回一个中文词
