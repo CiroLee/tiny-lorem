@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## version 0.1.4
+
+新增:
+
+- `address`模块增加`road`方法
+- `address`模块增加`full`方法， 生成完整的地址
+
 ## 2024-10-11
 
 变更:

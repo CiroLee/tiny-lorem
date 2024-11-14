@@ -78,4 +78,25 @@ describe('Address', () => {
     expect(arr).toEqual(['23°', '23°']);
     expect(mockFloat).toHaveBeenCalled();
   });
+  test('road test', () => {
+    const result = addressInstance.road();
+    expect(result.length).toBeGreaterThanOrEqual(0);
+  });
+  test('full address, default params', () => {
+    const result = addressInstance.full();
+    expect(result.length).toBeGreaterThanOrEqual(0);
+    expect(result.includes(' ')).toBeTruthy();
+  });
+  test('full address, gap is false', () => {
+    const result = addressInstance.full(false);
+    expect(result.includes(' ')).toBeFalsy();
+  });
+  test('full address, tail is true', () => {
+    const result = addressInstance.full(true, true);
+    expect(result.endsWith('号')).toBeTruthy();
+  });
+  test('full address, custom tail string', () => {
+    const result = addressInstance.full(true, '室');
+    expect(result.endsWith('室')).toBeTruthy();
+  });
 });
