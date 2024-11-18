@@ -12,7 +12,9 @@ import Finance from './lorem/finance';
 import Develop from './lorem/develop';
 import { isInt, isValidNumber } from './utils/validator';
 import { IMAGETYPES } from './utils/constants';
-type IMultiCallback<T> = (lo: TinyLorem) => T;
+
+type IMultiCallback<T> = (lo: TinyLorem, index: number) => T;
+type IJsonCallback<T> = (lo: TinyLorem) => T;
 class TinyLorem {
   readonly IMAGETYPES = IMAGETYPES;
   readonly texts = new Texts();
@@ -37,11 +39,11 @@ class TinyLorem {
       throw new Error(`array: num must be positive integer`);
     }
 
-    return new Array(num).fill(undefined).map(() => {
+    return new Array(num).fill(undefined).map((_, index) => {
       if (typeof schema !== 'function') {
         throw Error('schema must be a function');
       }
-      return schema(this);
+      return schema(this, index);
     });
   }
 
@@ -50,7 +52,7 @@ class TinyLorem {
    * complex structured data
    * @param callback callback function
    */
-  json<T>(callback: IMultiCallback<T>) {
+  json<T>(callback: IJsonCallback<T>) {
     return callback(this);
   }
 }

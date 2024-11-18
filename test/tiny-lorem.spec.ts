@@ -24,6 +24,19 @@ describe('tiny-lorem', () => {
       lorem.array(10, {} as any);
     }).toThrowError();
   });
+  test('array, use index params of callback', () => {
+    const result = lorem.array<IArrayDemo>(2, (lo: TinyLorem, index: number) => {
+      return {
+        name: lo.texts.name(),
+        age: index,
+      };
+    });
+
+    expect(result.length).toBe(2);
+    result.forEach((item, i) => {
+      expect(item.age).toBe(i);
+    });
+  });
   test('json, complex data structure, could use mock function', () => {
     const result = lorem.json((lo) => {
       return {
