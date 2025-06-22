@@ -31,14 +31,10 @@ describe('image', () => {
   test('picsum, blur is not number', () => {
     expect(() => {
       image.picsum({ blur: '2' as unknown as number });
-    }).toThrowError();
+    }).toThrow();
   });
-  test('classify, with type', () => {
-    const result = image.classify({ type: 'animals' });
-    expect(result.endsWith('animals')).toBeTruthy();
-  });
-  test('classify, with lock', () => {
-    const result = image.classify({ lock: true, type: 'animals' });
-    expect(result.includes('lock=')).toBeTruthy();
+  test('picsum, random is set true', () => {
+    const result = image.picsum({ random: true });
+    expect(result.includes('random=')).toBeTruthy();
   });
 });

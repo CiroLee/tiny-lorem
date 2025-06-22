@@ -5,7 +5,7 @@ describe('helper', () => {
   test('elements, throw error', () => {
     expect(() => {
       helper.elements({ a: 1 } as unknown as Array<any>);
-    }).toThrowError();
+    }).toThrow();
   });
   test('elements num = 1', () => {
     const array = [1, 2, 3];

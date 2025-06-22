@@ -21,32 +21,32 @@ describe('internet', () => {
   test('domain, level is float, throw error', () => {
     expect(() => {
       internet.domain(1.2);
-    }).toThrowError();
+    }).toThrow();
   });
   test('domain, level is less than 0, throw error', () => {
     expect(() => {
       internet.domain(-1);
-    }).toThrowError();
+    }).toThrow();
   });
   test('domain, level is 0, throw error', () => {
     expect(() => {
       internet.domain(0);
-    }).toThrowError();
+    }).toThrow();
   });
   test('url, level is float, throw error', () => {
     expect(() => {
       internet.url({ domainLevel: 1.2 });
-    }).toThrowError();
+    }).toThrow();
   });
   test('url, level is less than 0, throw error', () => {
     expect(() => {
       internet.url({ domainLevel: -1 });
-    }).toThrowError();
+    }).toThrow();
   });
   test('url, level is 0, throw error', () => {
     expect(() => {
       internet.url({ domainLevel: 0 });
-    }).toThrowError();
+    }).toThrow();
   });
   test('url, protocol is http', () => {
     const url = internet.url({ protocol: 'http' });

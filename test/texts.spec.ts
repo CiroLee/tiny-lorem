@@ -28,7 +28,7 @@ describe('Texts', () => {
   test('word, range is [-1, 2]', () => {
     expect(() => {
       textsInstance.word({ range: [-1, 2] });
-    }).toThrowError();
+    }).toThrow();
   });
   test('sentence, language is en', () => {
     const result = textsInstance.sentence({ range: [2, 4], language: 'en' });

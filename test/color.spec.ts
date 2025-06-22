@@ -78,7 +78,7 @@ describe('color formula test', () => {
     const color = 'rbg(255, 255, 255)';
     expect(() => {
       extractRGB(color);
-    }).toThrowError();
+    }).toThrow();
   });
   test('extractRGB, legacy rgb color', () => {
     const color = 'rgb(255, 255, 255)';
@@ -94,7 +94,7 @@ describe('color formula test', () => {
     const color = 'rgb(0 0 0)';
     expect(() => {
       extractHSL(color);
-    }).toThrowError();
+    }).toThrow();
   });
   test('extractHSL, legacy hsl color', () => {
     const color = 'hsl(245deg, 10%, 12%, 10%)';
@@ -110,7 +110,7 @@ describe('color formula test', () => {
     const color = '0xffff000';
     expect(() => {
       hexToRgb(color);
-    }).toThrowError();
+    }).toThrow();
   });
   test('hexToRgb, white color', () => {
     const color = '#fff';

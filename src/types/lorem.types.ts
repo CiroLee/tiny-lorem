@@ -1,4 +1,3 @@
-import { IMAGETYPES } from '@src/utils/constants';
 export type IRange = [number, number];
 export type IBigRange = [bigint, bigint];
 export type ILanguage = 'en' | 'cn';
@@ -63,12 +62,5 @@ export interface IImagePicsumOptions {
   height?: number;
   grayscale?: boolean;
   blur?: number;
-}
-
-export type TypicalImageType = keyof typeof IMAGETYPES;
-export interface IImageClassifyOptions {
-  type: TypicalImageType;
-  width?: number;
-  height?: number;
-  lock?: boolean;
+  random?: boolean;
 }

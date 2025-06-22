@@ -1,12 +1,11 @@
 import Color, { hexToRgb, rgbToHsl, rgbToHex, extractHSL, hslToRgb } from '../color';
-import { randomInteger } from '@src/utils/utils';
-import type { IImagePlaceholderOptions, IImagePicsumOptions, IImageClassifyOptions } from '@src/types/lorem.types';
+import { buildQueryString, randomInteger } from '@src/utils/utils';
+import type { IImagePlaceholderOptions, IImagePicsumOptions } from '@src/types/lorem.types';
 const color = new Color();
 
 export default class RandomImage {
   private PLACEHOLDER_IMAGE_DOMAIN = 'https://dummyimage.com';
   private PICURM_IMAGE_DOMAIN = 'https://picsum.photos';
-  private LOREMFLICKR_DOMAIN = 'https://loremflickr.com';
   private colorType(color: string): string {
     return /^#/.test(color) ? 'hex' : color.toLowerCase().slice(0, 3);
   }
@@ -93,24 +92,13 @@ export default class RandomImage {
     if (options?.blur && typeof options.blur !== 'number') {
       throw new Error(`picsum: blur must be a number`);
     }
-    const blur = options?.blur && (options.blur > 10 ? 10 : options?.blur);
     const baseUrl = `${this.PICURM_IMAGE_DOMAIN}/${size.width}/${size.height}`;
-    const imageUrl = options?.grayscale ? `${baseUrl}?grayscale` : baseUrl;
 
-    return blur ? (/\/?grayscale$/.test(imageUrl) ? `${imageUrl}&blur=${blur}` : `${imageUrl}?blur=${blur}`) : imageUrl;
-  }
-  /**
-   * @desc return a random classified picture if set
-   * @param options.width [optional] image width
-   * @param options.height [optional] image height
-   * @param options.type [optional] image type. if not set or NOT support type, will return a random classification
-   * @param options.lock [optional] if set lock true, the same image will be returned all the time
-   */
-  classify(options: IImageClassifyOptions): string {
-    const size = this.initSize({ width: options?.width, height: options?.height });
-    const lockNum = randomInteger([10000, 99999]);
-    const baseUrl = `${this.LOREMFLICKR_DOMAIN}/${size.width}/${size.height}/${options.type}`;
-
-    return options?.lock ? `${baseUrl}?lock=${lockNum}` : baseUrl;
+    const params = buildQueryString({
+      grayscale: options?.grayscale,
+      blur: options?.blur,
+      random: options?.random ? randomInteger([999, 99999]) : false,
+    });
+    return `${baseUrl}${params}`;
   }
 }

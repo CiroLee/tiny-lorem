@@ -11,12 +11,10 @@ import Unique from './lorem/unique';
 import Finance from './lorem/finance';
 import Develop from './lorem/develop';
 import { isInt, isValidNumber } from './utils/validator';
-import { IMAGETYPES } from './utils/constants';
 
 type IMultiCallback<T> = (lo: TinyLorem, index: number) => T;
 type IJsonCallback<T> = (lo: TinyLorem) => T;
 class TinyLorem {
-  readonly IMAGETYPES = IMAGETYPES;
   readonly texts = new Texts();
   readonly number = new RandomNumber();
   readonly date = new RandomDate();

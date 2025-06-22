@@ -17,12 +17,12 @@ describe('tiny-lorem', () => {
   test('array,  num is not a number', () => {
     expect(() => {
       lorem.array('10' as unknown as number, () => {});
-    }).toThrowError();
+    }).toThrow();
   });
   test('array, schema is not a function', () => {
     expect(() => {
       lorem.array(10, {} as any);
-    }).toThrowError();
+    }).toThrow();
   });
   test('array, use index params of callback', () => {
     const result = lorem.array<IArrayDemo>(2, (lo: TinyLorem, index: number) => {

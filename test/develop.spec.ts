@@ -28,7 +28,7 @@ describe('develop', () => {
     expect(result).toMatch(/^[a-zA-Z0-9!@#$%^&*()_+~`|}{[\]:;?><,./=-]+$/);
   });
   test('password: invalid strength', () => {
-    expect(() => develop.password(10, 'invalid' as any)).toThrowError();
+    expect(() => develop.password(10, 'invalid' as any)).toThrow();
   });
   test('md5', () => {
     const md5 = develop.md5();

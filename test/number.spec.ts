@@ -15,7 +15,7 @@ describe('Number', () => {
       ranges.forEach((item) => {
         expect(() => {
           numberInstance.int(item as IRange);
-        }).toThrowError();
+        }).toThrow();
       });
     });
     test('int, no params', () => {
@@ -33,7 +33,7 @@ describe('Number', () => {
     test('intBy: digit <= 0', () => {
       expect(() => {
         numberInstance.intBy(0);
-      }).toThrowError();
+      }).toThrow();
     });
     test('intBy: digit = 1', () => {
       const result = numberInstance.intBy(1);
@@ -66,7 +66,7 @@ describe('Number', () => {
             ...options,
             range: item,
           } as INumberOptions);
-        }).toThrowError();
+        }).toThrow();
       });
     });
     test('float, options.fixed not satisfies', () => {
@@ -79,7 +79,7 @@ describe('Number', () => {
             ...options,
             fixed: item,
           } as INumberOptions);
-        }).toThrowError();
+        }).toThrow();
       });
     });
     test('float, options satisfies, it will pass', () => {
@@ -107,7 +107,7 @@ describe('Number', () => {
       ranges.forEach((item) => {
         expect(() => {
           numberInstance.bigInt(item as IBigRange);
-        }).toThrowError();
+        }).toThrow();
       });
     });
     test('bigInt, no params', () => {

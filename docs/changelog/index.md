@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## version 0.1.6
+
+- 废弃`image.classify`函数
+- 优化`image.picsum`函数，增加`random`参数
+
 ## version 0.1.5
 
 优化:

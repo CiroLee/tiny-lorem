@@ -47,3 +47,25 @@ export const dateFormat = (date: Date | number | string, format?: string): strin
     .replace(/MM/g, `${o.MM}`)
     .replace(/SS/g, `${o.SS}`);
 };
+
+export function buildQueryString(params: Record<string, any>): string {
+  const parts: string[] = [];
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null) {
+      continue;
+    }
+
+    if (typeof value === 'boolean') {
+      if (value) {
+        parts.push(key); // 布尔true只添加key
+      }
+    } else {
+      parts.push(`${key}=${encodeURIComponent(value)}`);
+    }
+  }
+
+  return parts.length ? `?${parts.join('&')}` : '';
+}
+
+// 输出: ?a=1&b&d=hello%20world&g=123
