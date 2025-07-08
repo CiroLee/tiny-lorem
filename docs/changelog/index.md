@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## version 0.1.7
+
+优化:
+
+- 优化`internet.email`输出，使其更符合邮箱规则
+
 ## version 0.1.6
 
 - 废弃`image.classify`函数
