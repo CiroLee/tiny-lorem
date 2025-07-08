@@ -81,7 +81,7 @@ lorem.internet.tld(); // .org
 返回类型: string
 
 ```ts
-lorem.internet.email(); // mL4eMhRy/@inbox.com
+lorem.internet.email(); // mL4eMhRy@inbox.com
 ```
 
 ## mobile

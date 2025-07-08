@@ -100,7 +100,7 @@ export default class Internet {
     const name = texts.string({ source: alphabet });
     const emailSuffix = helper.elements<string>(EMAIL_SUFFIX);
 
-    return `${name}/${emailSuffix}`;
+    return `${name}${emailSuffix}`;
   }
   /**
    * @desc return a random a 11-digit mobile phone number
