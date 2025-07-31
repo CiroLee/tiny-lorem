@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      vitepress-plugin-group-icons:
-        specifier: ^1.6.1
-        version: 1.6.1(markdown-it@14.1.0)(vite@5.4.19(@types/node@24.0.3))
     devDependencies:
       '@commitlint/config-conventional':
         specifier: ^19.8.1
@@ -63,6 +59,9 @@ importers:
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.25.0)(@types/node@24.0.3)(postcss@8.5.4)(search-insights@2.17.2)(typescript@5.8.3)
+      vitepress-plugin-group-icons:
+        specifier: ^1.6.1
+        version: 1.6.1(markdown-it@14.1.0)(vite@5.4.19(@types/node@24.0.3))
 
 packages:
 
