@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## version 0.1.8
+
+优化:
+
+- 优化`elements`函数类型
+
+新增:
+
+- 增加`weightElements`函数
+
 ## version 0.1.7
 
 优化:

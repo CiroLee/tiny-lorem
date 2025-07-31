@@ -10,23 +10,21 @@ layout: doc
 
 ## 安装
 
-pnpm
+:::code-group
 
-```shell
+```sh [pnpm]
 pnpm add tiny-lorem
 ```
 
-yarn
-
-```shell
-yarn install tiny-lorem
+```sh [yarn]
+yarn add tiny-lorem
 ```
 
-npm
-
-```shell
+```sh [npm]
 npm install tiny-lorem
 ```
+
+:::
 
 ## 使用
 
@@ -49,9 +47,3 @@ const lorem = new TinyLorem();
 // 随机返回一个中文词
 lorem.texts.word();
 ```
-
-::: tip
-
-案例中使用的 lorem 均为实例化后的结果。使用中，可以根据实际情况，自定义实例化结果。
-
-:::

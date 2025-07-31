@@ -1,14 +1,25 @@
-export default {
+import { defineConfigWithTheme } from 'vitepress';
+import { groupIconVitePlugin } from 'vitepress-plugin-group-icons';
+import { groupIconMdPlugin } from 'vitepress-plugin-group-icons';
+export default defineConfigWithTheme({
   base: '/tiny-lorem/',
   title: 'tiny-lorem',
   lastUpdated: true,
   description: '用于生成模拟数据的现代JavaScript工具库。A library of modern JavaScript tools for generating mock data.',
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin);
+    },
+  },
+  vite: {
+    plugins: [groupIconVitePlugin()],
+  },
   themeConfig: {
     logo: '/logo.svg',
     head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]],
     nav: [
       {
-        text: 'v0.1.7',
+        text: 'v0.1.8',
         items: [
           {
             text: 'CHANGELOG',
@@ -53,4 +64,4 @@ export default {
       copyright: 'Copyright © 2022-present Ciro Lee',
     },
   },
-};
+});
