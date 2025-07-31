@@ -19,7 +19,7 @@ export default defineConfigWithTheme({
     head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]],
     nav: [
       {
-        text: 'v0.1.8',
+        text: 'v0.1.9',
         items: [
           {
             text: 'CHANGELOG',
